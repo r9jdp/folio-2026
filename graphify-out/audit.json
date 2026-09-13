@@ -1,11 +1,11 @@
 {
-  "nodes": 119,
-  "edges": 154,
-  "communities": 25,
+  "nodes": 127,
+  "edges": 158,
+  "communities": 30,
   "planning_nodes": 74,
-  "code_nodes": 45,
+  "code_nodes": 53,
   "hyperedges": 2,
   "structurally_valid": true,
   "scope": "AST-only refresh plus historical planning snapshot",
-  "date": "2026-09-13T14:23:10.737240+00:00"
+  "date": "2026-09-13T14:39:12.674407+00:00"
 }

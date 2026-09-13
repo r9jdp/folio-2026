@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="600" viewBox="0 0 500 600">
+ <rect x="2" y="2" width="496" height="596" rx="20" fill="#080b0f" stroke="#454950" stroke-width="4"/>
+ <g font-family="Arial,sans-serif" fill="#e6ebf0" text-anchor="middle">
+  <text x="125" y="105" font-size="58" font-weight="300">21.0°</text><text x="375" y="105" font-size="58" font-weight="300">21.0°</text>
+  <text x="125" y="148" font-size="17" letter-spacing="3">AUTO</text><text x="375" y="148" font-size="17" letter-spacing="3">AUTO</text>
+  <text x="250" y="300" font-size="23" letter-spacing="4">COMFORT</text>
+  <text x="250" y="480" font-size="17" letter-spacing="4" fill="#919da9">PORTFOLIO MODE</text>
+ </g>
+ <g fill="none" stroke="#707c88" stroke-width="3"><path d="M250 55v110M46 189h408M46 389h408"/><path d="M220 241q30 -28 60 0M219 251q31 -19 62 0"/><path d="M105 232q-15 15 0 35m-15 10h45m236 -45q15 15 0 35m-30 10h45"/><rect x="167" y="530" width="166" height="4" rx="2"/></g>
+</svg>

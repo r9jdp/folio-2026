@@ -6,13 +6,12 @@ import {
   UserRound,
   History,
   Send,
-  Maximize2,
   Minimize2,
   X,
   ArrowUpRight,
   Download,
   ArrowLeft,
-  Circle,
+  LayoutGrid,
   ChevronRight,
 } from 'lucide-react';
 import { useExperience } from '@/state/experience';
@@ -104,7 +103,7 @@ export default function Desktop() {
   const { activeApp, maximized, openApp, closeApp, toggleMaximized, exit } = useExperience();
   const content = useRef<HTMLDivElement>(null);
   const launcher = useRef<HTMLButtonElement>(null);
-  const title = applications.find((app) => app.id === activeApp)?.title ?? 'Desktop';
+  const title = applications.find((app) => app.id === activeApp)?.title ?? 'Home';
   useEffect(() => {
     if (activeApp) {
       content.current?.scrollTo(0, 0);
@@ -114,7 +113,8 @@ export default function Desktop() {
   useEffect(() => {
     function onKey(event: KeyboardEvent) {
       if (event.key === 'Escape' && !event.defaultPrevented) {
-        closeApp();
+        if (useExperience.getState().activeApp) closeApp();
+        else if (useExperience.getState().maximized) useExperience.getState().toggleMaximized();
         event.preventDefault();
       }
     }
@@ -124,25 +124,33 @@ export default function Desktop() {
   return (
     <section
       className={`desktop-shell ${maximized ? 'is-maximized' : ''}`}
-      aria-label="Rajdeep’s portfolio desktop"
+      aria-label="Portfolio display reading view"
     >
       <div className="desktop-topbar">
         <span className="desktop-brand">
-          <Circle size={11} fill="currentColor" />
-          rajdeep<span>/</span>workspace
+          <LayoutGrid size={14} />
+          RAJDEEP<span>/</span>PORTFOLIO
         </span>
         <span className="desktop-status">
           <i />
           PARKED · EXPLORE FREELY
         </span>
-        <button onClick={exit} className="desktop-exit">
-          <ArrowLeft size={13} />
-          Showroom
-        </button>
+        <div className="display-top-actions">
+          {maximized && (
+            <button onClick={toggleMaximized} className="desktop-exit">
+              <Minimize2 size={14} />
+              Back to cockpit
+            </button>
+          )}
+          <button onClick={exit} className="desktop-exit">
+            <ArrowLeft size={13} />
+            Showroom
+          </button>
+        </div>
       </div>
       <div className="desktop-main">
         <aside className="desktop-sidebar">
-          <span className="eyebrow">FAVORITES</span>
+          <span className="eyebrow">PORTFOLIO</span>
           {mainApps.map(({ id, title: label, icon: Icon }) => (
             <button
               key={id}
@@ -179,13 +187,7 @@ export default function Desktop() {
                 <strong>{title}</strong>
               </div>
               <div className="window-controls">
-                <button
-                  aria-label={maximized ? 'Restore window' : 'Maximize window'}
-                  onClick={toggleMaximized}
-                >
-                  {maximized ? <Minimize2 size={14} /> : <Maximize2 size={14} />}
-                </button>
-                <button aria-label="Close window" onClick={closeApp}>
+                <button aria-label="Display home" onClick={closeApp}>
                   <X size={16} />
                 </button>
               </div>
@@ -195,7 +197,7 @@ export default function Desktop() {
         ) : (
           <div className="desktop-empty">
             <span className="eyebrow">WELCOME ABOARD</span>
-            <h2>Make yourself at home.</h2>
+            <h2>Choose a destination.</h2>
             <button className="button primary" onClick={() => openApp('work')}>
               Explore my work
               <ArrowUpRight size={17} />

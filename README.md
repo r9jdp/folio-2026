@@ -4,7 +4,7 @@ A portfolio inside a Porsche Taycan: scroll into the cabin, explore a Linux-insp
 
 **Repository:** [r9jdp/folio-2026](https://github.com/r9jdp/folio-2026)
 
-**Status:** The basic application foundation is implemented and runs locally. It includes the prepared Taycan showroom, a triggered door/camera entry, a Linux-inspired portfolio desktop, direct portfolio/project pages and shared content. The full driving-and-return milestone, physical dashboard anchoring, live iframe integration, Doom and deployment remain pending.
+**Status:** The basic application foundation is implemented and runs locally. It includes the prepared Taycan showroom, a triggered door/camera entry, a dashboard-mounted app launcher with an optional reading view, direct portfolio/project pages and shared content. The full driving-and-return milestone, live iframe integration, Doom and deployment remain pending.
 
 This README combines the current setup with the longer implementation specification. Checked tasks reflect the foundation delivered so far. Remaining proposed defaults should be validated as the prototype grows.
 
@@ -21,7 +21,7 @@ Open http://127.0.0.1:3000. `npm run check` runs linting, TypeScript and state t
 
 The approved video reference is [in this repository](docs/reference/taycan-concept.mp4). Asset preparation and current limits are described in [assets.md](docs/assets.md); source attribution is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-Current entry uses a button or downward wheel gesture to start a camera/door animation. Continuous scroll scrubbing is next. The desktop is a real DOM overlay over the cabin; physical screen anchoring is still pending. Project introductions and external links work now; live iframes are gated until their useful flows are verified.
+Current entry uses a button or downward wheel gesture to start a camera/door animation. Continuous scroll scrubbing is next. The app launcher is a real DOM surface projected onto the four corners of the central dashboard screen. A separate instrument cluster, passenger panel and lower console establish the Taycan layout. Choosing an app opens an expanded reading view; Back to cockpit restores the dashboard. Small screens open the reading view directly. Cabin geometry and materials remain prototype quality. Project introductions and external links work now; live iframes are gated until their useful flows are verified.
 
 ## Contents
 

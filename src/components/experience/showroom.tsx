@@ -1,10 +1,20 @@
 'use client';
-import { Component, Suspense, useCallback, useEffect, useState, type ReactNode } from 'react';
+import {
+  Component,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+  useRef,
+  useSyncExternalStore,
+  type ReactNode,
+} from 'react';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
-import { ArrowDown, ArrowUpRight, ArrowLeft, RotateCcw } from 'lucide-react';
+import { ArrowDown, ArrowUpRight, ArrowLeft, RotateCcw, Maximize2 } from 'lucide-react';
 import { useExperience } from '@/state/experience';
 import Desktop from '@/components/desktop/desktop';
+import { DisplayHome } from './dashboard-home';
 import { SiteHeader } from '@/components/site-header';
 const Scene = dynamic(() => import('./taycan-scene'), { ssr: false });
 class SceneBoundary extends Component<
@@ -22,7 +32,18 @@ class SceneBoundary extends Component<
     return this.state.failed ? null : this.props.children;
   }
 }
+const compactQuery = '(max-width: 760px)';
+function subscribeCompact(callback: () => void) {
+  const query = window.matchMedia(compactQuery);
+  query.addEventListener('change', callback);
+  return () => query.removeEventListener('change', callback);
+}
+function getCompactSnapshot() {
+  return window.matchMedia(compactQuery).matches;
+}
 export default function Showroom() {
+  const displayRef = useRef<HTMLDivElement>(null);
+  const compact = useSyncExternalStore(subscribeCompact, getCompactSnapshot, () => false);
   const mode = useExperience((s) => s.mode);
   const maximized = useExperience((s) => s.maximized);
   const enter = useExperience((s) => s.enter);
@@ -30,17 +51,15 @@ export default function Showroom() {
   const exit = useExperience((s) => s.exit);
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [motion, setMotion] = useState(true);
+
   const onReady = useCallback(() => setReady(true), []);
   const onError = useCallback(() => setFailed(true), []);
   function startEntry() {
     if (!ready || failed) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setMotion(false);
       enter();
       arrive();
     } else {
-      setMotion(true);
       enter();
     }
   }
@@ -58,10 +77,10 @@ export default function Showroom() {
         if (event.deltaY > 15 && mode === 'showroom') startEntry();
       }}
     >
-      <div className="scene-layer" aria-hidden="true">
+      <div className="scene-layer">
         <SceneBoundary onError={onError}>
           <Suspense fallback={null}>
-            <Scene onReady={onReady} />
+            <Scene onReady={onReady} displayRef={displayRef} />
           </Suspense>
         </SceneBoundary>
       </div>
@@ -141,17 +160,26 @@ export default function Showroom() {
           </Link>
         </>
       )}
-      {mode === 'desktop' && (
-        <div className={`desktop-overlay ${maximized || !motion ? 'full-desktop' : ''}`}>
+      {mode === 'desktop' && !maximized && !compact && (
+        <div ref={displayRef} className="dashboard-surface">
+          <DisplayHome />
+        </div>
+      )}
+      {mode === 'desktop' && (maximized || compact) && (
+        <div className="desktop-overlay reading-view">
           <Desktop />
         </div>
       )}
-      {mode === 'desktop' && !maximized && motion && (
+      {mode === 'desktop' && !maximized && !compact && (
         <div className="cockpit-footer">
           <span>
             <i />
-            PORTFOLIO MODE
+            PARKED / PORTFOLIO
           </span>
+          <button onClick={() => useExperience.getState().toggleMaximized()}>
+            <Maximize2 size={14} />
+            Expand display
+          </button>
           <button onClick={exit}>
             <RotateCcw size={13} />
             Return to showroom

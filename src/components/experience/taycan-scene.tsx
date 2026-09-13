@@ -1,8 +1,9 @@
 'use client';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef, type RefObject } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Environment, Lightformer, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+import Dashboard from './dashboard';
 import { useExperience } from '@/state/experience';
 
 const clamp = (x: number) => Math.min(1, Math.max(0, x));
@@ -21,10 +22,11 @@ const shots: Shot[] = [
   { t: 0.28, position: [3.8, 1.75, 1.55], target: [0, 0.74, 0], fov: 40 },
   { t: 0.52, position: [2.4, 1.5, -0.12], target: [0.22, 0.88, 0.3], fov: 48 },
   { t: 0.72, position: [1.24, 1.3, -0.22], target: [0.22, 0.93, 0.66], fov: 61 },
-  { t: 0.86, position: [0.38, 1.15, 0.03], target: [0.01, 0.89, 0.79], fov: 65 },
-  { t: 1, position: [0.25, 1.12, -0.13], target: [-0.085, 0.92, 0.48], fov: 64 },
+  { t: 0.86, position: [0.38, 1.15, 0.03], target: [0.01, 0.94, 0.84], fov: 65 },
+  { t: 1, position: [0.23, 1.12, -0.13], target: [0.015, 0.94, 0.83], fov: 57 },
 ];
-function Car({ onReady }: { onReady: () => void }) {
+type SceneProps = { onReady: () => void; displayRef: RefObject<HTMLDivElement | null> };
+function Car({ onReady, displayRef }: SceneProps) {
   const { scene } = useGLTF('/models/taycan-preview.glb', false, true);
   const car = useMemo(() => {
     const clone = scene.clone(true);
@@ -32,6 +34,14 @@ function Car({ onReady }: { onReady: () => void }) {
       if (node instanceof THREE.Mesh) {
         node.castShadow = true;
         node.receiveShadow = true;
+        if (!Array.isArray(node.material) && node.material.name === 'MIRROR') {
+          const mirror = node.material.clone() as THREE.MeshStandardMaterial;
+          mirror.color.set('#78828c');
+          mirror.emissive.set('#000000');
+          mirror.metalness = 0.9;
+          mirror.roughness = 0.18;
+          node.material = mirror;
+        }
       }
     });
     return clone;
@@ -73,16 +83,21 @@ function Car({ onReady }: { onReady: () => void }) {
       camera.fov = THREE.MathUtils.lerp(a.fov, b.fov, mix) + (size.width < 700 && p < 0.1 ? 19 : 0);
       camera.updateProjectionMatrix();
     }
+    camera.updateMatrixWorld();
     const door = root.current?.getObjectByName('driver_door');
     if (door) door.rotation.y = -1.08 * smooth((p - 0.16) / 0.18) * (1 - smooth((p - 0.91) / 0.09));
     if (current === 'entering') {
       if (p === 1) useExperience.getState().arrive();
       else invalidate();
     }
-  });
-  return <primitive ref={root} object={car} dispose={null} />;
+  }, -1);
+  return (
+    <primitive ref={root} object={car} dispose={null}>
+      <Dashboard displayRef={displayRef} />
+    </primitive>
+  );
 }
-export default function TaycanScene({ onReady }: { onReady: () => void }) {
+export default function TaycanScene({ onReady, displayRef }: SceneProps) {
   return (
     <Canvas
       frameloop="demand"
@@ -136,7 +151,7 @@ export default function TaycanScene({ onReady }: { onReady: () => void }) {
         <planeGeometry args={[100, 100]} />
         <meshStandardMaterial color="#151a1e" roughness={0.64} metalness={0.3} />
       </mesh>
-      <Car onReady={onReady} />
+      <Car onReady={onReady} displayRef={displayRef} />
     </Canvas>
   );
 }

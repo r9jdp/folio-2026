@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="420" viewBox="0 0 880 420">
+ <rect width="880" height="420" fill="#080b0e"/>
+ <path d="M85 95H795" stroke="#30363e"/>
+ <g font-family="Arial,sans-serif" fill="#c7cdd4" text-anchor="middle">
+  <text x="440" y="76" font-size="17" letter-spacing="5">PASSENGER DISPLAY</text>
+  <text x="440" y="211" font-size="49" letter-spacing="6">RAJDEEP PANDEY</text>
+  <text x="440" y="253" font-size="19" letter-spacing="4" fill="#86929d">SOFTWARE DEVELOPER</text>
+  <text x="440" y="356" font-size="16" letter-spacing="3" fill="#97a2ad">A DIFFERENT WAY TO EXPLORE.</text>
+ </g>
+</svg>

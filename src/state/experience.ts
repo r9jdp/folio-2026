@@ -16,7 +16,7 @@ export type ExperienceState = {
 };
 export const useExperience = create<ExperienceState>((set) => ({
   mode: 'showroom',
-  activeApp: 'work',
+  activeApp: null,
   maximized: false,
   inputOwner: 'none',
   enter: () => set((s) => (s.mode === 'showroom' ? { mode: 'entering', inputOwner: 'none' } : s)),

@@ -1410,3 +1410,195 @@ p {
     animation: none;
   }
 }
+
+/* The cockpit launcher is a physical, 2.08:1 dashboard surface, not a viewport overlay. */
+.pcm-display {
+  width: 1000px;
+  height: 480px;
+  overflow: hidden;
+  color: #f4f5f7;
+  background: linear-gradient(115deg, #15191e, #07090c 68%);
+  border: 2px solid #343a40;
+  border-radius: 5px;
+  font-family: 'DM Sans Variable', Arial, sans-serif;
+  user-select: none;
+}
+.pcm-statusbar {
+  height: 70px;
+  margin: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff23;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.pcm-statusbar > span {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+}
+.pcm-statusbar b {
+  font-size: 29px;
+  font-weight: 450;
+}
+.pcm-statusbar .pcm-profile {
+  font-size: 15px;
+  color: #aab1ba;
+  letter-spacing: 3px;
+}
+.pcm-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 27px 34px 22px;
+}
+.pcm-heading h2 {
+  font-size: 28px;
+  font-weight: 450;
+  letter-spacing: -0.7px;
+}
+.pcm-heading > span {
+  font-size: 11px;
+  letter-spacing: 1.4px;
+  color: #8e98a4;
+}
+.pcm-apps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 0 26px;
+  gap: 8px;
+}
+.pcm-apps button {
+  height: 191px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  border: 1px solid #ffffff1c;
+  border-radius: 3px;
+  background: linear-gradient(#ffffff09, #ffffff02);
+  font-size: 24px;
+  font-weight: 400;
+}
+.pcm-apps button:hover,
+.pcm-apps button:focus-visible {
+  background: #ffffff16;
+  border-color: #ffffff6b;
+}
+.pcm-apps button:first-child {
+  border-bottom: 3px solid #d75245;
+}
+.pcm-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 25px 28px 0;
+  padding-top: 17px;
+  border-top: 1px solid #ffffff23;
+}
+.pcm-footer button {
+  border: 0;
+  background: none;
+  color: #bac1ca;
+  font-size: 18px;
+  padding: 10px 14px;
+}
+.pcm-projects {
+  display: flex;
+  gap: 18px;
+}
+.pcm-expand {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.pcm-footer button:hover {
+  color: #fff;
+}
+.pcm-display button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -5px;
+}
+.desktop-overlay.reading-view {
+  inset: 6% 8%;
+}
+.reading-view .desktop-shell {
+  max-width: 1280px;
+  border-radius: 5px;
+  border-color: #3c4248;
+  background: #0b0e12;
+  box-shadow: 0 20px 90px #000a;
+}
+.reading-view .desktop-topbar,
+.reading-view .desktop-bottom {
+  background: #11151a;
+}
+.reading-view .desktop-sidebar {
+  background: #0f1318;
+}
+.reading-view .app-window {
+  background: #0b0f14;
+}
+.reading-view .desktop-sidebar button.active {
+  background: #ffffff0d;
+  border-color: #ffffff13;
+  border-left: 2px solid #d75245;
+}
+.display-top-actions {
+  display: flex;
+  gap: 26px;
+}
+.display-top-actions button {
+  min-height: 36px;
+}
+.cockpit-footer {
+  z-index: 5;
+  bottom: 28px;
+  left: 4%;
+  right: 4%;
+  color: #d0d5da;
+  text-shadow: 0 2px 8px #000;
+}
+.cockpit-footer button {
+  min-height: 44px;
+  padding: 0 17px;
+  border: 1px solid #ffffff20;
+  border-radius: 4px;
+  background: #080b10ba;
+  font-size: 12px;
+  color: #e1e5eb;
+}
+.cockpit-footer > span {
+  font-size: 9px;
+}
+@media (max-width: 760px) {
+  .desktop-overlay.reading-view {
+    inset: 0;
+  }
+  .reading-view .desktop-shell {
+    border: 0;
+    border-radius: 0;
+  }
+  .display-top-actions {
+    gap: 12px;
+  }
+  .display-top-actions button {
+    font-size: 9px;
+  }
+  .cockpit-footer {
+    display: none;
+  }
+}
+
+.dashboard-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1000px;
+  height: 480px;
+  transform-origin: 0 0;
+  z-index: 3;
+  visibility: hidden;
+}
