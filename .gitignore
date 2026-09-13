@@ -1,3 +1,15 @@
+node_modules/
+.next/
+out/
+coverage/
+test-results/
+playwright-report/
+*.tsbuildinfo
+.env*
+!.env.example
+assets/raw/
+renders/
+.DS_Store
 # Machine-specific Graphify runtime and incremental timestamps
 graphify-out/.graphify_python
 graphify-out/manifest.json

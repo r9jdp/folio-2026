@@ -12,6 +12,24 @@
         "extraction_json_tokens": 16294
       },
       "estimate_method": "ceil(characters / 4); excludes prompts, reasoning, tools and retries; not billing totals"
+    },
+    {
+      "date": "2026-09-13T14:21:21.551572+00:00",
+      "files": 21,
+      "mode": "AST-only update",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "monetary_cost": 0,
+      "usage_status": "No LLM calls in this code-only update"
+    },
+    {
+      "date": "2026-09-13T14:23:10.737240+00:00",
+      "files": 21,
+      "mode": "AST-only update",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "monetary_cost": 0,
+      "usage_status": "No LLM calls in this code-only update"
     }
   ],
   "total_input_tokens": null,

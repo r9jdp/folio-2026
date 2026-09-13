@@ -31,5 +31,6 @@
       "query_tokens": 3004,
       "reduction": 2.3
     }
-  ]
+  ],
+  "scope": "Historical initial planning graph, 74 nodes / 128 edges; not the current graph"
 }

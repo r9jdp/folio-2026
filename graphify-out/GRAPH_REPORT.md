@@ -1,38 +1,56 @@
 # Graph Report - folio-2026  (2026-09-13)
 
-> Scope: one planning document, README.md. All application features remain planned; this graph is not an analysis of implemented code. EXTRACTED means explicitly stated in the README, not independently verified. The dated iframe observations were not rechecked in this run. Cross-community connections are within this document, not discoveries across independent sources.
+> Scope: 21 current code files plus 74 retained planning concepts. Source-code extraction does not prove feature completeness. Planning nodes cite the preserved original README at `planning/README.md`, rather than the updated live README. The new documentation has not undergone a fresh semantic extraction. Read the current README and `docs/development.md` for delivered scope.
 
-[Interactive graph](graph.html) · [Graph data](graph.json) · [Source README](../README.md)
+[Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md) · [Original planning source](planning/README.md)
 
 
 ## Corpus Check
-- Corpus is ~5,262 words - fits in a single context window. You may not need a graph.
+- 22 files · ~9,768 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 74 nodes · 128 edges · 8 communities detected
-- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 8 edges (avg confidence: 0.87)
-- Token usage / cost: provider-metered counts and monetary cost are unavailable. Text-size estimates only: ~9,399 source tokens and ~16,294 extraction JSON tokens (characters / 4). These exclude instructions, reasoning, tools and retries; they are not billing totals.
+- 119 nodes · 154 edges · 25 communities detected
+- Extraction: 94% EXTRACTED · 6% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.86)
+- This code-only update used AST extraction with no LLM calls. Actual usage for the original semantic run remains unavailable; see cost.json.
 
 ## Community Navigation
-- [Runtime modes and lifecycles](#community-0---runtime-modes-and-lifecycles)
-- [Assets and rendering preparation](#community-1---assets-and-rendering-preparation)
-- [Embedded apps and arcade](#community-2---embedded-apps-and-arcade)
-- [Desktop interaction and accessibility](#community-3---desktop-interaction-and-accessibility)
-- [Content architecture and loading](#community-4---content-architecture-and-loading)
-- [Scope and implementation milestones](#community-5---scope-and-implementation-milestones)
-- [Endless road and distance](#community-6---endless-road-and-distance)
-- [Car animation and handling](#community-7---car-animation-and-handling)
+- [Lint configuration](#community-17---lint-configuration)
+- [Next generated types](#community-18---next-generated-types)
+- [Next app configuration](#community-19---next-app-configuration)
+- [Offline model preparation](#community-8---offline-model-preparation)
+- [Route error recovery](#community-9---route-error-recovery)
+- [Document layout and metadata](#community-10---document-layout-and-metadata)
+- [Route loading state](#community-11---route-loading-state)
+- [Project routes and missing pages](#community-5---project-routes-and-missing-pages)
+- [Showroom home route](#community-12---showroom-home-route)
+- [Credits and attribution page](#community-13---credits-and-attribution-page)
+- [Standard portfolio route](#community-20---standard-portfolio-route)
+- [Shared project presentation](#community-14---shared-project-presentation)
+- [Site navigation](#community-15---site-navigation)
+- [Desktop keyboard handling](#community-16---desktop-keyboard-handling)
+- [Showroom entry and recovery](#community-6---showroom-entry-and-recovery)
+- [Taycan rendering and camera](#community-7---taycan-rendering-and-camera)
+- [Application registry data](#community-21---application-registry-data)
+- [Portfolio content data](#community-22---portfolio-content-data)
+- [Experience state and guards](#community-23---experience-state-and-guards)
+- [Experience state tests](#community-24---experience-state-tests)
+- [Product scope and milestones](#community-2---product-scope-and-milestones)
+- [Planned car and asset integration](#community-1---planned-car-and-asset-integration)
+- [Planned desktop and applications](#community-0---planned-desktop-and-applications)
+- [Planned runtime and audio lifecycles](#community-4---planned-runtime-and-audio-lifecycles)
+- [Planned rendering and endless road](#community-3---planned-rendering-and-endless-road)
 
 ## God Nodes (most connected - your core abstractions)
 1. `First playable browser milestone` - 12 edges
 2. `Linux-inspired desktop shell` - 9 edges
 3. `Application registry` - 9 edges
+4. `Arcade vehicle controller` - 9 edges
+5. `Direct portfolio and project routes` - 8 edges
 
-## Surprising Connections (inferred across planning topics)
-
-- Audio suspension and input ownership share focus-loss and mode-change triggers. [INFERRED 0.90; README.md:87; README.md:349]
-- World-coordinate rebasing needs coordinated physics and render-state updates. [INFERRED 0.84; README.md:128; README.md:331]
-- Flat-screen views need the same live-app usability and recovery checks as the cabin display. [INFERRED 0.82; README.md:257; README.md:299-302]
+## Connections across communities
+- `NotFound()` --calls--> `ProjectPage()`  [INFERRED]
+  src/app/not-found.tsx → src/app/projects/[slug]/page.tsx
 
 ## Hyperedges (group relationships)
 - **First playable proves content, dashboard, car and controls together** — readme_first_playable, readme_shared_content, readme_html_screen, readme_articulated_parts, readme_vehicle_controller [EXTRACTED 1.00]
@@ -40,71 +58,154 @@
 
 ## Communities
 
-### Community 0 - "Runtime modes and lifecycles"
-Cohesion: 0.21
-Nodes (13): Shared Web Audio context and mixer, Background and mode audio suspension, Explicit start/pause/dispose lifecycles, Unmeasured initial performance targets, Visibility does not stop active subsystems, Per-frame React rerenders are avoidable, Mesh, scenery and collider recycling, Portfolio return and explicit resume (+5 more)
+### Community 0 - "Planned desktop and applications"
+Cohesion: 0.14
+Nodes (21): Linux-inspired desktop shell, HTML dashboard integration, Exclusive input ownership, Algorithm and browser verification, Application registry, About, Work, Experience, Résumé and Contact, Fermeon live application candidate, TryDonna framing-blocked candidate, ClawIN live application candidate, Lazy live iframe integration (+11 more)
 
-### Community 1 - "Assets and rendering preparation"
+### Community 1 - "Planned car and asset integration"
+Cohesion: 0.14
+Nodes (17): Showroom and cabin entry, Single scroll/timeline system, Rapier through React Three Rapier, Blender and glTF Transform workflow, Moving car parts and screen anchors, Per-asset provenance manifest, Prepared runtime assets and source storage, Candidate lighting, road and scenery assets, Arcade vehicle controller, Finite handling test track (+7 more)
+
+### Community 2 - "Product scope and milestones"
 Cohesion: 0.18
-Nodes (12): Per-asset provenance manifest, Blender and glTF Transform workflow, Responsive electric-car sound layers, Audio provenance and synthesized first pass, Candidate lighting, road and scenery assets, Concept Taycan source model, Historical concept asset findings, Doom runtime and release-content decision (+4 more)
+Nodes (13): Taycan portfolio specification, Approved concept; application unscaffolded, Developer and founder portfolio, First playable browser milestone, Direct portfolio and project routes, Structured portfolio content, Next.js, React and TypeScript layer, Client-side subsystem boundaries, Meetly optional disabled launcher, Pending implementation phases 0–6 (+3 more)
 
-### Community 2 - "Embedded apps and arcade"
-Cohesion: 0.23
-Nodes (12): Optional Doom Arcade application, ClawIN live application candidate, Fermeon live application candidate, Lazy live iframe integration, Real iframe flow tests and recovery, Parent-owned Return/Close controls, Iframe load is not proof of a usable app, CORS does not grant iframe framing permission (+4 more)
+### Community 3 - "Planned rendering and endless road"
+Cohesion: 0.2
+Nodes (12): Three.js through React Three Fiber, Selected Drei utilities, Fixed-step simulation and UI separation, Concept Taycan source model, Historical concept asset findings, Bounded endless road system, Deterministic constrained segments, Coordinated world-coordinate rebasing, Position-independent logical distance, Versioned local driving records (+2 more)
 
-### Community 3 - "Desktop interaction and accessibility"
-Cohesion: 0.27
-Nodes (10): Accessible and resilient visitor paths, Linux-inspired desktop shell, Keyboard and touch driving controls, HTML dashboard integration, Exclusive input ownership, About, Work, Experience, Résumé and Contact, Cross-origin websites require a real HTML surface, Named-device profiling and sustained-drive evidence (+2 more)
-
-### Community 4 - "Content architecture and loading"
+### Community 4 - "Planned runtime and audio lifecycles"
 Cohesion: 0.25
-Nodes (8): Next.js, React and TypeScript layer, Client-side subsystem boundaries, Direct portfolio and project routes, Meetly optional disabled launcher, HTML-first staged loading, Useful content must precede immersion, Prepared runtime assets and source storage, Structured portfolio content
+Nodes (11): Experience mode transitions, Explicit start/pause/dispose lifecycles, Start Drive readiness gate, Portfolio return and explicit resume, Small typed shared state store, Mesh, scenery and collider recycling, Covered studio-to-track transition, Shared Web Audio context and mixer, Background and mode audio suspension, Unmeasured initial performance targets (+1 more)
 
-### Community 5 - "Scope and implementation milestones"
+### Community 5 - "Project routes and missing pages"
 Cohesion: 0.33
-Nodes (7): First playable browser milestone, Approved concept; application unscaffolded, Taycan portfolio specification, Developer and founder portfolio, Prove integrated interactions before expansion, Unresolved implementation and release choices, Pending implementation phases 0–6
+Nodes (6): not-found.tsx, NotFound(), page.tsx, generateStaticParams(), generateMetadata(), ProjectPage()
 
-### Community 6 - "Endless road and distance"
-Cohesion: 0.47
-Nodes (6): Bounded endless road system, Versioned local driving records, Position-independent logical distance, Rebasing limits long-drive precision loss, Deterministic constrained segments, Coordinated world-coordinate rebasing
-
-### Community 7 - "Car animation and handling"
+### Community 6 - "Showroom entry and recovery"
 Cohesion: 0.33
-Nodes (6): Single scroll/timeline system, Moving car parts and screen anchors, Finite handling test track, Rapier through React Three Rapier, Showroom and cabin entry, Arcade vehicle controller
+Nodes (6): showroom.tsx, SceneBoundary, .getDerivedStateFromError(), .componentDidCatch(), .render(), Showroom()
+
+### Community 7 - "Taycan rendering and camera"
+Cohesion: 0.5
+Nodes (5): taycan-scene.tsx, clamp(), smooth(), Car(), TaycanScene()
+
+### Community 8 - "Offline model preparation"
+Cohesion: 0.5
+Nodes (4): prepare-taycan.mjs, constructor(), readAsArrayBuffer(), add()
+
+### Community 9 - "Route error recovery"
+Cohesion: 1.0
+Nodes (2): error.tsx, ErrorPage()
+
+### Community 10 - "Document layout and metadata"
+Cohesion: 1.0
+Nodes (2): layout.tsx, RootLayout()
+
+### Community 11 - "Route loading state"
+Cohesion: 1.0
+Nodes (2): loading.tsx, Loading()
+
+### Community 12 - "Showroom home route"
+Cohesion: 1.0
+Nodes (2): page.tsx, HomePage()
+
+### Community 13 - "Credits and attribution page"
+Cohesion: 1.0
+Nodes (2): page.tsx, CreditsPage()
+
+### Community 14 - "Shared project presentation"
+Cohesion: 1.0
+Nodes (2): project-content.tsx, ProjectMark()
+
+### Community 15 - "Site navigation"
+Cohesion: 1.0
+Nodes (2): site-header.tsx, SiteHeader()
+
+### Community 16 - "Desktop keyboard handling"
+Cohesion: 1.0
+Nodes (2): desktop.tsx, onKey()
+
+### Community 17 - "Lint configuration"
+Cohesion: 1.0
+Nodes (1): eslint.config.mjs
+
+### Community 18 - "Next generated types"
+Cohesion: 1.0
+Nodes (1): next-env.d.ts
+
+### Community 19 - "Next app configuration"
+Cohesion: 1.0
+Nodes (1): next.config.ts
+
+### Community 20 - "Standard portfolio route"
+Cohesion: 1.0
+Nodes (1): page.tsx
+
+### Community 21 - "Application registry data"
+Cohesion: 1.0
+Nodes (1): apps.ts
+
+### Community 22 - "Portfolio content data"
+Cohesion: 1.0
+Nodes (1): portfolio.ts
+
+### Community 23 - "Experience state and guards"
+Cohesion: 1.0
+Nodes (1): experience.ts
+
+### Community 24 - "Experience state tests"
+Cohesion: 1.0
+Nodes (1): experience.test.ts
 
 ## Knowledge Gaps
 - **17 sparsely connected node(s):** `Approved concept; application unscaffolded`, `Developer and founder portfolio`, `Single scroll/timeline system`, `Rapier through React Three Rapier`, `Client-side subsystem boundaries` (+12 more)
-  These have ≤1 connection in this extraction. Low degree alone does not establish missing requirements.
+  These have ≤1 connection in this extraction. The code extractor does not capture all JSX composition, state usage or runtime behavior; low degree alone is not a defect.
+- **Thin community `Lint configuration`** (1 nodes): `eslint.config.mjs`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Next generated types`** (1 nodes): `next-env.d.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Next app configuration`** (1 nodes): `next.config.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Route error recovery`** (2 nodes): `error.tsx`, `ErrorPage()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Document layout and metadata`** (2 nodes): `layout.tsx`, `RootLayout()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Route loading state`** (2 nodes): `loading.tsx`, `Loading()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Showroom home route`** (2 nodes): `page.tsx`, `HomePage()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Credits and attribution page`** (2 nodes): `page.tsx`, `CreditsPage()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Standard portfolio route`** (1 nodes): `page.tsx`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Shared project presentation`** (2 nodes): `project-content.tsx`, `ProjectMark()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Site navigation`** (2 nodes): `site-header.tsx`, `SiteHeader()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Desktop keyboard handling`** (2 nodes): `desktop.tsx`, `onKey()`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Application registry data`** (1 nodes): `apps.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Portfolio content data`** (1 nodes): `portfolio.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Experience state and guards`** (1 nodes): `experience.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+- **Thin community `Experience state tests`** (1 nodes): `experience.test.ts`
+  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
 
 ## Suggested Questions
-_Questions to trace through the plan:_
+_Questions this graph is uniquely positioned to answer:_
 
-- **What must the first playable prototype prove across the car, desktop, apps and runtime modes?**
-  _High betweenness centrality (0.248) - this node is a cross-community bridge._
-- **How does the vehicle controller connect driving, audio, input ownership and the endless road?**
-  _High betweenness centrality (0.187) - this node is a cross-community bridge._
+- **Why does `First playable browser milestone` connect `Product scope and milestones` to `Planned desktop and applications`, `Planned car and asset integration`, `Planned runtime and audio lifecycles`?**
+  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+- **Why does `Arcade vehicle controller` connect `Planned car and asset integration` to `Planned desktop and applications`, `Planned rendering and endless road`, `Planned runtime and audio lifecycles`?**
+  _High betweenness centrality (0.071) - this node is a cross-community bridge._
+## Audit notes
 
-## Evidence and limitations
-
-- Node and edge locations use README.md line numbers. They refer to the source fingerprint below.
-- Relationship directions are retained in `_src` / `_tgt`; community detection uses an undirected projection.
-- Confidence scores describe extraction/inference certainty, not runtime readiness or implementation completion.
-- Louvain clustering (NetworkX, seed 42) is used because optional Leiden dependencies are not installed. Cohesion is edge density, not a quality/completeness score.
-- All detected supported input was processed: one document; no code, image, paper or video input.
-- The graph is a navigation aid for a small corpus. Consult the README for complete requirements and caveats.
-
-Source SHA-256: `868ed6cbe048cfa34a2a5c2c2185cb1caaa7bdb3bc1d24c6293d598a2cb7aab7`.
-
-## Query-context benchmark
-
-Estimated full-corpus context: ~7,016 tokens. Mean sampled query context: ~3,232 tokens; ~2.2× smaller.
-
-These are heuristic text-size estimates on graphify sample queries, not measured billing savings or a benchmark of answer quality. Initial extraction effort is not included.
-
-## Using these outputs
-
-Open `graph.html` in a browser. Search for a concept, select a result, follow its neighbors, or toggle a community. Scroll to zoom and drag to move around the graph. The inspector displays the source lines and planning status. The HTML currently needs internet access to load vis-network from unpkg; graph data is embedded locally and is not sent to a graph service.
-
-Browser verification covered rendering, search, node inspection, neighbor navigation and community visibility. The generated HTML includes a fix for escaped neighbor links and displays source provenance; the installed Graphify package was not changed.
-
-`graph.json` retains descriptions, confidence scores, source locations, community IDs, directions and group relationships. `audit.json` records the structural checks; `benchmark.json` records heuristic query-context estimates. `cost.json` records unavailable actual usage as null, with estimates separately labeled. The semantic cache and manifest support a later Graphify update.
+- Graph structure validated: unique IDs, valid edge endpoints, and both planning group relationships retained.
+- Source paths are repository-relative. JSON includes fingerprints for sources.
+- Directions are retained in `_src`/`_tgt`; clustering uses an undirected projection.
+- Cohesion is edge density, not implementation quality.
+- benchmark.json is the historical 74-node planning-graph estimate; it does not measure this combined graph.
+- The HTML uses vis-network from unpkg and requires internet access for that visualization library.

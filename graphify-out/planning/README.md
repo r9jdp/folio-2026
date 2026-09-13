@@ -4,24 +4,9 @@ A portfolio inside a Porsche Taycan: scroll into the cabin, explore a Linux-insp
 
 **Repository:** [r9jdp/folio-2026](https://github.com/r9jdp/folio-2026)
 
-**Status:** The basic application foundation is implemented and runs locally. It includes the prepared Taycan showroom, a triggered door/camera entry, a Linux-inspired portfolio desktop, direct portfolio/project pages and shared content. The full driving-and-return milestone, physical dashboard anchoring, live iframe integration, Doom and deployment remain pending.
+**Status:** Planning and implementation specification. The visual concept has been approved; the application has not been scaffolded. All implementation milestones below are pending. There are no working development commands, production assets or deployed website in this repository yet.
 
-This README combines the current setup with the longer implementation specification. Checked tasks reflect the foundation delivered so far. Remaining proposed defaults should be validated as the prototype grows.
-
-## Run locally
-
-Use Node.js 22.18+ and npm. No API keys are needed for this foundation.
-
-```sh
-npm ci
-npm run dev
-```
-
-Open http://127.0.0.1:3000. `npm run check` runs linting, TypeScript and state tests. `npm run build` creates a production build, and `npm start` serves it. `npm run format` and `npm run format:check` manage formatting. See [development handoff](docs/development.md) for dependency constraints and architecture.
-
-The approved video reference is [in this repository](docs/reference/taycan-concept.mp4). Asset preparation and current limits are described in [assets.md](docs/assets.md); source attribution is in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-
-Current entry uses a button or downward wheel gesture to start a camera/door animation. Continuous scroll scrubbing is next. The desktop is a real DOM overlay over the cabin; physical screen anchoring is still pending. Project introductions and external links work now; live iframes are gated until their useful flows are verified.
+This README is the starting specification for building the experience. Proposed defaults should be validated in the playable prototype before investing heavily in visual polish or replacement assets.
 
 ## Contents
 
@@ -118,7 +103,7 @@ Acceptance criteria:
 - [ ] Start Drive enables sound and hands input to a vehicle controller only when the track is ready.
 - [ ] Acceleration, braking, steering, stopping and recovery work on a finite test track.
 - [ ] Returning pauses driving and restores desktop state.
-- [x] A visitor can bypass the 3D introduction and read the portfolio directly.
+- [ ] A visitor can bypass the 3D introduction and read the portfolio directly.
 - [ ] Record transfer size, loading behaviour and frame performance on identified reference devices.
 
 The endless environment and complete arcade can follow this milestone. First establish that the content, screen, car and controls work together.
@@ -418,24 +403,22 @@ Select reference browsers/devices and record the network profile before treating
 
 ### Phase 0 — Establish the project
 
-- [x] Scaffold Next.js/React/TypeScript and select compatible dependency versions.
-- [x] Choose npm and generate one lockfile (`package-lock.json`); include it with the setup commit.
-- [x] Add ignore rules, formatting, linting and type checking.
-- [x] Define shared content, application registry, mode transitions and input ownership.
-- [x] Add useful direct portfolio routes and loading/error boundaries.
-- [x] Create an asset manifest and decide where raw versus runtime assets belong.
-- [x] Replace this README's planning-only status with accurate setup instructions once scripts exist.
+- [ ] Scaffold Next.js/React/TypeScript and select compatible dependency versions.
+- [ ] Choose one package manager and commit its lockfile.
+- [ ] Add ignore rules, formatting, linting and type checking.
+- [ ] Define shared content, application registry, mode transitions and input ownership.
+- [ ] Add useful direct portfolio routes and loading/error boundaries.
+- [ ] Create an asset manifest and decide where raw versus runtime assets belong.
+- [ ] Replace this README's planning-only status with accurate setup instructions once scripts exist.
 
 **Exit:** A runnable application shell with meaningful HTML content and documented real commands.
 
-The foundation is runnable; see [development handoff](docs/development.md) for what remains before the full first playable.
-
 ### Phase 1 — Car and screen proof
 
-- [x] Import the concept asset into the preparation workflow.
+- [ ] Import the concept asset into the preparation workflow.
 - [ ] Correct moving-part hierarchy, door pivots and camera anchors.
-- [x] Produce and inspect a lighter runtime export.
-- [x] Implement showroom, door opening and cabin entry.
+- [ ] Produce and inspect a lighter runtime export.
+- [ ] Implement showroom, door opening and cabin entry.
 - [ ] Mount a readable, clickable HTML display and a basic Linux-inspired shell.
 - [ ] Test Fermeon as the first live application candidate, with case-study/external-link fallback.
 - [ ] Measure loading size and rendering performance.
@@ -444,10 +427,10 @@ The foundation is runnable; see [development handoff](docs/development.md) for w
 
 ### Phase 2 — Portfolio desktop
 
-- [x] Implement launchers, window focus, close and maximise/restore.
+- [ ] Implement launchers, window focus, close and maximise/restore.
 - [ ] Populate About, Work, Experience, Résumé and Contact from approved content.
-- [x] Add Fermeon, TryDonna and ClawIN entries and local case studies.
-- [x] Keep Meetly disabled/optional with its preserved URL.
+- [ ] Add Fermeon, TryDonna and ClawIN entries and local case studies.
+- [ ] Keep Meetly disabled/optional with its preserved URL.
 - [ ] Connect desktop applications to shareable content routes.
 - [ ] Implement responsive screen layouts and accessible navigation.
 

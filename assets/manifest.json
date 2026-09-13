@@ -1,0 +1,46 @@
+{
+  "id": "taycan-preview",
+  "creator": "Mikhail Hamanovich",
+  "sourceUrl": "https://sketchfab.com/3d-models/porshe-taycan-c6004141452e4d3ab048bf0fee52666d",
+  "license": "CC BY 4.0",
+  "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "Porshe Taycan by Mikhail Hamanovich, adapted under CC BY 4.0.",
+  "sourceAcquired": "2026-09-13",
+  "preparedAt": "2026-09-13T14:12:56.525Z",
+  "sourceGeometrySha256": "22e127001d9ff8f27bc39e2b1f3cd7ad5969d1dbcf4e4e00f4ea6c8122fc6a44",
+  "modifications": [
+    "Offline mesh simplification",
+    "Driver-door extraction and hinge from approved film",
+    "Silver paint and cabin material tuning",
+    "Flat badge materials without the source badge atlas",
+    "Material batching, vertex quantization and Meshopt compression",
+    "Display and camera anchors"
+  ],
+  "runtimeFiles": [
+    {
+      "path": "/models/taycan-preview.glb",
+      "bytes": 1993256
+    }
+  ],
+  "qualityTier": "prototype",
+  "originalTriangles": 3007135,
+  "triangles": 287727,
+  "drawMeshes": 27,
+  "bounds": {
+    "min": [
+      -1.0892024040222168,
+      -0.04165969789028168,
+      -2.484384298324585
+    ],
+    "max": [
+      1.0892024064064025,
+      1.4003820419311523,
+      2.471665859222412
+    ]
+  },
+  "limitations": [
+    "Cabin close-ups and door seams need refinement",
+    "Wheel and steering articulation remains pending",
+    "No vehicle colliders in this preview asset"
+  ]
+}
