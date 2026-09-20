@@ -9,26 +9,21 @@
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
-    "format": "prettier --write src tests scripts *.json *.mjs",
-    "format:check": "prettier --check src tests scripts *.json *.mjs",
-    "check": "npm run lint && npm run typecheck && npm test",
-    "assets:prepare": "node scripts/prepare-taycan.mjs"
+    "format": "prettier --write src tests *.json *.mjs",
+    "format:check": "prettier --check src tests *.json *.mjs",
+    "check": "npm run lint && npm run typecheck && npm test"
   },
   "engines": {
     "node": ">=22.18.0"
   },
   "packageManager": "npm@10.9.3",
   "devDependencies": {
-    "@gltf-transform/core": "4.5.0",
-    "@gltf-transform/extensions": "4.5.0",
-    "@gltf-transform/functions": "4.5.0",
     "@types/node": "22.20.2",
     "@types/react": "19.2.18",
     "@types/react-dom": "19.2.7",
     "@types/three": "0.186.0",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.5",
-    "meshoptimizer": "1.2.0",
     "prettier": "3.9.6",
     "tsx": "4.23.13",
     "typescript": "6.0.3"
@@ -41,7 +36,6 @@
     "next": "16.3.5",
     "react": "19.2.8",
     "react-dom": "19.2.8",
-    "three": "0.186.0",
-    "zustand": "5.0.15"
+    "three": "0.186.0"
   }
 }

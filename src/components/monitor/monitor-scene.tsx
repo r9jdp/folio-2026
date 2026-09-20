@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { ContactShadows, Html, RoundedBox } from '@react-three/drei';
 import { OrthographicCamera } from 'three';
@@ -10,6 +10,15 @@ const cream = '#d6d2c6';
 const keyRows = [14, 14, 13, 12, 8];
 
 function Hardware({ paused }: { paused: boolean }) {
+  const invalidate = useThree((state) => state.invalidate);
+  // Drei mounts its screen in a separate React root. Render once it has a DOM
+  // node so demand rendering applies the camera transform after that mount.
+  const syncScreen = useCallback(
+    (node: HTMLDivElement | null) => {
+      if (node) invalidate();
+    },
+    [invalidate],
+  );
   return (
     <group>
       <RoundedBox
@@ -43,6 +52,7 @@ function Hardware({ paused }: { paused: boolean }) {
         <meshStandardMaterial color="#1e2922" roughness={0.25} />
       </RoundedBox>
       <Html
+        ref={syncScreen}
         transform
         position={[0, 0.72, 1.148]}
         distanceFactor={2.5}
@@ -52,6 +62,7 @@ function Hardware({ paused }: { paused: boolean }) {
         <MonitorDesktop paused={paused} />
       </Html>
       <Html
+        ref={syncScreen}
         transform
         position={[-1.71, -0.93, 1.04]}
         distanceFactor={2.5}

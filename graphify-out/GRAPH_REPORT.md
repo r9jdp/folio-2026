@@ -1,265 +1,157 @@
-# Graph Report - folio-2026  (2026-09-20)
+# folio-2026 — Current source graph
 
-> Scope: Current code plus 74 retained planning concepts. Source-code extraction does not prove feature completeness. Planning nodes cite the preserved original README at `planning/README.md`, rather than the updated live README. The new documentation has not undergone a fresh semantic extraction. Read the current README and `docs/development.md` for delivered scope.
+> Scope: Current application, test and project-configuration code only. This AST extraction does not prove feature completeness. Historical planning and deleted code are excluded; Git history preserves the earlier implementation.
 
-[Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md) · [Original planning source](planning/README.md)
+[Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
+Generated: 2026-09-20T14:35:16.894305+00:00
 
-## Corpus Check
-- 34 files · ~19,538 words
-- Verdict: corpus is large enough that graph structure adds value.
+- 45 nodes · 45 directed edges · 14 communities
+- 14 current code files; repository-relative source paths with SHA-256 fingerprints
+- AST extraction only: no LLM calls or API cost
+- Clustering: NetworkX Louvain, seed 42, on the undirected projection
+- Edge confidence: EXTRACTED: 45
 
-## Summary
-- 178 nodes · 230 edges · 33 communities detected
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.84)
-- This code-only update used AST extraction with no LLM calls. Actual usage for the original semantic run remains unavailable; see cost.json.
+## Source navigation
 
-## Community Navigation
-- [Lint configuration](#community-22---lint-configuration)
-- [Next generated types](#community-23---next-generated-types)
-- [Next app configuration](#community-24---next-app-configuration)
-- [Offline model preparation](#community-2---offline-model-preparation)
-- [Route error recovery](#community-12---route-error-recovery)
-- [Document layout and metadata](#community-13---document-layout-and-metadata)
-- [Route loading state](#community-14---route-loading-state)
-- [Project routes and missing pages](#community-9---project-routes-and-missing-pages)
-- [Showroom home route](#community-15---showroom-home-route)
-- [Credits and attribution page](#community-16---credits-and-attribution-page)
-- [Standard portfolio route](#community-25---standard-portfolio-route)
-- [Shared project presentation](#community-17---shared-project-presentation)
-- [Site navigation](#community-18---site-navigation)
-- [Desktop keyboard handling](#community-19---desktop-keyboard-handling)
-- [dashboard-home.tsx](#community-20---dashboard-hometsx)
-- [dashboard.tsx](#community-26---dashboardtsx)
-- [display-projection.ts](#community-21---display-projectionts)
-- [drive-scene.tsx / drive-terrain.ts / driving.test.ts / driving.ts](#community-1---drive-scenetsx--drive-terraints--drivingtestts--drivingts)
-- [driving-game.tsx](#community-4---driving-gametsx)
-- [Showroom entry and recovery](#community-5---showroom-entry-and-recovery)
-- [Taycan rendering and camera](#community-10---taycan-rendering-and-camera)
-- [Application registry data](#community-27---application-registry-data)
-- [Portfolio content data](#community-28---portfolio-content-data)
-- [taycan-model.ts](#community-11---taycan-modelts)
-- [Experience state and guards](#community-29---experience-state-and-guards)
-- [display-projection.test.ts](#community-30---display-projectiontestts)
-- [drive-terrain.test.ts](#community-31---drive-terraintestts)
-- [Experience state tests](#community-32---experience-state-tests)
-- [Product scope and milestones](#community-8---product-scope-and-milestones)
-- [Planned rendering and endless road](#community-0---planned-rendering-and-endless-road)
-- [Planned car and asset integration](#community-3---planned-car-and-asset-integration)
-- [Planned runtime and audio lifecycles](#community-6---planned-runtime-and-audio-lifecycles)
-- [Planned rendering and endless road](#community-0---planned-rendering-and-endless-road)
-
-## God Nodes (most connected - your core abstractions)
-1. `First playable browser milestone` - 12 edges
-2. `DriveAudio` - 11 edges
-3. `Linux-inspired desktop shell` - 9 edges
-4. `Application registry` - 9 edges
-5. `Arcade vehicle controller` - 9 edges
-
-## Connections across communities
-- `onKeyDown()` --calls--> `add()`  [INFERRED]
-  src/components/experience/driving-game.tsx → scripts/prepare-taycan.mjs
-- `advance()` --calls--> `stepDrive()`  [INFERRED]
-  tests/driving.test.ts → src/lib/driving.ts
-- `roadX()` --calls--> `roadCenter()`  [INFERRED]
-  src/components/experience/drive-scene.tsx → src/lib/driving.ts
-
-## Hyperedges (group relationships)
-- **First playable proves content, dashboard, car and controls together** — readme_first_playable, readme_shared_content, readme_html_screen, readme_articulated_parts, readme_vehicle_controller [EXTRACTED 1.00]
-- **Exactly one keyboard owner among desktop, embedded app, driving and arcade** — readme_input_owner, readme_desktop, readme_iframe_runtime, readme_vehicle_controller, readme_arcade [EXTRACTED 1.00]
+- [eslint.config.mjs](../eslint.config.mjs): 1 nodes
+- [next.config.ts](../next.config.ts): 1 nodes
+- [scripts/refresh-code-graph.py](../scripts/refresh-code-graph.py): 5 nodes
+- [src/app/error.tsx](../src/app/error.tsx): 2 nodes
+- [src/app/layout.tsx](../src/app/layout.tsx): 2 nodes
+- [src/app/not-found.tsx](../src/app/not-found.tsx): 2 nodes
+- [src/app/page.tsx](../src/app/page.tsx): 2 nodes
+- [src/components/monitor/monitor-desktop.tsx](../src/components/monitor/monitor-desktop.tsx): 2 nodes
+- [src/components/monitor/monitor-scene.tsx](../src/components/monitor/monitor-scene.tsx): 2 nodes
+- [src/components/monitor/monitor.tsx](../src/components/monitor/monitor.tsx): 8 nodes
+- [src/components/pond/koi-pond.tsx](../src/components/pond/koi-pond.tsx): 10 nodes
+- [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 2 nodes
+- [src/lib/pond.ts](../src/lib/pond.ts): 5 nodes
+- [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
 
 ## Communities
 
-### Community 0 - "Planned rendering and endless road"
-Cohesion: 0.13
-Nodes (27): First playable browser milestone, Linux-inspired desktop shell, HTML dashboard integration, Direct portfolio and project routes, Structured portfolio content, Exclusive input ownership, Algorithm and browser verification, Application registry, About, Work, Experience, Résumé and Contact, Fermeon live application candidate (+17 more)
+### 0: koi-pond.tsx
 
-### Community 1 - "drive-scene.tsx / drive-terrain.ts / driving.test.ts / driving.ts"
-Cohesion: 0.15
-Nodes (19): drive-scene.tsx, hash(), roadX(), stripGeometry(), RoadStrip(), lost(), drive-terrain.ts, terrainColumn(), terrainHeight(), terrainSample() (+9 more)
+10 nodes · edge density 0.40
 
-### Community 2 - "Offline model preparation"
-Cohesion: 0.23
-Nodes (16): prepare-taycan.mjs, constructor(), readAsArrayBuffer(), add(), drive-audio.ts, DriveAudio, .unlock(), .update(), .setMuted(), .suspend() (+6 more)
+- `koi-pond.tsx` — src/components/pond/koi-pond.tsx L1
+- `bodyPath()` — src/components/pond/koi-pond.tsx L219
+- `createBed()` — src/components/pond/koi-pond.tsx L109
+- `drawKoi()` — src/components/pond/koi-pond.tsx L230
+- `drawSurface()` — src/components/pond/koi-pond.tsx L374
+- `ellipse()` — src/components/pond/koi-pond.tsx L27
+- `KoiPond()` — src/components/pond/koi-pond.tsx L430
+- `leaf()` — src/components/pond/koi-pond.tsx L86
+- `randomGenerator()` — src/components/pond/koi-pond.tsx L17
+- `rock()` — src/components/pond/koi-pond.tsx L42
 
-### Community 3 - "Planned car and asset integration"
-Cohesion: 0.14
-Nodes (15): Showroom and cabin entry, Three.js through React Three Fiber, Selected Drei utilities, Single scroll/timeline system, Concept Taycan source model, Historical concept asset findings, Blender and glTF Transform workflow, Moving car parts and screen anchors, Per-asset provenance manifest, Candidate lighting, road and scenery assets (+5 more)
+### 1: monitor.tsx
 
-### Community 4 - "driving-game.tsx"
-Cohesion: 0.18
-Nodes (13): driving-game.tsx, readBestDistance(), isInteractive(), DriveBoundary, .getDerivedStateFromError(), .componentDidCatch(), .render(), onKeyDown(), onKeyUp(), onVisibility() (+3 more)
+8 nodes · edge density 0.25
 
-### Community 5 - "Showroom entry and recovery"
-Cohesion: 0.22
-Nodes (11): showroom.tsx, SceneBoundary, .getDerivedStateFromError(), .componentDidCatch(), .render(), subscribeQuery(), subscribeCompact(), subscribeReduced(), getCompact(), getReduced() (+1 more)
+- `monitor.tsx` — src/components/monitor/monitor.tsx L1
+- `FlatMonitor()` — src/components/monitor/monitor.tsx L19
+- `readMotion()` — src/components/monitor/monitor.tsx L15
+- `SceneBoundary` — src/components/monitor/monitor.tsx L33
+- `.componentDidCatch()` — src/components/monitor/monitor.tsx L41
+- `.getDerivedStateFromError()` — src/components/monitor/monitor.tsx L38
+- `.render()` — src/components/monitor/monitor.tsx L44
+- `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
-### Community 6 - "Planned runtime and audio lifecycles"
-Cohesion: 0.25
-Nodes (11): Experience mode transitions, Explicit start/pause/dispose lifecycles, Start Drive readiness gate, Portfolio return and explicit resume, Small typed shared state store, Mesh, scenery and collider recycling, Covered studio-to-track transition, Shared Web Audio context and mixer, Background and mode audio suspension, Unmeasured initial performance targets (+1 more)
+### 2: refresh-code-graph.py
 
-### Community 7 - "Planned rendering and endless road"
-Cohesion: 0.24
-Nodes (11): Rapier through React Three Rapier, Fixed-step simulation and UI separation, Arcade vehicle controller, Finite handling test track, Bounded endless road system, Deterministic constrained segments, Coordinated world-coordinate rebasing, Position-independent logical distance, Versioned local driving records, Rebasing limits long-drive precision loss (+1 more)
+5 nodes · edge density 0.70
 
-### Community 8 - "Product scope and milestones"
-Cohesion: 0.2
-Nodes (10): Taycan portfolio specification, Approved concept; application unscaffolded, Developer and founder portfolio, Next.js, React and TypeScript layer, Client-side subsystem boundaries, TryDonna framing-blocked candidate, Scoped embedding and frame policies, Pending implementation phases 0–6, Unresolved implementation and release choices, CORS does not grant iframe framing permission
+- `refresh-code-graph.py` — scripts/refresh-code-graph.py L1
+- `communities_for()` — scripts/refresh-code-graph.py L60
+- `main()` — scripts/refresh-code-graph.py L70
+- `relative_source()` — scripts/refresh-code-graph.py L48
+- `source_paths()` — scripts/refresh-code-graph.py L26
 
-### Community 9 - "Project routes and missing pages"
-Cohesion: 0.33
-Nodes (6): not-found.tsx, NotFound(), page.tsx, generateStaticParams(), generateMetadata(), ProjectPage()
+### 3: pond.ts
 
-### Community 10 - "Taycan rendering and camera"
-Cohesion: 0.5
-Nodes (5): taycan-scene.tsx, clamp(), smooth(), Car(), RendererRecovery()
+5 nodes · edge density 0.60
 
-### Community 11 - "taycan-model.ts"
-Cohesion: 0.67
-Nodes (3): taycan-model.ts, cloneTaycan(), disposeTaycanMaterials()
+- `pond.ts` — src/lib/pond.ts L1
+- `advancePond()` — src/lib/pond.ts L77
+- `angleDifference()` — src/lib/pond.ts L62
+- `createKoi()` — src/lib/pond.ts L17
+- `disturbPond()` — src/lib/pond.ts L66
 
-### Community 12 - "Route error recovery"
-Cohesion: 1.0
-Nodes (2): error.tsx, ErrorPage()
+### 4: error.tsx
 
-### Community 13 - "Document layout and metadata"
-Cohesion: 1.0
-Nodes (2): layout.tsx, RootLayout()
+2 nodes · edge density 1.00
 
-### Community 14 - "Route loading state"
-Cohesion: 1.0
-Nodes (2): loading.tsx, Loading()
+- `error.tsx` — src/app/error.tsx L1
+- `ErrorPage()` — src/app/error.tsx L3
 
-### Community 15 - "Showroom home route"
-Cohesion: 1.0
-Nodes (2): page.tsx, HomePage()
+### 5: layout.tsx
 
-### Community 16 - "Credits and attribution page"
-Cohesion: 1.0
-Nodes (2): page.tsx, CreditsPage()
+2 nodes · edge density 1.00
 
-### Community 17 - "Shared project presentation"
-Cohesion: 1.0
-Nodes (2): project-content.tsx, ProjectMark()
+- `layout.tsx` — src/app/layout.tsx L1
+- `RootLayout()` — src/app/layout.tsx L13
 
-### Community 18 - "Site navigation"
-Cohesion: 1.0
-Nodes (2): site-header.tsx, SiteHeader()
+### 6: not-found.tsx
 
-### Community 19 - "Desktop keyboard handling"
-Cohesion: 1.0
-Nodes (2): desktop.tsx, onKey()
+2 nodes · edge density 1.00
 
-### Community 20 - "dashboard-home.tsx"
-Cohesion: 1.0
-Nodes (2): dashboard-home.tsx, goHome()
+- `not-found.tsx` — src/app/not-found.tsx L1
+- `NotFound()` — src/app/not-found.tsx L2
 
-### Community 21 - "display-projection.ts"
-Cohesion: 1.0
-Nodes (2): display-projection.ts, quadTransform()
+### 7: page.tsx
 
-### Community 22 - "Lint configuration"
-Cohesion: 1.0
-Nodes (1): eslint.config.mjs
+2 nodes · edge density 1.00
 
-### Community 23 - "Next generated types"
-Cohesion: 1.0
-Nodes (1): next-env.d.ts
+- `page.tsx` — src/app/page.tsx L1
+- `Home()` — src/app/page.tsx L4
 
-### Community 24 - "Next app configuration"
-Cohesion: 1.0
-Nodes (1): next.config.ts
+### 8: monitor-desktop.tsx
 
-### Community 25 - "Standard portfolio route"
-Cohesion: 1.0
-Nodes (1): page.tsx
+2 nodes · edge density 1.00
 
-### Community 26 - "dashboard.tsx"
-Cohesion: 1.0
-Nodes (1): dashboard.tsx
+- `monitor-desktop.tsx` — src/components/monitor/monitor-desktop.tsx L1
+- `MonitorDesktop()` — src/components/monitor/monitor-desktop.tsx L7
 
-### Community 27 - "Application registry data"
-Cohesion: 1.0
-Nodes (1): apps.ts
+### 9: monitor-scene.tsx
 
-### Community 28 - "Portfolio content data"
-Cohesion: 1.0
-Nodes (1): portfolio.ts
+2 nodes · edge density 1.00
 
-### Community 29 - "Experience state and guards"
-Cohesion: 1.0
-Nodes (1): experience.ts
+- `monitor-scene.tsx` — src/components/monitor/monitor-scene.tsx L1
+- `lost()` — src/components/monitor/monitor-scene.tsx L175
 
-### Community 30 - "display-projection.test.ts"
-Cohesion: 1.0
-Nodes (1): display-projection.test.ts
+### 10: portfolio-content.tsx
 
-### Community 31 - "drive-terrain.test.ts"
-Cohesion: 1.0
-Nodes (1): drive-terrain.test.ts
+2 nodes · edge density 1.00
 
-### Community 32 - "Experience state tests"
-Cohesion: 1.0
-Nodes (1): experience.test.ts
+- `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
+- `PortfolioContent()` — src/components/portfolio-content.tsx L84
 
-## Knowledge Gaps
-- **17 sparsely connected node(s):** `Approved concept; application unscaffolded`, `Developer and founder portfolio`, `Single scroll/timeline system`, `Rapier through React Three Rapier`, `Client-side subsystem boundaries` (+12 more)
-  These have ≤1 connection in this extraction. The code extractor does not capture all JSX composition, state usage or runtime behavior; low degree alone is not a defect.
-- **Thin community `Lint configuration`** (1 nodes): `eslint.config.mjs`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Next generated types`** (1 nodes): `next-env.d.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Next app configuration`** (1 nodes): `next.config.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Route error recovery`** (2 nodes): `error.tsx`, `ErrorPage()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Document layout and metadata`** (2 nodes): `layout.tsx`, `RootLayout()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Route loading state`** (2 nodes): `loading.tsx`, `Loading()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Showroom home route`** (2 nodes): `page.tsx`, `HomePage()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Credits and attribution page`** (2 nodes): `page.tsx`, `CreditsPage()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Standard portfolio route`** (1 nodes): `page.tsx`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Shared project presentation`** (2 nodes): `project-content.tsx`, `ProjectMark()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Site navigation`** (2 nodes): `site-header.tsx`, `SiteHeader()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Desktop keyboard handling`** (2 nodes): `desktop.tsx`, `onKey()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `dashboard-home.tsx`** (2 nodes): `dashboard-home.tsx`, `goHome()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `dashboard.tsx`** (1 nodes): `dashboard.tsx`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `display-projection.ts`** (2 nodes): `display-projection.ts`, `quadTransform()`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Application registry data`** (1 nodes): `apps.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Portfolio content data`** (1 nodes): `portfolio.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Experience state and guards`** (1 nodes): `experience.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `display-projection.test.ts`** (1 nodes): `display-projection.test.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `drive-terrain.test.ts`** (1 nodes): `drive-terrain.test.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
-- **Thin community `Experience state tests`** (1 nodes): `experience.test.ts`
-  Too small to be a meaningful cluster - may be noise or needs more connections extracted.
+### 11: eslint.config.mjs
 
-## Suggested Questions
-_Questions this graph is uniquely positioned to answer:_
+1 nodes · edge density 0.00
 
-- **Why does `First playable browser milestone` connect `Planned rendering and endless road` to `Product scope and milestones`, `Planned car and asset integration`, `Planned runtime and audio lifecycles`, `Planned rendering and endless road`?**
-  _High betweenness centrality (0.042) - this node is a cross-community bridge._
-- **Why does `Arcade vehicle controller` connect `Planned rendering and endless road` to `Planned rendering and endless road`, `Planned car and asset integration`, `Planned runtime and audio lifecycles`?**
-  _High betweenness centrality (0.032) - this node is a cross-community bridge._
-## Audit notes
+- `eslint.config.mjs` — eslint.config.mjs L1
 
-- Graph structure validated: unique IDs, valid edge endpoints, and both planning group relationships retained.
-- Source paths are repository-relative. JSON includes fingerprints for sources.
-- Directions are retained in `_src`/`_tgt`; clustering uses an undirected projection.
-- Cohesion is edge density, not implementation quality.
-- benchmark.json is the historical 74-node planning-graph estimate; it does not measure this combined graph.
-- The HTML uses vis-network from unpkg and requires internet access for that visualization library.
+### 12: next.config.ts
+
+1 nodes · edge density 0.00
+
+- `next.config.ts` — next.config.ts L1
+
+### 13: pond.test.ts
+
+1 nodes · edge density 0.00
+
+- `pond.test.ts` — tests/pond.test.ts L1
+
+## Limits and audit
+
+- Every node refers to an existing, in-scope code file. Historical planning nodes, missing files and their edges are absent.
+- Node IDs and edge endpoints are validated. Relationship directions and confidence are preserved.
+- The extractor may omit JSX composition, framework routing and dynamic state relationships. A sparse or isolated node does not establish a defect.
+- Name-based call inference can produce false matches. Review the source before treating a connection as runtime evidence.
+- Community labels name source files; clustering and edge density are navigation aids, not quality measurements.
+- CSS, documents, binary assets and generated files are outside this graph's scope.
+- graph.html loads vis-network from unpkg and needs network access for its visualization library.

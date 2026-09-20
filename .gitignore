@@ -13,3 +13,6 @@ renders/
 # Machine-specific Graphify runtime and incremental timestamps
 graphify-out/.graphify_python
 graphify-out/manifest.json
+
+# Reproducible Graphify extraction cache
+graphify-out/cache/

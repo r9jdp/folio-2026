@@ -1,65 +1,9 @@
 {
-  "runs": [
-    {
-      "date": "2026-09-13T13:52:34.664802+00:00",
-      "files": 1,
-      "input_tokens": null,
-      "output_tokens": null,
-      "monetary_cost": null,
-      "usage_status": "Provider-metered usage unavailable",
-      "text_size_estimates": {
-        "source_text_tokens": 9399,
-        "extraction_json_tokens": 16294
-      },
-      "estimate_method": "ceil(characters / 4); excludes prompts, reasoning, tools and retries; not billing totals"
-    },
-    {
-      "date": "2026-09-13T14:21:21.551572+00:00",
-      "files": 21,
-      "mode": "AST-only update",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "monetary_cost": 0,
-      "usage_status": "No LLM calls in this code-only update"
-    },
-    {
-      "date": "2026-09-13T14:23:10.737240+00:00",
-      "files": 21,
-      "mode": "AST-only update",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "monetary_cost": 0,
-      "usage_status": "No LLM calls in this code-only update"
-    },
-    {
-      "date": "2026-09-13T14:39:12.674407+00:00",
-      "files": 25,
-      "mode": "AST-only update",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "monetary_cost": 0,
-      "usage_status": "No LLM calls in this code-only update"
-    },
-    {
-      "date": "2026-09-18T13:32:32.794257+00:00",
-      "files": 25,
-      "mode": "AST-only update",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "monetary_cost": 0,
-      "usage_status": "No LLM calls in this code-only update"
-    },
-    {
-      "date": "2026-09-20T14:23:54.337570+00:00",
-      "files": 33,
-      "mode": "AST-only update",
-      "input_tokens": 0,
-      "output_tokens": 0,
-      "monetary_cost": 0,
-      "usage_status": "No LLM calls in this code-only update"
-    }
-  ],
-  "total_input_tokens": null,
-  "total_output_tokens": null,
-  "total_monetary_cost": null
+  "scope": "Latest current-code graph rebuild only",
+  "generated_at": "2026-09-20T14:35:16.894305+00:00",
+  "mode": "AST extraction; no LLM calls",
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "monetary_cost": 0,
+  "historical_runs": "Excluded from this branch's graph metadata; available in Git history"
 }

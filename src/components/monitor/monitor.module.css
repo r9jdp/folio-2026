@@ -69,13 +69,7 @@
   margin-left: auto;
   font-size: 10px;
 }
-.pondPlaceholder {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 64% 30%, #a6b59c 0, transparent 50%),
-    radial-gradient(ellipse at 30% 84%, #698875 0, transparent 50%), #557463;
-}
+
 .desktopIcons {
   position: absolute;
   top: 49px;

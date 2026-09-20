@@ -1,11 +1,73 @@
 {
-  "nodes": 178,
-  "edges": 230,
-  "communities": 33,
-  "planning_nodes": 74,
-  "code_nodes": 104,
-  "hyperedges": 2,
+  "generated_at": "2026-09-20T14:35:16.894305+00:00",
+  "scope": "Current source code only; AST extraction",
+  "nodes": 45,
+  "edges": 45,
+  "communities": 14,
+  "code_files": 14,
+  "planning_nodes": 0,
+  "hyperedges": 0,
   "structurally_valid": true,
-  "scope": "AST-only refresh plus historical planning snapshot",
-  "date": "2026-09-20T14:23:54.337570+00:00"
+  "edge_confidence": {
+    "EXTRACTED": 45
+  },
+  "source_files": [
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "9c7bffc53afa477ac3af40dd5d0913e11740ab3ca09cba333e0104b00b6942e8"
+    },
+    {
+      "path": "next.config.ts",
+      "sha256": "78f70f5eb5d4fd6ce6c0c5be0b92f60351e909a2eaa7d2a77f6dc7b0eff6e196"
+    },
+    {
+      "path": "scripts/refresh-code-graph.py",
+      "sha256": "4935ee3f75b2ae718c5eea4999d39885c411a7373c2af722a921444bb0655326"
+    },
+    {
+      "path": "src/app/error.tsx",
+      "sha256": "69918432a3fd82fee6b516091358dbcdb29d39ee2943871ca130cca8c0f586aa"
+    },
+    {
+      "path": "src/app/layout.tsx",
+      "sha256": "41b1d157f39c22b49357188946d8aec97bd472c5120f82c50e1cc5e4eb21d7ad"
+    },
+    {
+      "path": "src/app/not-found.tsx",
+      "sha256": "691dc3410f527e45b14ec5f51f0bd10747587b71c0980de0c47c431269af096f"
+    },
+    {
+      "path": "src/app/page.tsx",
+      "sha256": "a5490e9891f799f72b2e52fe9e3ccff18a7d8221ab27f4a2a701f9559258235f"
+    },
+    {
+      "path": "src/components/monitor/monitor-desktop.tsx",
+      "sha256": "9a7e3fb48af106b7134f5090177dc2749cdbcb9ffa1c3236f3ac584f57f178bd"
+    },
+    {
+      "path": "src/components/monitor/monitor-scene.tsx",
+      "sha256": "c8fd32984970b13ebc8f107e2c70d32d69bc5055f91502775973c3830a7293c0"
+    },
+    {
+      "path": "src/components/monitor/monitor.tsx",
+      "sha256": "3c8882005b2646f760b70c7b510e45af32f6ec75b8014469ea2e4c6b074e2251"
+    },
+    {
+      "path": "src/components/pond/koi-pond.tsx",
+      "sha256": "0860c39c26fc50954f08be315a6eaf81f1f99c45acc464d6450d1ba75fedea57"
+    },
+    {
+      "path": "src/components/portfolio-content.tsx",
+      "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
+    },
+    {
+      "path": "src/lib/pond.ts",
+      "sha256": "3616a2aeceb99a609ad607c61d4f09404264f693df32cf145d4c0e1d09bea1fe"
+    },
+    {
+      "path": "tests/pond.test.ts",
+      "sha256": "c2086a0930e649448b3ebe2b4fd6692775f0eda99cfaa0eb4c0720f27e29143a"
+    }
+  ],
+  "validation_scope": "Graph structure and source provenance; not implementation completeness"
 }
