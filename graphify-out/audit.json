@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-20T17:59:35.903116+00:00",
+  "generated_at": "2026-09-20T18:45:15.465682+00:00",
   "scope": "Current source code only; AST extraction",
   "nodes": 90,
   "edges": 95,
@@ -39,7 +39,7 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "sha256": "41b1d157f39c22b49357188946d8aec97bd472c5120f82c50e1cc5e4eb21d7ad"
+      "sha256": "5ac6775240baf0da91db78ade72cc65d857962b40ed8e1822eb4c305e3efeac4"
     },
     {
       "path": "src/app/not-found.tsx",
@@ -79,7 +79,7 @@
     },
     {
       "path": "src/components/portfolio-content.tsx",
-      "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
+      "sha256": "3251f106d48406cb2b490e9c4e0b14ac6202cc0bd68ce1e3db5c583dc5796bf8"
     },
     {
       "path": "src/components/side-navigation.tsx",

@@ -3,7 +3,7 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T17:59:35.903116+00:00",
+    "generated_at": "2026-09-20T18:45:15.465682+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "television.tsx",
@@ -59,7 +59,7 @@
       },
       {
         "path": "src/app/layout.tsx",
-        "sha256": "41b1d157f39c22b49357188946d8aec97bd472c5120f82c50e1cc5e4eb21d7ad"
+        "sha256": "5ac6775240baf0da91db78ade72cc65d857962b40ed8e1822eb4c305e3efeac4"
       },
       {
         "path": "src/app/not-found.tsx",
@@ -99,7 +99,7 @@
       },
       {
         "path": "src/components/portfolio-content.tsx",
-        "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
+        "sha256": "3251f106d48406cb2b490e9c4e0b14ac6202cc0bd68ce1e3db5c583dc5796bf8"
       },
       {
         "path": "src/components/side-navigation.tsx",
@@ -639,7 +639,7 @@
       "label": "PortfolioContent()",
       "file_type": "code",
       "source_file": "src/components/portfolio-content.tsx",
-      "source_location": "L84",
+      "source_location": "L77",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
       "community": 15,
@@ -1591,7 +1591,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/portfolio-content.tsx",
-      "source_location": "L84",
+      "source_location": "L77",
       "weight": 1.0,
       "_src": "c_users_rajdeep_desktop_folio_2026_src_components_portfolio_content_tsx",
       "_tgt": "portfolio_content_portfoliocontent",

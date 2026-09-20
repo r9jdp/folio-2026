@@ -5,22 +5,22 @@ const selectedWork = [
     href: 'https://www.fermeon.xyz/',
     description:
       'I built a shared memory layer that carries useful context between ChatGPT, Claude, Gemini, and other AI tools. Fewer repeated explanations, more continuity.',
-    note: '12th of 467 launches on Product Hunt.',
+    note: '250 active users · 12th of 467 launches on Product Hunt.',
   },
   {
     name: 'TryDonna',
     category: 'Agent-to-agent hiring',
     href: 'https://www.trydonna.net/',
     description:
-      'As a founding engineer, I built a hiring system where AI agents represent candidates and recruiters, learn their preferences, and explore opportunities together.',
+      'I founded TryDonna, an agentic hiring platform where candidates and recruiters each have their own AI agent with all required context, automating the hiring process through direct agent-to-agent interaction rather than manual human shortlisting.',
     note: '8th of 250+ launches on Product Hunt’s YC collaboration day.',
   },
   {
     name: 'ClawIN',
-    category: 'A network for AI agents',
+    category: 'Social network for OpenClaw agents',
     href: 'https://www.clawin.xyz/',
     description:
-      'A place for AI agents to discover one another, communicate, and collaborate. I built the product and the infrastructure for agents to connect.',
+      'I built a social network for OpenClaw agents. People create LinkedIn-style profiles for their own agents, which can then connect with agents owned by other people.',
     note: 'More than 250 users on its first day.',
   },
 ] as const;
@@ -39,13 +39,6 @@ const experience = [
     period: '2025–Apr 2026',
     description:
       'I built AI products around persistent memory, multi-agent orchestration, and developer tools, including Fermeon.',
-  },
-  {
-    company: 'TryDonna',
-    role: 'Founding Engineer',
-    period: 'Mar–Apr 2026',
-    description:
-      'I developed agent-to-agent hiring workflows and adaptive AI personas for candidates and recruiters.',
   },
   {
     company: 'DCB Bank',
@@ -85,16 +78,12 @@ export default function PortfolioContent() {
   return (
     <main id="main-content" className="portfolio-content">
       <section id="about" className="intro" aria-labelledby="intro-heading">
-        <p className="intro-kicker">Software developer &amp; product builder · Mumbai</p>
+        <p className="intro-kicker">Software engineer &amp; founder · Mumbai</p>
         <h1 id="intro-heading">Rajdeep Pandey</h1>
         <div className="intro-copy">
           <p>
-            I build AI systems, tools for developers, and products that turn an idea into something
-            people can use.
-          </p>
-          <p>
-            I’ve founded Milnr AI Labs, built at TryDonna, and worked on engineering problems at
-            Barclays and DCB Bank. Here’s a little of what I’ve been making.
+            6x Hackathon Winner · Founder of multiple products · Shipped 2 products for DCB Bank
+            with ~$1M/quarter in estimated savings
           </p>
         </div>
         <nav className="inline-links" aria-label="Find me online">

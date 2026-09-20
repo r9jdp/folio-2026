@@ -3,11 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Rajdeep Pandey — Developer & product builder',
+    default: 'Rajdeep Pandey — Software engineer & founder',
     template: '%s — Rajdeep Pandey',
   },
   description:
-    'Software developer and product builder in Mumbai. Selected projects, experience, and a little pond on my desktop.',
+    'Software engineer and founder in Mumbai. Selected work, experience, and achievements.',
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

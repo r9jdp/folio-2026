@@ -4,7 +4,7 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T17:59:35.903116+00:00
+Generated: 2026-09-20T18:45:15.465682+00:00
 
 - 90 nodes · 95 directed edges · 25 communities
 - 27 current code files; repository-relative source paths with SHA-256 fingerprints
@@ -200,7 +200,7 @@ Generated: 2026-09-20T17:59:35.903116+00:00
 2 nodes · edge density 1.00
 
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
-- `PortfolioContent()` — src/components/portfolio-content.tsx L84
+- `PortfolioContent()` — src/components/portfolio-content.tsx L77
 
 ### 16: side-navigation.tsx
 
