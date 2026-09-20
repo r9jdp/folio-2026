@@ -3,8 +3,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Rajdeep Pandey — Software engineer & founder',
-    template: '%s — Rajdeep Pandey',
+    default: 'Rajdeep — Software engineer & founder',
+    template: '%s — Rajdeep',
   },
   description:
     'Software engineer and founder in Mumbai. Selected work, experience, and achievements.',

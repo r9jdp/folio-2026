@@ -3,7 +3,7 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T19:24:06.076897+00:00",
+    "generated_at": "2026-09-20T19:26:30.249169+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "television.tsx",
@@ -59,7 +59,7 @@
       },
       {
         "path": "src/app/layout.tsx",
-        "sha256": "5ac6775240baf0da91db78ade72cc65d857962b40ed8e1822eb4c305e3efeac4"
+        "sha256": "0fb6646bcbe577132af59cddda00e8c7b8007dfab26f244a40a259601e9a80ec"
       },
       {
         "path": "src/app/not-found.tsx",
@@ -99,7 +99,7 @@
       },
       {
         "path": "src/components/portfolio-content.tsx",
-        "sha256": "228a0aaec0529ea9f15545badcf3beaf4ee62cddff605724971120f183552473"
+        "sha256": "4c4278dfa8675ef8ece5ad86af2a59aeb755c0d4ce681e05f59f2e0af9a2822b"
       },
       {
         "path": "src/components/side-navigation.tsx",

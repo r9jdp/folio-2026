@@ -80,7 +80,7 @@ export default function PortfolioContent() {
     <main id="main-content" className="portfolio-content">
       <section id="about" className="intro" aria-labelledby="intro-heading">
         <p className="intro-kicker">Software engineer &amp; founder · Mumbai</p>
-        <h1 id="intro-heading">Rajdeep Pandey</h1>
+        <h1 id="intro-heading">Rajdeep</h1>
         <div className="intro-copy">
           <p>
             6x Hackathon Winner · Founder of multiple products · Shipped 2 products for DCB Bank
