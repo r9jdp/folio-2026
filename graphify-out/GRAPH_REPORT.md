@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T14:38:36.522472+00:00
+Generated: 2026-09-20T14:47:46.228907+00:00
 
-- 46 nodes · 46 directed edges · 14 communities
+- 49 nodes · 54 directed edges · 14 communities
 - 14 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 46
+- Edge confidence: EXTRACTED: 54
 
 ## Source navigation
 
@@ -26,7 +26,7 @@ Generated: 2026-09-20T14:38:36.522472+00:00
 - [src/components/monitor/monitor.tsx](../src/components/monitor/monitor.tsx): 8 nodes
 - [src/components/pond/koi-pond.tsx](../src/components/pond/koi-pond.tsx): 10 nodes
 - [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 2 nodes
-- [src/lib/pond.ts](../src/lib/pond.ts): 5 nodes
+- [src/lib/pond.ts](../src/lib/pond.ts): 8 nodes
 - [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
 
 ## Communities
@@ -59,7 +59,20 @@ Generated: 2026-09-20T14:38:36.522472+00:00
 - `.render()` — src/components/monitor/monitor.tsx L44
 - `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
-### 2: refresh-code-graph.py
+### 2: pond.ts
+
+8 nodes · edge density 0.50
+
+- `pond.ts` — src/lib/pond.ts L1
+- `advancePond()` — src/lib/pond.ts L190
+- `angleDifference()` — src/lib/pond.ts L93
+- `clamp()` — src/lib/pond.ts L31
+- `createKoi()` — src/lib/pond.ts L40
+- `disturbPond()` — src/lib/pond.ts L98
+- `smoothstep()` — src/lib/pond.ts L35
+- `stepPond()` — src/lib/pond.ts L111
+
+### 3: refresh-code-graph.py
 
 5 nodes · edge density 0.70
 
@@ -68,16 +81,6 @@ Generated: 2026-09-20T14:38:36.522472+00:00
 - `main()` — scripts/refresh-code-graph.py L70
 - `relative_source()` — scripts/refresh-code-graph.py L48
 - `source_paths()` — scripts/refresh-code-graph.py L26
-
-### 3: pond.ts
-
-5 nodes · edge density 0.60
-
-- `pond.ts` — src/lib/pond.ts L1
-- `advancePond()` — src/lib/pond.ts L77
-- `angleDifference()` — src/lib/pond.ts L62
-- `createKoi()` — src/lib/pond.ts L17
-- `disturbPond()` — src/lib/pond.ts L66
 
 ### 4: monitor-scene.tsx
 

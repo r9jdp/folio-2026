@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-20T14:38:36.522472+00:00",
+  "generated_at": "2026-09-20T14:47:46.228907+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 46,
-  "edges": 46,
+  "nodes": 49,
+  "edges": 54,
   "communities": 14,
   "code_files": 14,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 46
+    "EXTRACTED": 54
   },
   "source_files": [
     {
@@ -54,7 +54,7 @@
     },
     {
       "path": "src/components/pond/koi-pond.tsx",
-      "sha256": "0860c39c26fc50954f08be315a6eaf81f1f99c45acc464d6450d1ba75fedea57"
+      "sha256": "65dd65537bdc76da5b113db8f95ba5415b56cc7f2fcd49c6c4bc8d151c1eb9da"
     },
     {
       "path": "src/components/portfolio-content.tsx",
@@ -62,11 +62,11 @@
     },
     {
       "path": "src/lib/pond.ts",
-      "sha256": "3616a2aeceb99a609ad607c61d4f09404264f693df32cf145d4c0e1d09bea1fe"
+      "sha256": "2fd4ff3baa979eb5f3976aca2ee11123db3689cfb87905fadd4ef49b2aa8c217"
     },
     {
       "path": "tests/pond.test.ts",
-      "sha256": "c2086a0930e649448b3ebe2b4fd6692775f0eda99cfaa0eb4c0720f27e29143a"
+      "sha256": "8bbcb0fe83427dfff31975a11feb5182929e302909b976ae76ef241c6755ff4d"
     }
   ],
   "validation_scope": "Graph structure and source provenance; not implementation completeness"

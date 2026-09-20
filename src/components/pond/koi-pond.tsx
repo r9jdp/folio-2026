@@ -227,8 +227,8 @@ function bodyPath(ctx: Context, bend: number) {
   ctx.closePath();
 }
 
-function drawKoi(ctx: Context, fish: Koi, time: number) {
-  const beat = time * (2.7 + fish.energy * 2) + fish.phase;
+function drawKoi(ctx: Context, fish: Koi) {
+  const beat = fish.tailPhase;
   const bend = Math.sin(beat) * (4.5 + fish.energy * 2);
   const tail = Math.sin(beat - 0.8) * 12;
   ctx.save();
@@ -455,7 +455,7 @@ export default function KoiPond({ paused }: { paused?: boolean }) {
     const paint = () => {
       ctx.setTransform(canvas.width / W, 0, 0, canvas.height / H, 0, 0);
       ctx.drawImage(bed, 0, 0);
-      for (const koi of fish) drawKoi(ctx, koi, time);
+      for (const koi of fish) drawKoi(ctx, koi);
       drawSurface(ctx, time, ripples);
     };
     const isPaused = () => pausedRef.current ?? reducedMotion.matches;
