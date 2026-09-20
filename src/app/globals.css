@@ -1411,115 +1411,314 @@ p {
   }
 }
 
-/* The cockpit launcher is a physical, 2.08:1 dashboard surface, not a viewport overlay. */
+/* Portfolio controls stay inside the Taycan's 2.08:1 central display. */
 .pcm-display {
   width: 1000px;
   height: 480px;
   overflow: hidden;
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
   color: #f4f5f7;
-  background: linear-gradient(115deg, #15191e, #07090c 68%);
-  border: 2px solid #343a40;
+  background: linear-gradient(120deg, #171b20, #080a0d 70%);
+  border: 2px solid #3b4148;
   border-radius: 5px;
   font-family: 'DM Sans Variable', Arial, sans-serif;
-  user-select: none;
+}
+.pcm-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 9px 7px;
+  gap: 3px;
+  border-right: 1px solid #ffffff1b;
+  background: #080b10;
+}
+.pcm-rail button {
+  min-height: 69px;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  color: #8b969f;
+}
+.pcm-rail button[aria-current] {
+  color: #fff;
+  background: #ffffff0a;
+  border-left-color: #e2604f;
+}
+.pcm-rail button:last-child {
+  margin-top: auto;
+}
+.pcm-main {
+  display: grid;
+  grid-template-rows: 61px minmax(0, 1fr) 55px;
+  min-width: 0;
 }
 .pcm-statusbar {
-  height: 70px;
-  margin: 0 28px;
+  margin: 0 27px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #ffffff23;
+  gap: 12px;
+  border-bottom: 1px solid #ffffff25;
   font-size: 18px;
-  letter-spacing: 2px;
-}
-.pcm-statusbar > span {
-  display: flex;
-  align-items: center;
-  gap: 19px;
-}
-.pcm-statusbar b {
-  font-size: 29px;
-  font-weight: 450;
 }
 .pcm-statusbar .pcm-profile {
-  font-size: 15px;
-  color: #aab1ba;
-  letter-spacing: 3px;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #a2aeb7;
+}
+.pcm-park {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #cbd3d4;
+}
+.pcm-park i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a5cab5;
+}
+.pcm-content {
+  padding: 22px 27px 12px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #414951 transparent;
+  outline: none;
 }
 .pcm-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 27px 34px 22px;
+  margin-bottom: 20px;
 }
 .pcm-heading h2 {
-  font-size: 28px;
+  font-size: 31px;
   font-weight: 450;
-  letter-spacing: -0.7px;
+  letter-spacing: -0.8px;
 }
 .pcm-heading > span {
-  font-size: 11px;
-  letter-spacing: 1.4px;
-  color: #8e98a4;
+  color: #a3adb7;
+  font-size: 12px;
+  letter-spacing: 1.6px;
 }
 .pcm-apps {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  padding: 0 26px;
-  gap: 8px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
 }
 .pcm-apps button {
-  height: 191px;
+  height: 151px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 25px;
-  border: 1px solid #ffffff1c;
+  gap: 20px;
+  border: 1px solid #ffffff1e;
+  background: linear-gradient(#ffffff08, #ffffff02);
   border-radius: 3px;
-  background: linear-gradient(#ffffff09, #ffffff02);
-  font-size: 24px;
-  font-weight: 400;
-}
-.pcm-apps button:hover,
-.pcm-apps button:focus-visible {
-  background: #ffffff16;
-  border-color: #ffffff6b;
+  font-size: 23px;
 }
 .pcm-apps button:first-child {
-  border-bottom: 3px solid #d75245;
+  border-bottom-color: #dc6555;
+}
+.pcm-project-shortcuts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.pcm-project-shortcuts button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 55px;
+  padding: 0 15px;
+  border: 0;
+  background: #ffffff08;
+  font-size: 20px;
+  color: #c8d0d8;
 }
 .pcm-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 25px 28px 0;
-  padding-top: 17px;
-  border-top: 1px solid #ffffff23;
+  margin: 0 27px;
+  border-top: 1px solid #ffffff25;
+}
+.pcm-footer > span {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: #a7b0b9;
 }
 .pcm-footer button {
   border: 0;
   background: none;
-  color: #bac1ca;
-  font-size: 18px;
-  padding: 10px 14px;
-}
-.pcm-projects {
+  padding: 0;
   display: flex;
-  gap: 18px;
-}
-.pcm-expand {
-  display: flex;
-  gap: 12px;
   align-items: center;
+  gap: 11px;
+  min-height: 48px;
+  font-size: 18px;
+  color: #ccd3da;
 }
-.pcm-footer button:hover {
-  color: #fff;
+.pcm-kicker {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #adb9c5;
 }
-.pcm-display button:focus-visible {
+.pcm-copy h2,
+.pcm-project-detail h2 {
+  font-size: 41px;
+  line-height: 1.18;
+  font-weight: 450;
+  letter-spacing: -1px;
+  margin: 10px 0 17px;
+}
+.pcm-copy p,
+.pcm-project-detail p {
+  font-size: 25px;
+  line-height: 1.5;
+  color: #c5cdd5;
+  max-width: 790px;
+}
+.pcm-project-intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.pcm-project-intro h2 {
+  margin: 3px 0 13px;
+}
+.pcm-mark {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  color: #1b2428;
+  font-size: 32px;
+}
+.pcm-mark.mini-fermeon {
+  background: #b7e8cd;
+}
+.pcm-mark.mini-trydonna {
+  background: #c8baf4;
+}
+.pcm-mark.mini-clawin {
+  background: #f3be9f;
+}
+.pcm-content-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 25px;
+}
+.pcm-content-actions a,
+.pcm-content-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  padding: 12px 20px;
+  min-height: 56px;
+  font-size: 21px;
+  border: 1px solid #ffffff32;
+  border-radius: 3px;
+  background: #ffffff07;
+  color: #e9edf1;
+}
+.pcm-content-actions > :first-child {
+  background: #e2e6e8;
+  color: #151a1f;
+}
+.pcm-skills {
+  display: flex;
+  gap: 10px;
+  margin-top: 25px;
+}
+.pcm-skills span {
+  padding: 10px 17px;
+  background: #ffffff09;
+  border: 1px solid #ffffff1c;
+  font-size: 18px;
+  color: #c4d1dc;
+}
+.pcm-work-list,
+.pcm-experience {
+  display: grid;
+  gap: 10px;
+}
+.pcm-work-list button,
+.pcm-experience button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 93px;
+  padding: 10px 19px;
+  background: #ffffff04;
+  border: 1px solid #ffffff1c;
+  text-align: left;
+}
+.pcm-work-list button > span:nth-child(2) {
+  flex: 1;
+}
+.pcm-work-list strong,
+.pcm-experience strong {
+  display: block;
+  font-size: 27px;
+  font-weight: 450;
+}
+.pcm-work-list small,
+.pcm-experience small {
+  display: block;
+  margin-top: 5px;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  color: #a9b6c3;
+}
+.pcm-work-list .pcm-mark {
+  width: 53px;
+  height: 53px;
+  font-size: 25px;
+}
+.pcm-experience button > span:first-child {
+  flex: 1;
+}
+.pcm-experience button > span:nth-child(2) {
+  color: #aeb8c0;
+  font-size: 18px;
+}
+.pcm-display button:focus-visible,
+.pcm-display a:focus-visible {
   outline: 3px solid #fff;
-  outline-offset: -5px;
+  outline-offset: -4px;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pcm-display button:hover {
+    color: #fff;
+    background: #ffffff12;
+  }
+  .pcm-content-actions > :first-child:hover {
+    background: #fff;
+    color: #151a1f;
+  }
+}
+.dashboard-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1000px;
+  height: 480px;
+  transform-origin: 0 0;
+  z-index: 3;
+  visibility: hidden;
 }
 .desktop-overlay.reading-view {
   inset: 6% 8%;
@@ -1555,23 +1754,112 @@ p {
 }
 .cockpit-footer {
   z-index: 5;
-  bottom: 28px;
+  bottom: 24px;
   left: 4%;
   right: 4%;
+  align-items: center;
   color: #d0d5da;
   text-shadow: 0 2px 8px #000;
 }
+.cockpit-actions {
+  display: flex;
+  gap: 9px;
+}
 .cockpit-footer button {
   min-height: 44px;
-  padding: 0 17px;
-  border: 1px solid #ffffff20;
+  padding: 0 15px;
+  border: 1px solid #ffffff28;
   border-radius: 4px;
-  background: #080b10ba;
+  background: #080b10d6;
   font-size: 12px;
   color: #e1e5eb;
 }
+.cockpit-footer button[aria-pressed='true'] {
+  border-color: #91a5b570;
+}
 .cockpit-footer > span {
   font-size: 9px;
+}
+.mode-showroom,
+.mode-entering {
+  touch-action: none;
+}
+.entry-caption {
+  text-shadow: 0 2px 16px #000;
+}
+.entry-controls {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  bottom: 35px;
+  left: 5.5vw;
+  padding: 12px;
+  border: 1px solid #ffffff24;
+  border-radius: 8px;
+  background: #0c1014e6;
+  z-index: 4;
+}
+.entry-controls button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  background: none;
+  border: 0;
+  font-size: 12px;
+  color: #e0e6e9;
+  padding: 0 12px;
+}
+.entry-scrubber {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #9cacb7;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+.entry-scrubber input {
+  width: clamp(100px, 15vw, 250px);
+  accent-color: #dce3e7;
+  cursor: ew-resize;
+}
+.entry-scrubber input:focus-visible {
+  outline: 2px solid #dce3e7;
+  outline-offset: 6px;
+}
+.scene-recovery {
+  position: absolute;
+  inset: 0;
+  padding: 8vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 25px;
+  background: #111519;
+}
+.scene-recovery h1 {
+  font-size: clamp(30px, 4vw, 65px);
+  letter-spacing: -0.04em;
+  font-weight: 450;
+}
+.scene-recovery p {
+  max-width: 540px;
+  color: #b0b9bf;
+  line-height: 1.8;
+}
+@media (max-width: 1000px) {
+  .entry-controls {
+    gap: 7px;
+  }
+  .entry-scrubber {
+    gap: 9px;
+  }
+  .entry-skip {
+    bottom: 122px;
+  }
 }
 @media (max-width: 760px) {
   .desktop-overlay.reading-view {
@@ -1590,15 +1878,60 @@ p {
   .cockpit-footer {
     display: none;
   }
+  .entry-controls {
+    left: 20px;
+    right: 20px;
+    bottom: 27px;
+    gap: 8px;
+    padding: 8px;
+  }
+  .entry-scrubber {
+    flex: 1;
+    min-width: 0;
+  }
+  .entry-scrubber input {
+    width: 100%;
+    min-width: 40px;
+  }
+  .entry-scrubber span {
+    display: none;
+  }
+  .entry-controls button {
+    padding: 0 10px;
+  }
+  .mode-desktop {
+    min-height: 100svh;
+  }
 }
 
-.dashboard-surface {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 1000px;
-  height: 480px;
-  transform-origin: 0 0;
-  z-index: 3;
-  visibility: hidden;
+/* Driving entry stays available in the showroom, physical display, and reading view. */
+.hero-actions {
+  flex-wrap: wrap;
+}
+.drive-launch {
+  color: #ddebaf;
+  border: 1px solid #ddebaf66;
+  background: #ddebaf0c;
+}
+.pcm-footer .pcm-start-drive {
+  color: #e2efb5;
+}
+.cockpit-actions .drive-launch {
+  border-color: #ddebaf66;
+  color: #ddebaf;
+}
+.mode-driving {
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  touch-action: none;
+}
+@media (max-width: 760px) {
+  .display-top-actions .drive-launch {
+    font-size: 10px;
+    padding: 0 8px;
+  }
+  .mode-driving {
+    min-height: 0;
+  }
 }

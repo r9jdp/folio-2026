@@ -17,6 +17,10 @@ Credit is also shown on the website's `/credits` page. This independent portfoli
 
 `docs/reference/taycan-concept.mp4` is the approved concept made in this project. It uses the above attributed car, original interface design and synthesized sound. It includes a short local capture of Doom, the 1993 game by id Software, using Cornelius Diekmann's WebAssembly port at https://github.com/diekmann/wasm-fizzbuzz/tree/51a7030bea563d96027301a36619c17347b9270d/doom. The film is a visual reference; no standalone Doom engine or game data is included or served by this app.
 
+## Original driving content
+
+The coastal driving environment, procedural asphalt texture and Web Audio motor/wind/startup effects are original project code. Driving reuses the attributed Taycan model above. No additional third-party scenery, sound recordings, physics engine or game data is bundled for this driving implementation. The synthesized sound is not a recording or reproduction of Porsche's factory Electric Sport Sound.
+
 ## Fonts and software
 
 DM Sans is distributed through `@fontsource-variable/dm-sans` under the SIL Open Font License. It is bundled locally rather than fetched from Google Fonts at runtime. Lucide icons and all software dependencies retain their respective notices and licences in their installed packages. See the package lockfile for exact versions.

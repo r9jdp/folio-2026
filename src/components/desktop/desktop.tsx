@@ -13,6 +13,7 @@ import {
   ArrowLeft,
   LayoutGrid,
   ChevronRight,
+  Power,
 } from 'lucide-react';
 import { useExperience } from '@/state/experience';
 import { applications, type AppId } from '@/content/apps';
@@ -99,7 +100,7 @@ function AppContent({
   );
 }
 
-export default function Desktop() {
+export default function Desktop({ onStartDrive }: { onStartDrive: () => void }) {
   const { activeApp, maximized, openApp, closeApp, toggleMaximized, exit } = useExperience();
   const content = useRef<HTMLDivElement>(null);
   const launcher = useRef<HTMLButtonElement>(null);
@@ -136,6 +137,9 @@ export default function Desktop() {
           PARKED · EXPLORE FREELY
         </span>
         <div className="display-top-actions">
+          <button onClick={onStartDrive} className="desktop-exit drive-launch">
+            <Power size={14} /> Start driving
+          </button>
           {maximized && (
             <button onClick={toggleMaximized} className="desktop-exit">
               <Minimize2 size={14} />

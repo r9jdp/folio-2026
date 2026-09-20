@@ -1,0 +1,691 @@
+.game {
+  --drive-ink: #fbf5df;
+  --drive-lime: #defc83;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+  background: #e1b792;
+  color: var(--drive-ink);
+  touch-action: none;
+  isolation: isolate;
+}
+
+.game:focus {
+  outline: none;
+}
+.scene,
+.interface,
+.vignette {
+  position: absolute;
+  inset: 0;
+}
+.scene canvas {
+  display: block;
+}
+.vignette {
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgb(28 28 23 / 30%) 0%,
+    transparent 24%,
+    transparent 63%,
+    rgb(14 18 14 / 54%) 100%
+  );
+}
+.interface {
+  pointer-events: none;
+}
+.interface button {
+  pointer-events: auto;
+}
+.header {
+  position: absolute;
+  top: max(32px, env(safe-area-inset-top));
+  left: max(38px, env(safe-area-inset-left));
+  right: max(38px, env(safe-area-inset-right));
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: flex-start;
+}
+.label {
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 0.2em;
+  line-height: 1.6;
+}
+.identity h1 {
+  margin-top: 3px;
+  font-size: clamp(28px, 3.2vw, 45px);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+  line-height: 1.08;
+}
+.location {
+  display: block;
+  margin-top: 12px;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+  opacity: 0.8;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.actions button,
+.hint button,
+.secondary {
+  border: 1px solid rgb(255 249 227 / 24%);
+  color: var(--drive-ink);
+  background: rgb(31 36 27 / 50%);
+  backdrop-filter: blur(8px);
+}
+.actions button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.back {
+  gap: 10px;
+  border-radius: 6px;
+  padding: 0 15px;
+  font-size: 12px;
+}
+.tools {
+  display: flex;
+  gap: 6px;
+}
+.tools button {
+  width: 42px;
+  border-radius: 50%;
+}
+.game button:focus-visible {
+  outline: 2px solid var(--drive-lime);
+  outline-offset: 4px;
+}
+.game button:disabled {
+  cursor: not-allowed;
+}
+.telemetry {
+  position: absolute;
+  left: max(38px, env(safe-area-inset-left));
+  right: max(38px, env(safe-area-inset-right));
+  bottom: max(34px, env(safe-area-inset-bottom));
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  font-variant-numeric: tabular-nums;
+}
+.distance > div {
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+  margin-top: 3px;
+}
+.distance strong {
+  font-size: 39px;
+  letter-spacing: -0.04em;
+  font-weight: 450;
+}
+.distance > div > span {
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  opacity: 0.8;
+}
+.distance p {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  opacity: 0.75;
+}
+.distance b {
+  font-weight: 550;
+}
+.speed {
+  position: relative;
+  width: 190px;
+}
+.cruise {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 11px;
+  margin: 0 0 13px auto;
+  color: var(--drive-ink);
+  background: rgb(26 34 27 / 65%);
+  border: 1px solid rgb(255 249 227 / 25%);
+  border-radius: 5px;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+.cruise > i {
+  width: 5px;
+  height: 5px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.cruise[aria-pressed='true'] {
+  color: var(--drive-lime);
+  border-color: rgb(222 252 131 / 55%);
+  background: rgb(45 61 28 / 85%);
+}
+.cruise[aria-pressed='true'] > i {
+  background: currentColor;
+  opacity: 1;
+}
+.driveStatus {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+}
+.driveStatus > i {
+  width: 5px;
+  height: 5px;
+  background: var(--drive-lime);
+  border-radius: 50%;
+}
+.driveStatus > span {
+  margin-left: auto;
+  opacity: 0.6;
+  font-size: 8px;
+}
+.speedReading {
+  display: flex;
+  gap: 9px;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+.speedReading strong {
+  font-size: 79px;
+  line-height: 1.17;
+  letter-spacing: -0.055em;
+  font-weight: 450;
+}
+.speedReading > span {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+}
+.speedTrack {
+  height: 3px;
+  background: rgb(255 249 227 / 20%);
+  overflow: hidden;
+  margin-top: 5px;
+}
+.speedTrack > i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--drive-lime);
+  transform-origin: left;
+  transition: transform 120ms linear;
+}
+.hint {
+  position: absolute;
+  left: 50%;
+  top: 160px;
+  bottom: auto;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: max-content;
+  max-width: calc(100% - 500px);
+  padding: 15px 18px;
+  border: 1px solid rgb(255 249 227 / 15%);
+  border-radius: 8px;
+  background: rgb(20 29 22 / 70%);
+  backdrop-filter: blur(8px);
+}
+.hint .label {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: var(--drive-lime);
+}
+.hint p {
+  margin-top: 8px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: rgb(251 245 223 / 80%);
+}
+.hint kbd {
+  margin-right: 4px;
+}
+.hint kbd:not(:first-child) {
+  margin-left: 9px;
+}
+.hint kbd + kbd {
+  margin-left: 0;
+}
+.hint button {
+  padding: 9px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  border-radius: 4px;
+  font-size: 11px;
+}
+.game kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 23px;
+  min-height: 23px;
+  border: 1px solid rgb(255 249 227 / 28%);
+  border-radius: 4px;
+  padding: 0 5px;
+  color: var(--drive-ink);
+  font-family: inherit;
+  font-size: 10px;
+}
+.touchControls,
+.touchHint {
+  display: none;
+}
+.loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(460px, calc(100% - 40px));
+  padding: 30px;
+  border-radius: 8px;
+  background: rgb(23 32 24 / 88%);
+  text-align: center;
+}
+.loading .label {
+  color: var(--drive-lime);
+}
+.loading h2 {
+  margin-top: 12px;
+  font-size: 29px;
+  font-weight: 450;
+  letter-spacing: -0.04em;
+}
+.loading p {
+  margin-top: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+.backdrop {
+  position: absolute;
+  inset: 0;
+  padding: max(20px, env(safe-area-inset-top)) 20px max(20px, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  background: rgb(16 23 18 / 55%);
+  backdrop-filter: blur(7px);
+  overflow: auto;
+  touch-action: pan-y;
+}
+.modal {
+  width: min(460px, 100%);
+  padding: 34px;
+  border: 1px solid rgb(250 246 224 / 17%);
+  border-radius: 12px;
+  background: #222c25;
+  box-shadow: 0 24px 100px rgb(0 0 0 / 18%);
+  outline: none;
+}
+.modal > .label {
+  color: var(--drive-lime);
+  font-size: 9px;
+}
+.modal h2 {
+  font-size: 35px;
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  line-height: 1.13;
+  margin-top: 12px;
+}
+.modal > p {
+  margin-top: 14px;
+  max-width: 35ch;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgb(251 245 223 / 67%);
+}
+.pausedDistance {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 24px 0;
+}
+.pausedDistance strong {
+  font-size: 37px;
+  font-weight: 450;
+  letter-spacing: -0.05em;
+  font-variant-numeric: tabular-nums;
+}
+.pausedDistance > span {
+  color: rgb(251 245 223 / 50%);
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+.controlsList {
+  margin: 0;
+  border-top: 1px solid rgb(255 249 227 / 10%);
+}
+.controlsList > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(255 249 227 / 10%);
+}
+.controlsList dt {
+  font-size: 11px;
+  color: rgb(251 245 223 / 75%);
+}
+.controlsList dd {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+}
+.controlsList dd > span {
+  font-size: 10px;
+  color: rgb(251 245 223 / 55%);
+  margin-left: 3px;
+}
+.modal .touchHelp {
+  display: none;
+}
+.modalActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 28px;
+}
+.modalActions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 14px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+.primary {
+  background: var(--drive-lime);
+  color: #24321d;
+  border: 1px solid var(--drive-lime);
+}
+.secondary {
+  background: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .actions button:hover,
+  .hint button:hover,
+  .secondary:hover {
+    background: rgb(66 75 49 / 85%);
+  }
+  .primary:hover {
+    background: #ecffa9;
+  }
+}
+
+@media (max-width: 1120px) {
+  .hint {
+    top: 150px;
+    max-width: calc(100% - 60px);
+  }
+  .actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
+  }
+}
+
+@media (pointer: coarse), (max-width: 760px) {
+  .header {
+    top: max(20px, env(safe-area-inset-top));
+    left: max(20px, env(safe-area-inset-left));
+    right: max(20px, env(safe-area-inset-right));
+    gap: 15px;
+  }
+  .identity h1 {
+    font-size: 32px;
+  }
+  .identity > .label {
+    font-size: 8px;
+  }
+  .location {
+    display: none;
+  }
+  .actions {
+    gap: 9px;
+  }
+  .back {
+    min-height: 36px !important;
+    padding: 0 10px;
+    font-size: 10px;
+  }
+  .tools {
+    gap: 5px;
+  }
+  .tools button {
+    width: 36px;
+    min-height: 36px;
+  }
+  .tools button svg {
+    width: 16px;
+    height: 16px;
+  }
+  .telemetry {
+    bottom: max(143px, calc(env(safe-area-inset-bottom) + 125px));
+    left: max(22px, env(safe-area-inset-left));
+    right: max(22px, env(safe-area-inset-right));
+  }
+  .distance > .label {
+    font-size: 8px;
+  }
+  .distance strong {
+    font-size: 29px;
+  }
+  .distance p {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 8px;
+    margin-top: 6px;
+  }
+  .speed {
+    width: 143px;
+  }
+  .speedReading strong {
+    font-size: 56px;
+  }
+  .speedReading > span {
+    font-size: 8px;
+  }
+  .driveStatus {
+    font-size: 8px;
+  }
+  .driveStatus > span {
+    font-size: 7px;
+  }
+  .hint {
+    top: auto;
+    bottom: 320px;
+    max-width: calc(100% - 40px);
+    padding: 11px 13px;
+    gap: 12px;
+  }
+  .hint .label {
+    font-size: 7px;
+  }
+  .hint p {
+    margin-top: 4px;
+    font-size: 10px;
+  }
+  .hint .keyboardHint {
+    display: none;
+  }
+  .hint .touchHint {
+    display: block;
+  }
+  .hint button {
+    padding: 10px;
+    font-size: 10px;
+  }
+  .hint button svg {
+    display: none;
+  }
+  .touchControls {
+    position: absolute;
+    bottom: max(24px, env(safe-area-inset-bottom));
+    left: max(20px, env(safe-area-inset-left));
+    right: max(20px, env(safe-area-inset-right));
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 22px;
+  }
+  .steering,
+  .pedals {
+    display: flex;
+    gap: 9px;
+    align-items: flex-end;
+  }
+  .touchControls button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 61px;
+    height: 64px;
+    border: 1px solid rgb(255 249 227 / 35%);
+    border-radius: 9px;
+    background: rgb(26 34 27 / 62%);
+    backdrop-filter: blur(6px);
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .touchControls button:active:not(:disabled) {
+    background: rgb(222 252 131 / 35%);
+  }
+  .pedals button {
+    flex-direction: column;
+    gap: 7px;
+    width: 59px;
+  }
+  .pedals span {
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+  .pedals .accelerator {
+    height: 86px;
+    color: var(--drive-lime);
+    border-color: rgb(222 252 131 / 60%);
+    background: rgb(54 65 29 / 73%);
+  }
+  .modal .touchHelp {
+    display: block;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header {
+    left: 16px;
+    right: 16px;
+  }
+  .identity h1 {
+    font-size: 28px;
+  }
+  .touchControls {
+    left: 16px;
+    right: 16px;
+    gap: 14px;
+  }
+  .touchControls button {
+    width: 54px;
+  }
+  .pedals button {
+    width: 53px;
+  }
+  .modal {
+    padding: 25px;
+  }
+  .modal h2 {
+    font-size: 31px;
+  }
+  .modalActions {
+    flex-direction: column;
+  }
+  .controlsList dt {
+    font-size: 10px;
+  }
+}
+
+@media (max-height: 540px) and (pointer: coarse), (max-height: 540px) and (max-width: 900px) {
+  .header {
+    top: 14px;
+  }
+  .identity h1 {
+    font-size: 25px;
+  }
+  .actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+  .telemetry {
+    bottom: 25px;
+    left: 37%;
+    right: 37%;
+    gap: 22px;
+  }
+  .distance strong {
+    font-size: 22px;
+  }
+  .distance p {
+    display: none;
+  }
+  .distance .label {
+    font-size: 7px;
+  }
+  .speed {
+    min-width: 106px;
+  }
+  .cruise {
+    min-height: 30px;
+    margin-bottom: 7px;
+  }
+  .speedReading strong {
+    font-size: 39px;
+  }
+  .driveStatus > span {
+    display: none;
+  }
+  .hint {
+    top: 90px;
+    bottom: auto;
+  }
+  .modal {
+    margin-block: auto;
+  }
+  .pausedDistance {
+    padding: 12px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .game button,
+  .speedTrack > i {
+    transition: none;
+  }
+}

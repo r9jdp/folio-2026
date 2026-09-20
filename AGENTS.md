@@ -1,3 +1,8 @@
+## TypeSafe
+
+- Use the installed `typesafe-ai` skill when working on this project. Read `.agents/skills/typesafe-ai/SKILL.md` and apply its guidance where relevant.
+- Before implementing TypeSafe features, read the current documentation linked by the skill. Preserve the project's stack and scope, and keep API credentials server-side.
+
 ## graphify
 
 This project has a graphify knowledge graph at graphify-out/.
