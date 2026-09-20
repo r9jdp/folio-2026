@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-20T14:35:16.894305+00:00",
+  "generated_at": "2026-09-20T14:38:36.522472+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 45,
-  "edges": 45,
+  "nodes": 46,
+  "edges": 46,
   "communities": 14,
   "code_files": 14,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 45
+    "EXTRACTED": 46
   },
   "source_files": [
     {
@@ -18,7 +18,7 @@
     },
     {
       "path": "next.config.ts",
-      "sha256": "78f70f5eb5d4fd6ce6c0c5be0b92f60351e909a2eaa7d2a77f6dc7b0eff6e196"
+      "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
     },
     {
       "path": "scripts/refresh-code-graph.py",
@@ -46,7 +46,7 @@
     },
     {
       "path": "src/components/monitor/monitor-scene.tsx",
-      "sha256": "c8fd32984970b13ebc8f107e2c70d32d69bc5055f91502775973c3830a7293c0"
+      "sha256": "34588fb236576344d8b7cb37d27e1a1bc5c1b5f42adc42ec2bb7d6c45b0bc9bf"
     },
     {
       "path": "src/components/monitor/monitor.tsx",

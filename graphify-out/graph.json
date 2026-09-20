@@ -3,19 +3,19 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T14:35:16.894305+00:00",
+    "generated_at": "2026-09-20T14:38:36.522472+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "koi-pond.tsx",
       "1": "monitor.tsx",
       "2": "refresh-code-graph.py",
       "3": "pond.ts",
-      "4": "error.tsx",
-      "5": "layout.tsx",
-      "6": "not-found.tsx",
-      "7": "page.tsx",
-      "8": "monitor-desktop.tsx",
-      "9": "monitor-scene.tsx",
+      "4": "monitor-scene.tsx",
+      "5": "error.tsx",
+      "6": "layout.tsx",
+      "7": "not-found.tsx",
+      "8": "page.tsx",
+      "9": "monitor-desktop.tsx",
       "10": "portfolio-content.tsx",
       "11": "eslint.config.mjs",
       "12": "next.config.ts",
@@ -28,7 +28,7 @@
       },
       {
         "path": "next.config.ts",
-        "sha256": "78f70f5eb5d4fd6ce6c0c5be0b92f60351e909a2eaa7d2a77f6dc7b0eff6e196"
+        "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
       },
       {
         "path": "scripts/refresh-code-graph.py",
@@ -56,7 +56,7 @@
       },
       {
         "path": "src/components/monitor/monitor-scene.tsx",
-        "sha256": "c8fd32984970b13ebc8f107e2c70d32d69bc5055f91502775973c3830a7293c0"
+        "sha256": "34588fb236576344d8b7cb37d27e1a1bc5c1b5f42adc42ec2bb7d6c45b0bc9bf"
       },
       {
         "path": "src/components/monitor/monitor.tsx",
@@ -172,7 +172,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 4,
+      "community": 5,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_error_tsx",
       "norm_label": "error.tsx"
     },
@@ -183,7 +183,7 @@
       "source_location": "L3",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 4,
+      "community": 5,
       "id": "error_errorpage",
       "norm_label": "errorpage()"
     },
@@ -194,7 +194,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_layout_tsx",
       "norm_label": "layout.tsx"
     },
@@ -205,7 +205,7 @@
       "source_location": "L13",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "layout_rootlayout",
       "norm_label": "rootlayout()"
     },
@@ -216,7 +216,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_not_found_tsx",
       "norm_label": "not-found.tsx"
     },
@@ -227,7 +227,7 @@
       "source_location": "L2",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "not_found_notfound",
       "norm_label": "notfound()"
     },
@@ -238,7 +238,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_page_tsx",
       "norm_label": "page.tsx"
     },
@@ -249,7 +249,7 @@
       "source_location": "L4",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "page_home",
       "norm_label": "home()"
     },
@@ -260,7 +260,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 8,
+      "community": 9,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_desktop_tsx",
       "norm_label": "monitor-desktop.tsx"
     },
@@ -271,7 +271,7 @@
       "source_location": "L7",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 8,
+      "community": 9,
       "id": "monitor_desktop_monitordesktop",
       "norm_label": "monitordesktop()"
     },
@@ -282,7 +282,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 9,
+      "community": 4,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_scene_tsx",
       "norm_label": "monitor-scene.tsx"
     },
@@ -293,9 +293,20 @@
       "source_location": "L175",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 9,
+      "community": 4,
       "id": "monitor_scene_lost",
       "norm_label": "lost()"
+    },
+    {
+      "label": "creationFailed()",
+      "file_type": "code",
+      "source_file": "src/components/monitor/monitor-scene.tsx",
+      "source_location": "L217",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 4,
+      "id": "monitor_scene_creationfailed",
+      "norm_label": "creationfailed()"
     },
     {
       "label": "monitor.tsx",
@@ -739,6 +750,18 @@
       "_tgt": "monitor_scene_lost",
       "source": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_scene_tsx",
       "target": "monitor_scene_lost",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/monitor/monitor-scene.tsx",
+      "source_location": "L217",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_scene_tsx",
+      "_tgt": "monitor_scene_creationfailed",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_scene_tsx",
+      "target": "monitor_scene_creationfailed",
       "confidence_score": 1.0
     },
     {

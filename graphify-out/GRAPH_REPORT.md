@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T14:35:16.894305+00:00
+Generated: 2026-09-20T14:38:36.522472+00:00
 
-- 45 nodes · 45 directed edges · 14 communities
+- 46 nodes · 46 directed edges · 14 communities
 - 14 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 45
+- Edge confidence: EXTRACTED: 46
 
 ## Source navigation
 
@@ -22,7 +22,7 @@ Generated: 2026-09-20T14:35:16.894305+00:00
 - [src/app/not-found.tsx](../src/app/not-found.tsx): 2 nodes
 - [src/app/page.tsx](../src/app/page.tsx): 2 nodes
 - [src/components/monitor/monitor-desktop.tsx](../src/components/monitor/monitor-desktop.tsx): 2 nodes
-- [src/components/monitor/monitor-scene.tsx](../src/components/monitor/monitor-scene.tsx): 2 nodes
+- [src/components/monitor/monitor-scene.tsx](../src/components/monitor/monitor-scene.tsx): 3 nodes
 - [src/components/monitor/monitor.tsx](../src/components/monitor/monitor.tsx): 8 nodes
 - [src/components/pond/koi-pond.tsx](../src/components/pond/koi-pond.tsx): 10 nodes
 - [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 2 nodes
@@ -79,47 +79,48 @@ Generated: 2026-09-20T14:35:16.894305+00:00
 - `createKoi()` — src/lib/pond.ts L17
 - `disturbPond()` — src/lib/pond.ts L66
 
-### 4: error.tsx
+### 4: monitor-scene.tsx
+
+3 nodes · edge density 0.67
+
+- `monitor-scene.tsx` — src/components/monitor/monitor-scene.tsx L1
+- `creationFailed()` — src/components/monitor/monitor-scene.tsx L217
+- `lost()` — src/components/monitor/monitor-scene.tsx L175
+
+### 5: error.tsx
 
 2 nodes · edge density 1.00
 
 - `error.tsx` — src/app/error.tsx L1
 - `ErrorPage()` — src/app/error.tsx L3
 
-### 5: layout.tsx
+### 6: layout.tsx
 
 2 nodes · edge density 1.00
 
 - `layout.tsx` — src/app/layout.tsx L1
 - `RootLayout()` — src/app/layout.tsx L13
 
-### 6: not-found.tsx
+### 7: not-found.tsx
 
 2 nodes · edge density 1.00
 
 - `not-found.tsx` — src/app/not-found.tsx L1
 - `NotFound()` — src/app/not-found.tsx L2
 
-### 7: page.tsx
+### 8: page.tsx
 
 2 nodes · edge density 1.00
 
 - `page.tsx` — src/app/page.tsx L1
 - `Home()` — src/app/page.tsx L4
 
-### 8: monitor-desktop.tsx
+### 9: monitor-desktop.tsx
 
 2 nodes · edge density 1.00
 
 - `monitor-desktop.tsx` — src/components/monitor/monitor-desktop.tsx L1
 - `MonitorDesktop()` — src/components/monitor/monitor-desktop.tsx L7
-
-### 9: monitor-scene.tsx
-
-2 nodes · edge density 1.00
-
-- `monitor-scene.tsx` — src/components/monitor/monitor-scene.tsx L1
-- `lost()` — src/components/monitor/monitor-scene.tsx L175
 
 ### 10: portfolio-content.tsx
 

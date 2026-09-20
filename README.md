@@ -38,3 +38,13 @@ See [development notes](docs/development.md), [asset provenance](docs/assets.md)
 ## Branch history
 
 This direction is developed on `feat/minimal-monitor-pond`. The earlier Porsche experience is preserved on `main` at commit `17f1f6f`. Its vehicle assets and driving interface are not part of this version.
+
+## Interaction
+
+Click or tap the water for a ripple; nearby koi turn away and settle back into swimming. The focused pond also responds to Enter or Space. The control below the monitor pauses or resumes it. Reduced-motion preferences start the pond still, with an explicit option to play.
+
+Desktop shortcuts jump to selected work and open the supplied résumé. All portfolio content is also available as ordinary HTML below the scene. Fish animation suspends offscreen and in hidden tabs; the 3D monitor renders on demand. If WebGL is unavailable, a flat monitor preserves the pond and the rest of the page.
+
+## Validation
+
+Lint, TypeScript, two simulation tests and the production build pass. Browser checks covered desktop and a 390px mobile viewport, screen alignment, navigation, pointer ripples and pause/resume. Reduced-motion and WebGL fallback paths are implemented; device-specific performance and forced context-loss testing are not represented as completed browser checks.

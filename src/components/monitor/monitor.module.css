@@ -16,11 +16,12 @@
   align-items: center;
   justify-content: center;
   gap: 15px;
-  color: #777971;
+  color: #687060;
   font-size: 12px;
   margin-top: -3px;
 }
 .caption button {
+  min-height: 44px;
   padding: 5px 0;
   border: 0;
   border-bottom: 1px solid #dadbd5;
@@ -124,6 +125,7 @@
   background: #203f32bb;
 }
 .fallback {
+  z-index: 2;
   position: absolute;
   inset: 0;
   display: flex;

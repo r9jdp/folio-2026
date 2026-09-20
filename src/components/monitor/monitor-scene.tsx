@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { ContactShadows, Html, RoundedBox } from '@react-three/drei';
-import { OrthographicCamera } from 'three';
+import { OrthographicCamera, PCFShadowMap } from 'three';
 import { MonitorDesktop } from './monitor-desktop';
 
 const cream = '#d6d2c6';
@@ -182,6 +182,20 @@ function Setup({ onReady, onFailure }: { onReady: () => void; onFailure: () => v
   return null;
 }
 
+function supportsWebGL() {
+  // Check before Canvas mounts: renderer setup in R3F is asynchronous, so a
+  // failed WebGL constructor would otherwise bypass the React boundary.
+  try {
+    const probe = document.createElement('canvas');
+    const context = probe.getContext('webgl2');
+    if (!context) return false;
+    context.getExtension('WEBGL_lose_context')?.loseContext();
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 export default function MonitorScene({
   paused,
   onReady,
@@ -191,13 +205,30 @@ export default function MonitorScene({
   onReady: () => void;
   onFailure: () => void;
 }) {
+  const [supported] = useState(supportsWebGL);
+  useEffect(() => {
+    if (!supported) onFailure();
+  }, [supported, onFailure]);
+  const observeCanvas = useCallback(
+    (canvas: HTMLCanvasElement | null) => {
+      if (!canvas) return;
+      // Resource exhaustion can still prevent creation after the capability
+      // probe. Unmount the failed surface so the flat pond keeps its input.
+      const creationFailed = () => onFailure();
+      canvas.addEventListener('webglcontextcreationerror', creationFailed);
+      return () => canvas.removeEventListener('webglcontextcreationerror', creationFailed);
+    },
+    [onFailure],
+  );
+  if (!supported) return null;
   return (
     <Canvas
+      ref={observeCanvas}
       orthographic
       camera={{ position: [4.8, 2.8, 15], zoom: 75, near: 0.1, far: 60 }}
       dpr={[1, 1.75]}
       frameloop="demand"
-      shadows
+      shadows={{ type: PCFShadowMap }}
       gl={{ antialias: true, alpha: true }}
     >
       <Setup onReady={onReady} onFailure={onFailure} />
