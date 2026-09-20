@@ -12,7 +12,7 @@
     "format": "prettier --write src tests *.json *.mjs",
     "format:check": "prettier --check src tests *.json *.mjs",
     "check": "npm run lint && npm run typecheck && npm test",
-    "postinstall": "node scripts/prepare-tv-assets.mjs"
+    "postinstall": "node scripts/prepare-tv-assets.mjs && node scripts/prepare-doom-assets.mjs"
   },
   "engines": {
     "node": ">=22.18.0"
@@ -34,6 +34,9 @@
     "@fontsource-variable/dm-sans": "5.3.0",
     "@react-three/drei": "10.7.8",
     "@react-three/fiber": "9.7.0",
+    "emulators": "8.4.2",
+    "fflate": "0.8.2",
+    "libarchive.js": "2.0.2",
     "lucide-react": "1.45.0",
     "next": "16.3.5",
     "react": "19.2.8",

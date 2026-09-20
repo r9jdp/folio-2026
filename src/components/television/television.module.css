@@ -1,31 +1,20 @@
 .hero {
-  position: relative;
   width: min(960px, 100%);
-  height: 550px;
   margin: 16px auto 0;
   background: #fff;
 }
-
-.television {
-  display: block;
+.stage {
   position: relative;
   width: 100%;
-  height: 100% !important;
-  min-height: 0 !important;
-  overflow: hidden;
-  isolation: isolate;
+  height: 550px;
+  outline: none;
+}
+.canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
   touch-action: pan-y;
 }
-
-/* The upstream component darkens its backdrop, even when given white. */
-.television :global(crazygl-stage) {
-  background: #fff !important;
-}
-
-.television :global(crazygl-content) {
-  display: none;
-}
-
 .loading {
   position: absolute;
   inset: 0;
@@ -35,10 +24,156 @@
   color: #73776e;
   font-size: 12px;
 }
-
+.knob {
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.knob:disabled {
+  visibility: hidden;
+}
+.knob:focus-visible {
+  outline: 2px solid #fff1b9;
+  outline-offset: -3px;
+}
+.knobHint {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  white-space: nowrap;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #e7e5dc;
+  border-radius: 5px;
+  padding: 4px 8px;
+  font-size: 10px;
+  color: #464639;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease;
+}
+.knob:hover .knobHint,
+.knob:focus-visible .knobHint {
+  opacity: 1;
+}
+.play {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  color: #fff8e8;
+  background: #111a16db;
+  border: 1px solid #ffffff55;
+  border-radius: 6px;
+  padding: 12px 19px;
+  font-size: 13px;
+  cursor: pointer;
+  box-shadow: 0 4px 20px #0006;
+}
+.play span {
+  display: block;
+  font-size: 9px;
+  opacity: 0.7;
+  margin-top: 3px;
+  letter-spacing: 0.05em;
+}
+.play[hidden] {
+  display: none;
+}
+.caption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 42px;
+  padding: 0 24px;
+  color: #73776e;
+  font-size: 12px;
+  text-align: center;
+}
+.caption p {
+  max-width: 590px;
+}
+.expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 0;
+  border-bottom: 1px solid #d5d7ce;
+  padding: 5px 0;
+  background: none;
+  color: #535c4e;
+  font-size: 11px;
+  cursor: pointer;
+  min-height: 36px;
+}
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 9px 17px;
+  max-width: 640px;
+  margin: 9px auto 0;
+  padding: 0 24px;
+  color: #697162;
+  font-size: 10px;
+}
+.controls span {
+  white-space: nowrap;
+}
+.controls kbd {
+  font: inherit;
+  color: #343e31;
+  background: #f3f4ef;
+  border: 1px solid #e6e8e0;
+  border-radius: 3px;
+  padding: 2px 4px;
+  margin-right: 3px;
+}
+.controls p {
+  flex-basis: 100%;
+  text-align: center;
+  font-size: 9px;
+  color: #858a80;
+  margin-top: 3px;
+}
+.hero:fullscreen {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero:fullscreen .stage {
+  height: min(78vh, 850px);
+}
 @media (max-width: 640px) {
   .hero {
-    height: 360px;
     margin-top: 24px;
+  }
+  .stage {
+    height: clamp(300px, 92vw, 360px);
+  }
+  .caption {
+    font-size: 11px;
+  }
+  .controls {
+    gap: 8px 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .knobHint {
+    transition: none;
   }
 }

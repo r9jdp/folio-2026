@@ -16,3 +16,7 @@ graphify-out/manifest.json
 
 # Reproducible Graphify extraction cache
 graphify-out/cache/
+
+public/vendor/doom/
+
+public/models/belweder.glb

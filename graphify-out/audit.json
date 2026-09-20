@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-09-20T16:15:20.480373+00:00",
+  "generated_at": "2026-09-20T16:39:55.231131+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 55,
-  "edges": 53,
-  "communities": 18,
-  "code_files": 19,
+  "nodes": 77,
+  "edges": 88,
+  "communities": 22,
+  "code_files": 23,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 49,
-    "INFERRED": 4
+    "EXTRACTED": 82,
+    "INFERRED": 6
   },
   "source_files": [
     {
@@ -20,6 +20,10 @@
     {
       "path": "next.config.ts",
       "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
+    },
+    {
+      "path": "scripts/prepare-doom-assets.mjs",
+      "sha256": "7b108a15ec9488017c7d507f95744037b511c3e677ca9bb4b73f70d0c6821b4f"
     },
     {
       "path": "scripts/prepare-tv-assets.mjs",
@@ -78,8 +82,20 @@
       "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
     },
     {
+      "path": "src/components/television/doom-runtime.ts",
+      "sha256": "789577aad6294ebb9c7ec5d685da7d99d1b3c89a21bed49c30c9eacc62e1affb"
+    },
+    {
+      "path": "src/components/television/television-scene.ts",
+      "sha256": "0c7e2cb4d1076db5a1d8c1494f296b41c9ca08975af1b203b260cfcc26cce089"
+    },
+    {
       "path": "src/components/television/television.tsx",
-      "sha256": "fcacf37634b1ecc257d347b658f995ffc016ba5e8f0a87f13e2f3e937ae66cf5"
+      "sha256": "55bc3c60baba9d6d3f6230d81608f201faad21155ade571624344a36d87f9604"
+    },
+    {
+      "path": "src/lib/game-controls.ts",
+      "sha256": "debc88cbad0913a6acc46a3a2f0564ac3d0956c99c8d7ca374d48632cc6f1110"
     },
     {
       "path": "src/lib/pond.ts",
