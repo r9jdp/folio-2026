@@ -2,11 +2,21 @@
 
 ## Page structure
 
-Keep the page on a white background with a restrained type scale, generous spacing and normal document scrolling. A compact header links to the written sections. The hero contains the computer and pond; work, experience and personal details remain readable below it.
+Keep the page on a white background with a restrained type scale, generous spacing and normal document scrolling. A compact header links to the written sections. The current hero contains a vintage television with a blank screen; work, experience and personal details remain readable below it.
 
 Portfolio content belongs in the server-rendered page or a shared content module. Rendering and pointer interaction belong in isolated client components. The scene must not become the only route to a project, résumé or contact link.
 
-## Interactive scene
+## Current television preview
+
+`src/components/television/television.tsx` loads `@crazygl/hero-vhs-product-screen@0.1.1` through a client-only dynamic import. It selects the Belweder OT-1782 model, keeps a blank blue-grey screen, suppresses built-in marketing content and uses subtle pointer parallax. Scoped CSS overrides the package's radial stage gradient with white. The previous monitor, desktop and pond are not mounted. This is a visual decision preview; screen-content or pond integration is outside its current scope.
+
+The package is pinned because `0.1.1` ships model files at its root while compiled asset URLs resolve against `dist/`. The `postinstall` script `scripts/prepare-tv-assets.mjs` checks that exact version and copies the CC0 Belweder model into `dist/models` and aliases the unused variant URLs to it, avoiding emission of the other models. Keep that repair reproducible with `npm ci`; reassess it before changing package versions. See [asset provenance](assets.md) for the Apache-2.0 code and CC0 Belweder model.
+
+The TV preview passes lint, TypeScript, formatting and the production build. Browser checks covered model loading, blank screen, white backdrop, desktop and 390px sizing, with no observed console errors. Existing simulation tests still pass, but do not test the TV. Verify reduced-motion emulation, GPU failure handling and device performance separately.
+
+## Previous monitor and pond scene
+
+The following technical notes describe the retained, unused implementation preserved at commit `32087a2`.
 
 The computer uses procedural Three.js geometry and a Drei HTML display. It renders on demand. Drei mounts its display in a separate React root, so the screen's DOM ref invalidates the scene after mounting; removing that invalidation can leave the screen untransformed on first load.
 
@@ -16,7 +26,7 @@ Fish bodies are procedural meshes with deforming spines and articulated fins. Th
 
 The pond uses `requestAnimationFrame` without publishing fish positions through React state. Cap rendering resolution, bound active ripple data, and dispose geometries, materials, textures, render targets and the renderer on unmount. Cancel frame callbacks and remove observers and listeners. The outer monitor and inner pond have separate WebGL lifecycles.
 
-## Interaction and fallbacks
+## Previous pond interaction and fallbacks
 
 Pointer taps create ripples; taps near fish produce stronger reactions. Pointer dragging creates spaced disturbances. Enter and Space activate the focused pond. Keep normal vertical page scrolling available on touch devices and preserve ordinary links for portfolio navigation.
 
@@ -25,6 +35,8 @@ Reduced motion starts paused. The visitor can explicitly resume or pause the pon
 If pond WebGL initialization fails or its context is lost, release its renderer and display a still Canvas 2D illustration with tap/keyboard ripple feedback. This fallback does not animate the fish. If the outer computer scene fails, render a flat monitor frame; its pond independently selects its supported rendering path. Text navigation remains outside both scenes.
 
 ## Validation
+
+Run current code checks and the production build for the active TV preview. The pond checklist and recorded results below apply to the previous iteration; retain them if that scene is revisited.
 
 Run `npm run check` and `npm run build`. The simulation currently has five regression tests. They cover motion behavior; they do not establish visual quality, GPU compatibility or device performance.
 
@@ -43,7 +55,13 @@ After code changes, follow `AGENTS.md` and run `graphify update .` from the repo
 
 ## Files
 
+- `src/components/television/television.tsx`: active blank-screen TV preview and client-only package import.
+- `src/components/television/television.module.css`: white stage and responsive TV layout.
+- `scripts/prepare-tv-assets.mjs`: version-guarded package asset-path repair.
 - `src/components/portfolio-content.tsx`: résumé-based text and outbound links.
+
+The following scene files are retained from the previous iteration and are not mounted by the current homepage:
+
 - `src/components/monitor/monitor.tsx`: motion preference, pause control, lazy scene and flat fallback.
 - `src/components/monitor/monitor-scene.tsx`: original procedural hardware, fixed camera and on-demand WebGL rendering.
 - `src/components/monitor/monitor-desktop.tsx`: pond screen and accessible desktop shortcuts.
@@ -59,4 +77,4 @@ After code changes, follow `AGENTS.md` and run `graphify update .` from the repo
 npm run dev -- --port 3013
 ```
 
-The port is explicit so this preview can run separately from another local project. No API key or backend service is required for the portfolio and pond.
+The port is explicit so this preview can run separately from another local project. No API key or backend service is required for the portfolio or TV preview.

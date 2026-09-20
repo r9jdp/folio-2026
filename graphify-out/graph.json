@@ -3,7 +3,7 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T16:12:35.629687+00:00",
+    "generated_at": "2026-09-20T16:15:20.480373+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "monitor.tsx",
@@ -36,7 +36,7 @@
       },
       {
         "path": "scripts/prepare-tv-assets.mjs",
-        "sha256": "732162b8deccc65052892838f346c196cbc18e60f5da84777ce1bde10dbab5b6"
+        "sha256": "cd4c1e3d317b5d857335ab64502a8d428909762e2f6f70e5e076db700ce6a5ec"
       },
       {
         "path": "scripts/refresh-code-graph.py",
