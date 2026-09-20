@@ -6,9 +6,9 @@ DM Sans is distributed through `@fontsource-variable/dm-sans` under the SIL Open
 
 ## Television preview
 
-The active hero uses [`@crazygl/hero-vhs-product-screen@0.1.1`](https://github.com/CrazyGL-com/hero-vhs-product-screen) by ybouane and `@crazygl/core`, licensed Apache-2.0. Their licences remain in the installed packages. The project's version-guarded installation script copies the CC0 Belweder into the location expected by the published renderer and changes unused model URL declarations to aliases of Belweder. Those installation-time changes are marked in the compiled module; no model geometry or textures are modified.
+The active hero's TV model and camera/placement calibration come from [`@crazygl/hero-vhs-product-screen@0.1.1`](https://github.com/CrazyGL-com/hero-vhs-product-screen) by ybouane, licensed Apache-2.0. The project-owned renderer adapts that calibration to support live Doom and clickable cabinet controls. The original package license is retained under `public/vendor/doom/CrazyGL-Apache-2.0.txt` by the installation script. Model geometry/textures are unmodified; screen UVs and material are replaced at runtime.
 
-The selected model is **Black and white “Belweder” — OT 1782 TV set** by [Virtual Museums of Małopolska](https://sketchfab.com/WirtualneMuzeaMalopolski). Its embedded GLB metadata identifies [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/) and this [original model page](https://sketchfab.com/3d-models/black-and-white-belweder-ot-1782-tv-set-5c2be264f3ce4e11ac9387505e0bcea0). Screen media is empty, so the package's sample video is not used.
+The selected model is **Black and white “Belweder” — OT 1782 TV set** by [Virtual Museums of Małopolska](https://sketchfab.com/WirtualneMuzeaMalopolski). Its embedded GLB metadata identifies [CC0-1.0](https://creativecommons.org/publicdomain/zero/1.0/) and this [original model page](https://sketchfab.com/3d-models/black-and-white-belweder-ot-1782-tv-set-5c2be264f3ce4e11ac9387505e0bcea0). The screen shows project-generated static and live Doom; the package's sample video is not used.
 
 The upstream package also contains these optional models, with licences recorded in each GLB's embedded metadata. They are not selected by the current preview:
 
@@ -17,6 +17,12 @@ The upstream package also contains these optional models, with licences recorded
 - **[CRT TV](https://sketchfab.com/3d-models/crt-tv-9ba4baa106e64319a0b540cf0af5aa9e)** by [Timothy Ahene](https://sketchfab.com/timothyahene), labelled [Sketchfab Standard](https://sketchfab.com/licenses), rather than a Creative Commons licence.
 
 The source GLB files are unmodified; the upstream component applies runtime placement and screen-material calibration. The package's Apache-2.0 code licence does not replace the model-specific licences above.
+
+## Doom and its runtime
+
+The original Doom 1.9 shareware distribution is copyright id Software. Its archive is redistributed unchanged with the original installer, documentation and notices; only its shareware episode is used. No commercial Doom levels are bundled. Configuration is generated separately in browser memory. Doom branding does not imply endorsement by id Software.
+
+The unmodified `emulators@8.4.2` DOSBox build is GPL-2.0. Its license and exact corresponding source/build repository are linked in [public game credits](public/games/credits.txt). `fflate@0.8.2` and `libarchive.js@2.0.2` retain their MIT notices; libarchive and compression libraries retain their respective upstream terms. The archive worker also includes Comlink (Apache-2.0). Installation copies the package license texts alongside the runtime. Preserve these notices, runtime licenses and source links when distributing the site.
 
 ## Original visual content from the previous iteration
 

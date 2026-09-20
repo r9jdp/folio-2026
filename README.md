@@ -1,8 +1,6 @@
 # Rajdeep Pandey — portfolio
 
-A quiet, white portfolio with a vintage television at the top and straightforward writing about Rajdeep's work below it. The current hero is a quick visual preview of the Belweder OT-1782 TV from [CrazyGL](https://crazygl.com/hero/vhs-product-screen), with a blank blue-grey screen.
-
-The TV preview helps choose the physical object before developing its screen. It mounts neither the previous desktop nor the pond. Visitors can reach work, experience and the résumé through ordinary page navigation.
+A quiet, white portfolio with a playable vintage television above straightforward writing about Rajdeep's work. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode on its curved glass.
 
 ## Development
 
@@ -11,22 +9,36 @@ Use Node.js 22.18 or later and the committed npm lockfile.
 ```sh
 npm ci
 npm run dev -- --port 3013
-```
-
-Open [localhost:3013](http://localhost:3013).
-
-```sh
 npm run check
 npm run build
 ```
 
-`check` runs lint, TypeScript checking and the repository's tests. Run the production build separately before publishing.
+Open [127.0.0.1:3013](http://127.0.0.1:3013). Installation copies the selected CC0 model and pinned game workers/WASM files into `public/`; those generated copies are ignored by Git. The original 2.45 MB shareware distribution is committed unchanged. No game account, runtime CDN or API key is required.
 
-## Current TV preview
+## Playing the TV
 
-`src/components/television/television.tsx` loads the official `@crazygl/hero-vhs-product-screen` package, pinned to `0.1.1`, on the client. The TV sits against white with subtle pointer parallax. Screen media, marketing copy, turn-on animation and glitches are disabled; there is no pond integration in this preview.
+The left knob powers on/off; the right knob toggles sound. After a short static sequence, click the screen to start. The game stays paused until that click. Power-off discards the current session; this version does not save progress.
 
-The package code is Apache-2.0 and the selected Belweder model is CC0-1.0. A version-guarded `postinstall` script, `scripts/prepare-tv-assets.mjs`, copies the selected CC0 Belweder into `dist/models` to repair its published relative asset path. It aliases unused model URLs to Belweder so only that model is emitted. This preview intentionally supports Belweder only.
+| Input | Action |
+| --- | --- |
+| WASD | Forward, strafe left, backward, strafe right |
+| Mouse | Turn horizontally (classic Doom auto-aim) |
+| Left click / Ctrl | Fire |
+| E / Space | Open doors, use switches; restart after death |
+| Shift | Run |
+| 1–7 | Select available weapons |
+| Tab | Automap |
+| Esc | Pause and release mouse |
+
+Desktop browsers use pointer lock. If an embedded browser refuses capture, the game still runs with WASD and mouse turning while the pointer is over the TV. Clicking outside the game, losing window focus or hiding the tab pauses it. Fullscreen enlarges the cabinet where supported. A keyboard and mouse are required; there is no touch gamepad in this version. Written portfolio content remains accessible without playing.
+
+## TV implementation
+
+`television-scene.ts` loads the same CC0 Belweder OT-1782 cabinet from [CrazyGL](https://crazygl.com/hero/vhs-product-screen), retaining the approved framing. A canvas texture maps static and the live 320×200 Doom framebuffer onto the curved screen at a 4:3 display aspect. Accessible HTML buttons track the two physical knobs. Parallax freezes during play and respects reduced motion; offscreen rendering sleeps.
+
+`doom-runtime.ts` starts the pinned `emulators@8.4.2` DOSBox worker only after power-on. It verifies the original shareware archive's SHA-256, unpacks the complete distribution into browser memory and boots episode 1 with a WASD configuration. Web Audio starts from the user's interaction; mute, pause and shutdown stop queued audio. Power-off cancels startup and disposes the game worker. Slow or failed startup offers a retry.
+
+The untouched blank-TV concept is preserved at `2ffe887`; the first playable milestone is `d610720`. See [development notes](docs/development.md), [assets](docs/assets.md), [game credits](public/games/credits.txt) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Previous monitor and pond implementation
 
@@ -46,11 +58,11 @@ See [development notes](docs/development.md), [asset provenance](docs/assets.md)
 
 ## Branch history
 
-This direction is developed on `feat/minimal-monitor-pond`. The earlier Porsche experience is preserved on `main` at commit `17f1f6f`. Its vehicle assets and driving interface are not part of this version. The completed monitor-and-pond iteration is preserved at `32087a2`; the active hero now previews the vintage TV.
+This direction is developed on `feat/minimal-monitor-pond`. The earlier Porsche experience is preserved on `main` at commit `17f1f6f`. Its vehicle assets and driving interface are not part of this version. The completed monitor-and-pond iteration is preserved at `32087a2`; the active hero now plays Doom on the vintage TV.
 
 ## Previous pond interaction
 
-These controls describe the retained pond iteration, not the active blank-screen TV preview.
+These controls describe the retained pond iteration, not the active Doom TV.
 
 Click or tap the water for a ripple, drag to create a trail of disturbances, or tap near a koi for a stronger reaction. Fish turn and accelerate smoothly before settling back into swimming. The focused pond also responds to Enter or Space. The control below the monitor pauses or resumes it. Reduced-motion preferences start the pond still, with an explicit option to play.
 
@@ -58,8 +70,4 @@ Desktop shortcuts jump to selected work and open the supplied résumé. All port
 
 ## Validation
 
-The TV preview passes lint, TypeScript, formatting and the production build. Browser review covered asset loading, a blank screen on white, desktop and 390px layouts, with no observed console errors. Existing five pond simulation tests still pass; they do not test the TV. Device performance, reduced-motion emulation and GPU failure handling need separate verification.
-
-For the preserved pond iteration, lint, TypeScript, formatting, five simulation regression tests and the production build passed. The revised pond has been checked in the browser at desktop and 390px mobile sizes, including pointer interaction, keyboard ripples and pause/resume, with no observed browser errors. Follow the [manual verification workflow](docs/development.md#validation) when changing the renderer.
-
-The procedural artwork and bounded rendering resolution do not imply a frame-rate guarantee. Measure performance on target devices and verify reduced-motion, unavailable-WebGL and context-loss paths explicitly.
+Run lint, TypeScript, all eight tests, formatting and the production build. Three game-input tests cover simultaneous held controls, key aliases, short fire clicks and release on pause; five retained tests cover pond simulation. Browser checks cover real Doom startup, movement, turning, fire, Esc pause/resume, power-off during loading, restarting and responsive cabinet controls. In-app testing exercises the uncaptured mouse fallback; native pointer lock, fullscreen, subjective audio quality and representative low-end hardware need testing in a normal desktop browser.

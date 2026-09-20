@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T16:39:55.231131+00:00
+Generated: 2026-09-20T16:46:10.799109+00:00
 
-- 77 nodes · 88 directed edges · 22 communities
-- 23 current code files; repository-relative source paths with SHA-256 fingerprints
+- 79 nodes · 89 directed edges · 23 communities
+- 24 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 82, INFERRED: 6
+- Edge confidence: EXTRACTED: 83, INFERRED: 6
 
 ## Source navigation
 
@@ -34,8 +34,9 @@ Generated: 2026-09-20T16:39:55.231131+00:00
 - [src/components/television/doom-runtime.ts](../src/components/television/doom-runtime.ts): 4 nodes
 - [src/components/television/television-scene.ts](../src/components/television/television-scene.ts): 2 nodes
 - [src/components/television/television.tsx](../src/components/television/television.tsx): 15 nodes
-- [src/lib/game-controls.ts](../src/lib/game-controls.ts): 2 nodes
+- [src/lib/game-controls.ts](../src/lib/game-controls.ts): 3 nodes
 - [src/lib/pond.ts](../src/lib/pond.ts): 8 nodes
+- [tests/game-controls.test.ts](../tests/game-controls.test.ts): 1 nodes
 - [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
 
 ## Communities
@@ -45,19 +46,19 @@ Generated: 2026-09-20T16:39:55.231131+00:00
 14 nodes · edge density 0.29
 
 - `television.tsx` — src/components/television/television.tsx L1
-- `boot()` — src/components/television/television.tsx L72
-- `fail()` — src/components/television/television.tsx L217
-- `keyDown()` — src/components/television/television.tsx L150
-- `keyUp()` — src/components/television/television.tsx L164
-- `locked()` — src/components/television/television.tsx L143
-- `mouseDown()` — src/components/television/television.tsx L178
-- `mouseUp()` — src/components/television/television.tsx L193
-- `pause()` — src/components/television/television.tsx L52
-- `play()` — src/components/television/television.tsx L123
-- `releaseKeys()` — src/components/television/television.tsx L47
-- `shutDown()` — src/components/television/television.tsx L59
-- `transition()` — src/components/television/television.tsx L40
-- `visibility()` — src/components/television/television.tsx L194
+- `boot()` — src/components/television/television.tsx L73
+- `fail()` — src/components/television/television.tsx L215
+- `keyDown()` — src/components/television/television.tsx L158
+- `keyUp()` — src/components/television/television.tsx L166
+- `locked()` — src/components/television/television.tsx L151
+- `mouseDown()` — src/components/television/television.tsx L176
+- `mouseUp()` — src/components/television/television.tsx L191
+- `pause()` — src/components/television/television.tsx L53
+- `play()` — src/components/television/television.tsx L131
+- `releaseKeys()` — src/components/television/television.tsx L50
+- `shutDown()` — src/components/television/television.tsx L60
+- `transition()` — src/components/television/television.tsx L43
+- `visibility()` — src/components/television/television.tsx L192
 
 ### 1: pond.ts / koi-model.ts
 
@@ -125,21 +126,22 @@ Generated: 2026-09-20T16:39:55.231131+00:00
 - `loadEmulator()` — src/components/television/doom-runtime.ts L13
 - `startDoom()` — src/components/television/doom-runtime.ts L144
 
-### 7: monitor-scene.tsx
+### 7: game-controls.ts / television.tsx
+
+4 nodes · edge density 0.50
+
+- `game-controls.ts` — src/lib/game-controls.ts L1
+- `createGameInput()` — src/lib/game-controls.ts L42
+- `mouseTurn()` — src/lib/game-controls.ts L28
+- `mouseMove()` — src/components/television/television.tsx L169
+
+### 8: monitor-scene.tsx
 
 3 nodes · edge density 0.67
 
 - `monitor-scene.tsx` — src/components/monitor/monitor-scene.tsx L1
 - `creationFailed()` — src/components/monitor/monitor-scene.tsx L217
 - `lost()` — src/components/monitor/monitor-scene.tsx L175
-
-### 8: game-controls.ts / television.tsx
-
-3 nodes · edge density 0.67
-
-- `game-controls.ts` — src/lib/game-controls.ts L1
-- `mouseTurn()` — src/lib/game-controls.ts L28
-- `mouseMove()` — src/components/television/television.tsx L171
 
 ### 9: error.tsx
 
@@ -221,7 +223,13 @@ Generated: 2026-09-20T16:39:55.231131+00:00
 
 - `prepare-tv-assets.mjs` — scripts/prepare-tv-assets.mjs L1
 
-### 21: pond.test.ts
+### 21: game-controls.test.ts
+
+1 nodes · edge density 0.00
+
+- `game-controls.test.ts` — tests/game-controls.test.ts L1
+
+### 22: pond.test.ts
 
 1 nodes · edge density 0.00
 

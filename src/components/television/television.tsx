@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Power, Volume2, VolumeX, Maximize2 } from 'lucide-react';
 import type { TVScene } from './television-scene';
 import type { DoomRuntime } from './doom-runtime';
-import { GAME_KEYS, mouseTurn } from '@/lib/game-controls';
+import { createGameInput, mouseTurn } from '@/lib/game-controls';
 import styles from './television.module.css';
 
 type Status = 'off' | 'booting' | 'ready' | 'playing' | 'error';
@@ -36,7 +36,10 @@ export default function Television() {
     let state: Status = 'off';
     let isMuted = false;
     let disposed = false;
-    const down = new Set<string>();
+    const input = createGameInput({
+      key: (key, pressed) => runtime?.ci.sendKeyEvent(key, pressed),
+      fire: (pressed) => runtime?.ci.sendMouseButton(0, pressed),
+    });
     const transition = (next: Status, message: string) => {
       state = next;
       if (!disposed) {
@@ -45,9 +48,7 @@ export default function Television() {
       }
     };
     const releaseKeys = () => {
-      for (const code of down) runtime?.ci.sendKeyEvent(GAME_KEYS[code], false);
-      down.clear();
-      runtime?.ci.sendMouseButton(0, false);
+      input.reset();
     };
     const pause = () => {
       releaseKeys();
@@ -80,6 +81,11 @@ export default function Television() {
       transition('booting', 'Tuning in… loading Doom.');
       scene.setMode('static');
       const started = performance.now();
+      const watchdog = window.setTimeout(() => {
+        if (controller !== attempt || disposed) return;
+        shutDown();
+        transition('error', 'Doom took too long to load. Turn the power knob to retry.');
+      }, 60000);
       try {
         try {
           audio = new AudioContext({ latencyHint: 'interactive' });
@@ -118,6 +124,8 @@ export default function Television() {
             ? `${error.message} Turn the power knob to retry.`
             : 'Could not start Doom. Turn the power knob to retry.',
         );
+      } finally {
+        clearTimeout(watchdog);
       }
     };
     const play = () => {
@@ -153,20 +161,10 @@ export default function Television() {
         pause();
         return;
       }
-      const key = GAME_KEYS[event.code];
-      if (key === undefined) return;
-      event.preventDefault();
-      if (!down.has(event.code)) {
-        down.add(event.code);
-        runtime?.ci.sendKeyEvent(key, true);
-      }
+      if (input.press(event.code)) event.preventDefault();
     };
     const keyUp = (event: KeyboardEvent) => {
-      if (!down.has(event.code)) return;
-      event.preventDefault();
-      down.delete(event.code);
-      const key = GAME_KEYS[event.code];
-      if (![...down].some((code) => GAME_KEYS[code] === key)) runtime?.ci.sendKeyEvent(key, false);
+      if (input.release(event.code)) event.preventDefault();
     };
     const mouseMove = (event: MouseEvent) => {
       if (
@@ -187,10 +185,10 @@ export default function Television() {
       }
       if (event.button === 0) {
         event.preventDefault();
-        runtime?.ci.sendMouseButton(0, true);
+        input.fire(true);
       }
     };
-    const mouseUp = () => runtime?.ci.sendMouseButton(0, false);
+    const mouseUp = () => input.fire(false);
     const visibility = () => {
       if (document.hidden) pause();
     };
@@ -342,7 +340,12 @@ export default function Television() {
           <span>
             <kbd>Esc</kbd> Pause / release
           </span>
-          <p>DOOM · Shareware episode · Keyboard and mouse required.</p>
+          <p>
+            DOOM · Shareware episode · Keyboard and mouse required.{' '}
+            <a href="/games/credits.txt" target="_blank" rel="noreferrer">
+              Credits
+            </a>
+          </p>
         </div>
       )}
     </section>

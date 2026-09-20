@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-20T16:39:55.231131+00:00",
+  "generated_at": "2026-09-20T16:46:10.799109+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 77,
-  "edges": 88,
-  "communities": 22,
-  "code_files": 23,
+  "nodes": 79,
+  "edges": 89,
+  "communities": 23,
+  "code_files": 24,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 82,
+    "EXTRACTED": 83,
     "INFERRED": 6
   },
   "source_files": [
@@ -23,7 +23,7 @@
     },
     {
       "path": "scripts/prepare-doom-assets.mjs",
-      "sha256": "7b108a15ec9488017c7d507f95744037b511c3e677ca9bb4b73f70d0c6821b4f"
+      "sha256": "dad171ae10bd5728315da64468dc5b1be58f79afef7a034979a5cf7b3f0b92c6"
     },
     {
       "path": "scripts/prepare-tv-assets.mjs",
@@ -91,15 +91,19 @@
     },
     {
       "path": "src/components/television/television.tsx",
-      "sha256": "55bc3c60baba9d6d3f6230d81608f201faad21155ade571624344a36d87f9604"
+      "sha256": "f210fe9e1ce98f0b995ebda95c3177766bf66823ca3a5a2ebec89901b744fff0"
     },
     {
       "path": "src/lib/game-controls.ts",
-      "sha256": "debc88cbad0913a6acc46a3a2f0564ac3d0956c99c8d7ca374d48632cc6f1110"
+      "sha256": "68faa9ecca21ac7797428c00e8c3a7b2a2d056ca1052a27861ad31066469e2c4"
     },
     {
       "path": "src/lib/pond.ts",
       "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
+    },
+    {
+      "path": "tests/game-controls.test.ts",
+      "sha256": "5f1e42338446f4a4b793bd59d4872bf26275943e7c27184725480bae594df2a1"
     },
     {
       "path": "tests/pond.test.ts",

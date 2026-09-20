@@ -1,0 +1,36 @@
+DOOM on the Belweder television — credits and source
+
+DOOM 1.9 shareware: Copyright id Software. The shareware game is not open-source art.
+Original, unchanged distribution (including original documentation and installer):
+/games/doom19s.zip
+Source: https://www.gamers.org/pub/idgames/idstuff/doom/doom19s.zip
+SHA-256: cacf0142b31ca1af00796b4a0339e07992ac5f21bc3f81e7532fe1b5e1b486e6
+Only the shareware episode is included. No affiliation with or endorsement by id Software.
+
+DOSBox / js-dos emulators 8.4.2, by Alexander Guryanov and contributors, unmodified.
+License: /vendor/doom/GPL-2.0.txt
+Exact source and build instructions:
+https://github.com/js-dos/emulators/tree/5f4eea600b0623b4621800d64372d837e8680579
+Source download:
+https://github.com/js-dos/emulators/archive/5f4eea600b0623b4621800d64372d837e8680579.tar.gz
+Source includes the native DOSBox implementation, JS/TypeScript interface and build scripts.
+
+libarchive.js 2.0.2, by Nika Begiashvili, unmodified archive worker/WASM.
+MIT license: /vendor/doom/libarchive-js-MIT.txt
+Exact wrapper/native source and build scripts (lib/ contains native dependency licenses):
+https://github.com/nika-begiashvili/libarchivejs/tree/0989c1a6db20d030d793b1763e20d880068091bd
+
+fflate 0.8.2 by Arjun Barrett; MIT: /vendor/doom/fflate-MIT.txt
+Source: https://github.com/101arrowz/fflate/tree/v0.8.2
+Comlink by Google; Apache-2.0: /vendor/doom/comlink-Apache-2.0.txt
+Source: https://github.com/GoogleChromeLabs/comlink
+
+Belweder OT-1782 TV: Virtual Museums of Malopolska, CC0-1.0.
+https://sketchfab.com/3d-models/black-and-white-belweder-ot-1782-tv-set-5c2be264f3ce4e11ac9387505e0bcea0
+https://creativecommons.org/publicdomain/zero/1.0/
+Model provided by CrazyGL hero-vhs-product-screen 0.1.1 by ybouane.
+Camera/calibration adapted from its Apache-2.0 code:
+https://github.com/CrazyGL-com/hero-vhs-product-screen
+License: /vendor/doom/CrazyGL-Apache-2.0.txt
+
+Project integration source: https://github.com/r9jdp/folio-2026/tree/feat/minimal-monitor-pond
