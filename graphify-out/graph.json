@@ -3,7 +3,7 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T16:46:10.799109+00:00",
+    "generated_at": "2026-09-20T17:27:17.318998+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "television.tsx",
@@ -37,7 +37,7 @@
       },
       {
         "path": "next.config.ts",
-        "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
+        "sha256": "54ea7b685a3c43c883b40bea47c75d127e6193c91d620bb891b65fb83424de74"
       },
       {
         "path": "scripts/prepare-doom-assets.mjs",
