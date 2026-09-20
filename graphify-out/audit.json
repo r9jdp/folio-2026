@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-20T17:27:17.318998+00:00",
+  "generated_at": "2026-09-20T17:41:11.251194+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 79,
-  "edges": 89,
+  "nodes": 88,
+  "edges": 94,
   "communities": 23,
-  "code_files": 24,
+  "code_files": 26,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 83,
+    "EXTRACTED": 88,
     "INFERRED": 6
   },
   "source_files": [
@@ -83,7 +83,7 @@
     },
     {
       "path": "src/components/television/doom-runtime.ts",
-      "sha256": "789577aad6294ebb9c7ec5d685da7d99d1b3c89a21bed49c30c9eacc62e1affb"
+      "sha256": "ee21cc48b36cb0c2fe341746ab8b9c413fa349b4edf59be0320f98f8677d5480"
     },
     {
       "path": "src/components/television/television-scene.ts",
@@ -91,19 +91,27 @@
     },
     {
       "path": "src/components/television/television.tsx",
-      "sha256": "f210fe9e1ce98f0b995ebda95c3177766bf66823ca3a5a2ebec89901b744fff0"
+      "sha256": "b90e47169dfbdea962283e63f2cdf97d514e91c4ebeab771cfa09b1fcbcef086"
+    },
+    {
+      "path": "src/lib/doom-preparation.ts",
+      "sha256": "4c301c9c5332468f0946d4d81b5ab9154c8e6a0427e40fd92541a082664870ba"
     },
     {
       "path": "src/lib/game-controls.ts",
-      "sha256": "68faa9ecca21ac7797428c00e8c3a7b2a2d056ca1052a27861ad31066469e2c4"
+      "sha256": "41b8896c432c1da4e6c85e0e477215ac9ba89bed39126b3014894b628b9a7bfd"
     },
     {
       "path": "src/lib/pond.ts",
       "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
     },
     {
+      "path": "tests/doom-preparation.test.ts",
+      "sha256": "e6a3cf75c8e7252d438bc9e4ab57d0f27ca7ad2885860816879087d3859b36b5"
+    },
+    {
       "path": "tests/game-controls.test.ts",
-      "sha256": "5f1e42338446f4a4b793bd59d4872bf26275943e7c27184725480bae594df2a1"
+      "sha256": "ae243e107428305fd828e0aa36a89e23b41f886c6637fe5c345fe29d84bcf9da"
     },
     {
       "path": "tests/pond.test.ts",

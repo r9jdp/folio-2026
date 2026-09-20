@@ -26,9 +26,28 @@ export const GAME_KEYS: Readonly<Record<string, number>> = {
 };
 
 export function mouseTurn(movementX: number) {
-  // Vertical mouse motion is deliberately ignored: DOS Doom otherwise walks
-  // forward/backward when you move the mouse up/down.
-  return Math.max(-0.3, Math.min(0.3, movementX / 900));
+  // js-dos relative motion takes pixel deltas, not normalized coordinates.
+  // Keep vertical input zero at the caller: classic Doom otherwise walks with it.
+  return Number.isFinite(movementX) ? Math.max(-200, Math.min(200, movementX)) : 0;
+}
+
+export function createMouseLook() {
+  let previousX: number | null = null;
+  return {
+    move(event: { clientX: number; movementX: number }, locked: boolean) {
+      if (locked) {
+        previousX = null;
+        return mouseTurn(event.movementX);
+      }
+      // Embedded browsers can report movementX=0 even when clientX changes.
+      const delta = previousX === null ? 0 : event.clientX - previousX;
+      previousX = event.clientX;
+      return mouseTurn(delta);
+    },
+    reset() {
+      previousX = null;
+    },
+  };
 }
 
 type InputSink = { key: (key: number, pressed: boolean) => void; fire: (pressed: boolean) => void };

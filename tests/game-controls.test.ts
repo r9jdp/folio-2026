@@ -1,6 +1,27 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { createGameInput } from '../src/lib/game-controls';
+import { createGameInput, createMouseLook } from '../src/lib/game-controls';
+
+test('captured mouse movement sends pixel deltas even while cursor position stays fixed', () => {
+  const look = createMouseLook();
+  assert.equal(look.move({ clientX: 500, movementX: 12 }, true), 12);
+  assert.equal(look.move({ clientX: 500, movementX: -8 }, true), -8);
+});
+
+test('uncaptured mouse turns when the browser reports zero movementX', () => {
+  const look = createMouseLook();
+  assert.equal(look.move({ clientX: 100, movementX: 0 }, false), 0);
+  assert.equal(look.move({ clientX: 125, movementX: 0 }, false), 25);
+  assert.equal(look.move({ clientX: 110, movementX: 0 }, false), -15);
+});
+
+test('mouse re-entry and pause/resume do not jump to the old pointer position', () => {
+  const look = createMouseLook();
+  look.move({ clientX: 100, movementX: 0 }, false);
+  look.reset();
+  assert.equal(look.move({ clientX: 900, movementX: 0 }, false), 0);
+  assert.equal(look.move({ clientX: 910, movementX: 0 }, false), 10);
+});
 
 test('pause releases simultaneous movement and fire, then resume accepts fresh input', () => {
   const events: [number | string, boolean][] = [];

@@ -8,11 +8,15 @@ Portfolio content belongs in the server-rendered page or a shared content module
 
 ## Current playable television
 
-`television.tsx` owns the off → booting → ready → playing state machine, keyboard focus, pointer lock, fallback mouse input, sound, fullscreen and cleanup. Esc, blur and hidden tabs pause; power-off aborts startup and resets the session. A 60-second watchdog makes a stalled download retryable. Game input is isolated in `src/lib/game-controls.ts`; all held keys and pending fire releases are cleared on pause, shutdown and unmount.
+`television.tsx` owns the off → booting → ready → playing state machine, keyboard focus, pointer lock, fallback mouse input, sound, fullscreen and cleanup. Esc, blur and hidden tabs pause only active gameplay; booting must keep advancing. Power-off aborts the current startup waiter and resets the session. A 60-second watchdog makes a stalled launch retryable. Game input is isolated in `src/lib/game-controls.ts`; all held keys and pending fire releases are cleared on pause, shutdown and unmount. js-dos relative mouse input expects pixel deltas, not normalized coordinates. Without pointer lock, derive those deltas from `clientX` and reset the baseline on pause, mouse leave and mode changes.
 
 `television-scene.ts` uses Three.js and the approved CC0 Belweder cabinet. It replaces only the screen material with a canvas texture, projects knob hit targets into page coordinates and pauses parallax while playing. Static is generated at 20 Hz (slower for reduced motion), followed by the real Doom framebuffer. An intersection observer and document visibility suspend rendering. Dispose GLTF geometry, materials, textures, renderer, observers and animation callbacks on unmount.
 
 `doom-runtime.ts` loads self-hosted DOSBox and archive workers lazily. The unmodified shareware ZIP is SHA-256 verified and its two LHA parts joined, then all original game and documentation files are extracted into memory. A separate runtime config supplies WASD, horizontal mouse turning, automatic episode/skill selection and audio. The first level's opening transition finishes before the preview pauses. Game sound uses Web Audio; pending sound buffers are stopped on pause and shutdown. No persistent saves or commercial WADs are included.
+
+After the cabinet loads, an idle callback warms runtime assets and prepares the game. `src/lib/doom-preparation.ts` shares one successful preparation across sessions in page memory. Cancelling one caller detaches its progress listener without cancelling preparation used by another caller. A 45-second timeout aborts stalled downloads/archive workers and evicts failed preparation. Runtime buffers are copied for each emulator session so worker transfer cannot detach the cached originals. The archive worker is owned before initialization so abort also terminates a worker stuck while loading WASM. No game/audio starts during preload.
+
+The loading caption reports download percentage, verification, extraction, launch and opening the level. Readiness samples the original shareware HUD's lower strip after the opening melt; keep it consistent with the bundled WAD and `screenblocks=10`. Do not wait for a fixed count of frame events: callbacks can become sparse in a still scene. Static retains a 1.5-second minimum that overlaps real startup work.
 
 `scripts/prepare-doom-assets.mjs` copies the pinned engine/archive assets, license texts and the CC0 model into `public/` at installation. Generated files stay out of Git. Serve locally or over HTTPS for Web Crypto and pointer lock. A strict future CSP must permit same-origin WASM, workers and the local engine script. Do not replace worker URLs with third-party CDN URLs.
 
@@ -21,7 +25,7 @@ Portfolio content belongs in the server-rendered page or a shared content module
 1. Start off, power on, observe snow on the glass, then enter the first level.
 2. Move with WASD, turn with the mouse, fire and observe ammunition decrease. Verify E opens doors, Shift runs, Tab toggles the map and number keys select owned weapons.
 3. Esc must pause/release, and clicking the screen must resume. Blur or hiding the tab must release held movement/fire. Input outside an active game must leave page navigation alone.
-4. Toggle sound; power off during startup and during play; restart. Check for stale game frames, duplicate sound, console errors and workers left running.
+4. Toggle sound; power off during startup and during play; restart. Switch away while the caption says “Opening the first level…” and return: the game must become ready. Fullscreen during loading must not pause boot. Check for stale game frames, duplicate sound, console errors and workers left running.
 5. Check native pointer lock/fullscreen in a desktop browser and fallback movement in an embedded browser. Check desktop and 390px cabinet alignment and scrolling. Touch visitors must be told a keyboard/mouse are required.
 6. Check reduced motion, blocked asset requests, WebGL failures and audio on target hardware. These paths are not established by the unit tests.
 

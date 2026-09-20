@@ -38,6 +38,8 @@ Desktop browsers use pointer lock. If an embedded browser refuses capture, the g
 
 `doom-runtime.ts` starts the pinned `emulators@8.4.2` DOSBox worker only after power-on. It verifies the original shareware archive's SHA-256, unpacks the complete distribution into browser memory and boots episode 1 with a WASD configuration. Web Audio starts from the user's interaction; mute, pause and shutdown stop queued audio. Power-off cancels startup and disposes the game worker. Slow or failed startup offers a retry.
 
+Game downloads and extraction begin during idle time after the TV loads. Successful preparation is reused across power cycles for the current page; failed or stalled preparation can retry. Startup reports download percentage and preparation/launch stages. Losing focus only pauses active gameplay, so switching tabs during loading cannot freeze startup. Readiness detects the revealed HUD instead of waiting for 70 frame callbacks. Relative mouse input uses pixel deltas; the uncaptured fallback derives movement from pointer positions.
+
 The untouched blank-TV concept is preserved at `2ffe887`; the first playable milestone is `d610720`. See [development notes](docs/development.md), [assets](docs/assets.md), [game credits](public/games/credits.txt) and [third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Previous monitor and pond implementation
@@ -70,4 +72,4 @@ Desktop shortcuts jump to selected work and open the supplied résumé. All port
 
 ## Validation
 
-Run lint, TypeScript, all eight tests, formatting and the production build. Three game-input tests cover simultaneous held controls, key aliases, short fire clicks and release on pause; five retained tests cover pond simulation. Browser checks cover real Doom startup, movement, turning, fire, Esc pause/resume, power-off during loading, restarting and responsive cabinet controls. In-app testing exercises the uncaptured mouse fallback; native pointer lock, fullscreen, subjective audio quality and representative low-end hardware need testing in a normal desktop browser.
+Run lint, TypeScript, all sixteen tests, formatting and the production build. Five startup tests cover shared preparation, cancellation, retries, timeout and readiness; six input tests cover mouse deltas, pointer re-entry, simultaneous held controls, key aliases and short fire clicks; five retained tests cover pond simulation. Browser checks cover startup while switching tabs, repeated power-on, mouse-only turning, fire and Esc pause/resume. In-app testing exercises the uncaptured mouse fallback; native pointer lock, subjective audio quality and representative low-end hardware need testing in a normal desktop browser. A local prepared-game startup measured approximately 2.8 seconds; this is not a guarantee for a first visit over a remote tunnel.

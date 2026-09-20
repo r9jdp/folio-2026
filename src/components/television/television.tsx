@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Power, Volume2, VolumeX, Maximize2 } from 'lucide-react';
 import type { TVScene } from './television-scene';
 import type { DoomRuntime } from './doom-runtime';
-import { createGameInput, mouseTurn } from '@/lib/game-controls';
+import { createGameInput, createMouseLook } from '@/lib/game-controls';
 import styles from './television.module.css';
 
 type Status = 'off' | 'booting' | 'ready' | 'playing' | 'error';
@@ -36,10 +36,23 @@ export default function Television() {
     let state: Status = 'off';
     let isMuted = false;
     let disposed = false;
+    let preloadIdle: number | undefined;
+    let preloadTimer: number | undefined;
+    const preload = () => {
+      if (disposed) return;
+      void import('./doom-runtime')
+        .then(({ prepareDoom }) => {
+          if (!disposed) return prepareDoom();
+        })
+        .catch(() => {
+          /* Power-on retries a failed background preparation. */
+        });
+    };
     const input = createGameInput({
       key: (key, pressed) => runtime?.ci.sendKeyEvent(key, pressed),
       fire: (pressed) => runtime?.ci.sendMouseButton(0, pressed),
     });
+    const mouseLook = createMouseLook();
     const transition = (next: Status, message: string) => {
       state = next;
       if (!disposed) {
@@ -51,6 +64,9 @@ export default function Television() {
       input.reset();
     };
     const pause = () => {
+      mouseLook.reset();
+      // Focus changes during boot must not stop the frames that make Doom ready.
+      if (state !== 'playing') return;
       releaseKeys();
       runtime?.pause();
       scene?.setPlaying(false);
@@ -95,7 +111,10 @@ export default function Television() {
         }
         const { startDoom } = await import('./doom-runtime');
         attempt.signal.throwIfAborted();
-        const game = await startDoom(attempt.signal, audio);
+        const game = await startDoom(attempt.signal, audio, (message) => {
+          if (!disposed && controller === attempt && !attempt.signal.aborted)
+            transition('booting', message);
+        });
         if (attempt.signal.aborted) {
           game.dispose();
           return;
@@ -130,6 +149,7 @@ export default function Television() {
     };
     const play = () => {
       if (state !== 'ready' || !runtime) return;
+      mouseLook.reset();
       const withoutCapture = () => {
         if (disposed || state !== 'ready' || !runtime) return;
         runtime.resume();
@@ -149,6 +169,7 @@ export default function Television() {
       }
     };
     const locked = () => {
+      mouseLook.reset();
       if (document.pointerLockElement === host && runtime) {
         runtime.resume();
         scene?.setPlaying(true);
@@ -167,11 +188,16 @@ export default function Television() {
       if (input.release(event.code)) event.preventDefault();
     };
     const mouseMove = (event: MouseEvent) => {
-      if (
-        state === 'playing' &&
-        (document.pointerLockElement === host || host.contains(event.target as Node))
-      )
-        runtime?.ci.sendMouseRelativeMotion(mouseTurn(event.movementX), 0);
+      const captured = document.pointerLockElement === host;
+      if (state !== 'playing' || (!captured && !host.contains(event.target as Node))) {
+        mouseLook.reset();
+        return;
+      }
+      const turn = mouseLook.move(event, captured);
+      if (turn) runtime?.ci.sendMouseRelativeMotion(turn, 0);
+    };
+    const mouseLeave = () => {
+      if (document.pointerLockElement !== host) mouseLook.reset();
     };
     const mouseDown = (event: MouseEvent) => {
       if (state !== 'playing') return;
@@ -228,7 +254,12 @@ export default function Television() {
             canvas,
             { power, sound, screen },
             () => {
-              if (!disposed) setLoaded(true);
+              if (!disposed) {
+                setLoaded(true);
+                if (typeof window.requestIdleCallback === 'function')
+                  preloadIdle = window.requestIdleCallback(preload, { timeout: 2000 });
+                else preloadTimer = window.setTimeout(preload, 300);
+              }
             },
             fail,
           );
@@ -241,12 +272,15 @@ export default function Television() {
     document.addEventListener('keydown', keyDown);
     document.addEventListener('keyup', keyUp);
     document.addEventListener('mousemove', mouseMove);
+    host.addEventListener('mouseleave', mouseLeave);
     document.addEventListener('mousedown', mouseDown);
     document.addEventListener('mouseup', mouseUp);
     document.addEventListener('visibilitychange', visibility);
     window.addEventListener('blur', pause);
     return () => {
       disposed = true;
+      if (preloadIdle !== undefined) window.cancelIdleCallback(preloadIdle);
+      if (preloadTimer !== undefined) window.clearTimeout(preloadTimer);
       shutDown();
       actions.current = null;
       scene?.dispose();
@@ -254,6 +288,7 @@ export default function Television() {
       document.removeEventListener('keydown', keyDown);
       document.removeEventListener('keyup', keyUp);
       document.removeEventListener('mousemove', mouseMove);
+      host.removeEventListener('mouseleave', mouseLeave);
       document.removeEventListener('mousedown', mouseDown);
       document.removeEventListener('mouseup', mouseUp);
       document.removeEventListener('visibilitychange', visibility);

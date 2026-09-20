@@ -1,5 +1,11 @@
-import type { CommandInterface, Emulators, InitFsEntry } from 'emulators';
+import type { CommandInterface, Emulators, InitFileEntry } from 'emulators';
 import { unzipSync } from 'fflate';
+import {
+  createDoomPreparation,
+  isLevelFrameReady,
+  withAbort,
+  type LoadingProgress,
+} from '../../lib/doom-preparation';
 
 declare global {
   interface Window {
@@ -14,12 +20,19 @@ function loadEmulator(): Promise<Emulators> {
   if (window.emulators) return Promise.resolve(window.emulators);
   return (emulatorScript ??= new Promise<Emulators>((resolve, reject) => {
     const script = document.createElement('script');
+    const fail = () => {
+      clearTimeout(timeout);
+      script.remove();
+      reject(new Error('Could not load the game engine.'));
+    };
+    const timeout = window.setTimeout(fail, 30000);
     script.src = `${ASSETS}emulators.js`;
-    script.onload = () =>
-      window.emulators
-        ? resolve(window.emulators)
-        : reject(new Error('Game engine did not initialize.'));
-    script.onerror = () => reject(new Error('Could not load the game engine.'));
+    script.onload = () => {
+      clearTimeout(timeout);
+      if (window.emulators) resolve(window.emulators);
+      else reject(new Error('Game engine did not initialize.'));
+    };
+    script.onerror = fail;
     document.head.append(script);
   }).catch((error) => {
     emulatorScript = null;
@@ -29,34 +42,78 @@ function loadEmulator(): Promise<Emulators> {
 
 // The original shareware archive is served unchanged. Installation happens
 // in browser memory; no commercial WAD or extracted game files are hosted.
-async function installShareware(signal: AbortSignal): Promise<InitFsEntry[]> {
+async function installShareware(
+  signal: AbortSignal,
+  report: LoadingProgress,
+): Promise<InitFileEntry[]> {
+  report('Downloading Doom…');
   const response = await fetch('/games/doom19s.zip', { signal });
   if (!response.ok) throw new Error('Could not load Doom shareware.');
-  const archiveBytes = await response.arrayBuffer();
+  const chunks: Uint8Array[] = [];
+  let received = 0;
+  let lastPercent = -1;
+  const reader = response.body?.getReader();
+  if (reader) {
+    try {
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        received += value.byteLength;
+        // Known length of the original, hash-verified shareware distribution.
+        const percent = Math.min(100, Math.floor((received / 2450688) * 100));
+        if (percent !== lastPercent) {
+          report(`Downloading Doom… ${percent}%`);
+          lastPercent = percent;
+        }
+      }
+    } finally {
+      reader.releaseLock();
+    }
+  } else {
+    const bytes = new Uint8Array(await response.arrayBuffer());
+    chunks.push(bytes);
+    received = bytes.byteLength;
+  }
+  const archiveBytes = new Uint8Array(received);
+  let offset = 0;
+  for (const chunk of chunks) {
+    archiveBytes.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  report('Checking game files…');
   const hash = Array.from(
     new Uint8Array(await crypto.subtle.digest('SHA-256', archiveBytes)),
     (value) => value.toString(16).padStart(2, '0'),
   ).join('');
   if (hash !== ARCHIVE_HASH) throw new Error('The game download failed its integrity check.');
-  const zip = unzipSync(new Uint8Array(archiveBytes));
+  signal.throwIfAborted();
+  const zip = unzipSync(archiveBytes);
   const parts = [zip['DOOMS_19.1'], zip['DOOMS_19.2']];
   if (parts.some((part) => !part)) throw new Error('The shareware archive is incomplete.');
   const lha = new Uint8Array(parts[0].length + parts[1].length);
   lha.set(parts[0]);
   lha.set(parts[1], parts[0].length);
   const { Archive } = await import('libarchive.js');
-  Archive.init({ workerUrl: `${ASSETS}worker-bundle.js` });
   signal.throwIfAborted();
-  const archive = await Archive.open(new File([lha], 'doom.lha'));
-  let rejectCancelled: (reason: unknown) => void;
-  const cancelled = new Promise<never>((_, reject) => {
-    rejectCancelled = reject;
+  report('Preparing game files…');
+  // Own the worker before Archive.open so cancellation also covers WASM startup.
+  const worker = new Worker(`${ASSETS}worker-bundle.js`, { type: 'module' });
+  Archive.init({ getWorker: () => worker });
+  let failWorker: (event: ErrorEvent) => void;
+  const failed = new Promise<never>((_, reject) => {
+    failWorker = () => reject(new Error('Could not prepare game files.'));
+    worker.addEventListener('error', failWorker, { once: true });
   });
-  const cancel = () => rejectCancelled(signal.reason);
-  signal.addEventListener('abort', cancel, { once: true });
   try {
-    signal.throwIfAborted();
-    const files: Record<string, File> = await Promise.race([archive.extractFiles(), cancelled]);
+    const archive = await withAbort(
+      Promise.race([Archive.open(new File([lha], 'doom.lha')), failed]),
+      signal,
+    );
+    const files: Record<string, File> = await withAbort(
+      Promise.race([archive.extractFiles(), failed]),
+      signal,
+    );
     signal.throwIfAborted();
     return await Promise.all(
       Object.entries(files)
@@ -67,10 +124,28 @@ async function installShareware(signal: AbortSignal): Promise<InitFsEntry[]> {
         })),
     );
   } finally {
-    signal.removeEventListener('abort', cancel);
-    await archive.close();
+    worker.removeEventListener('error', failWorker!);
+    worker.terminate();
   }
 }
+
+export const prepareDoom = createDoomPreparation(async (signal, report) => {
+  const engine = loadEmulator().then(async (emulators) => {
+    emulators.pathPrefix = ASSETS;
+    // Fetch runtime binaries while the game archive is downloaded/unpacked.
+    await Promise.all(
+      ['wdosbox.js', 'wdosbox.wasm', 'wlibzip.js', 'wlibzip.wasm'].map(async (file) => {
+        const response = await fetch(`${ASSETS}${file}`, { signal, cache: 'force-cache' });
+        if (!response.ok) throw new Error('Could not download the game engine.');
+        await response.arrayBuffer();
+      }),
+    );
+    return emulators;
+  });
+  const [emulators, files] = await Promise.all([engine, installShareware(signal, report)]);
+  report('Game files ready.');
+  return { emulators, files };
+});
 
 const dosboxConf = `[sdl]
 autolock=false
@@ -144,13 +219,15 @@ export type DoomRuntime = {
 export async function startDoom(
   signal: AbortSignal,
   audio: AudioContext | null,
+  report: LoadingProgress = () => {},
 ): Promise<DoomRuntime> {
-  const [emulators, files] = await Promise.all([loadEmulator(), installShareware(signal)]);
+  const { emulators, files } = await prepareDoom(signal, report);
   signal.throwIfAborted();
-  emulators.pathPrefix = ASSETS;
+  report('Starting Doom…');
   const ci = await emulators.dosboxWorker([
     { dosboxConf, jsdosConf: { version: '8' } },
-    ...files,
+    // The emulator may transfer buffers to its worker. Keep our cached originals intact.
+    ...files.map(({ path, contents }) => ({ path, contents: new Uint8Array(contents) })),
     { path: 'PORTFO.CFG', contents: new TextEncoder().encode(controlsConfig) },
   ]);
   if (signal.aborted) {
@@ -164,8 +241,8 @@ export async function startDoom(
   let pixels = context.createImageData(canvas.width, canvas.height);
   let disposed = false;
   let active = false;
-  let gameFrames = 0;
   let readyDone = false;
+  let readyTimer: number | undefined;
   let nextAudio = 0;
   const gain = audio?.createGain();
   gain?.connect(audio!.destination);
@@ -188,6 +265,7 @@ export async function startDoom(
     canvas.width = width;
     canvas.height = height;
     pixels = context.createImageData(width, height);
+    if (width === 320 && height === 200 && !readyDone) report('Opening the first level…');
   });
   ci.events().onFrame((rgb, rgba) => {
     if (disposed) return;
@@ -200,12 +278,20 @@ export async function startDoom(
         pixels.data[to + 3] = 255;
       }
     context.putImageData(pixels, 0, 0);
-    // Let Doom finish its opening melt transition before freezing the preview.
-    if (canvas.width === 320 && canvas.height === 200 && ++gameFrames >= 70 && !readyDone) {
-      readyDone = true;
-      clearTimeout(timeout);
-      ci.pause();
-      resolveReady();
+    // Frame callbacks can be sparse in a still scene. Wait for the actual HUD,
+    // not an arbitrary frame count that can leave the TV on static for seconds.
+    if (
+      !readyDone &&
+      readyTimer === undefined &&
+      isLevelFrameReady(pixels.data, canvas.width, canvas.height)
+    ) {
+      readyTimer = window.setTimeout(() => {
+        if (disposed) return;
+        readyDone = true;
+        clearTimeout(timeout);
+        ci.pause();
+        resolveReady();
+      }, 150);
     }
   });
   ci.events().onSoundPush((samples) => {
@@ -238,6 +324,7 @@ export async function startDoom(
     disposed = true;
     active = false;
     clearTimeout(timeout);
+    clearTimeout(readyTimer);
     clearAudio();
     gain?.disconnect();
     signal.removeEventListener('abort', dispose);
@@ -256,7 +343,7 @@ export async function startDoom(
       ci.resume();
     },
     pause() {
-      if (disposed) return;
+      if (disposed || !readyDone) return;
       active = false;
       ci.pause();
       clearAudio();
