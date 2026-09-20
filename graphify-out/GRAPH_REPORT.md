@@ -4,10 +4,10 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T19:35:45.469988+00:00
+Generated: 2026-09-20T19:48:32.329860+00:00
 
-- 91 nodes · 95 directed edges · 26 communities
-- 28 current code files; repository-relative source paths with SHA-256 fingerprints
+- 92 nodes · 95 directed edges · 27 communities
+- 29 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
 - Edge confidence: EXTRACTED: 89, INFERRED: 6
@@ -20,6 +20,7 @@ Generated: 2026-09-20T19:35:45.469988+00:00
 - [scripts/prepare-tv-assets.mjs](../scripts/prepare-tv-assets.mjs): 1 nodes
 - [scripts/refresh-code-graph.py](../scripts/refresh-code-graph.py): 5 nodes
 - [src/app/error.tsx](../src/app/error.tsx): 2 nodes
+- [src/app/icon.tsx](../src/app/icon.tsx): 1 nodes
 - [src/app/layout.tsx](../src/app/layout.tsx): 2 nodes
 - [src/app/not-found.tsx](../src/app/not-found.tsx): 2 nodes
 - [src/app/page.tsx](../src/app/page.tsx): 2 nodes
@@ -67,21 +68,7 @@ Generated: 2026-09-20T19:35:45.469988+00:00
 - `transition()` — src/components/television/television.tsx L56
 - `visibility()` — src/components/television/television.tsx L218
 
-### 1: pond.ts / koi-model.ts
-
-9 nodes · edge density 0.42
-
-- `pond.ts` — src/lib/pond.ts L1
-- `crossSection()` — src/components/pond/koi-model.ts L144
-- `advancePond()` — src/lib/pond.ts L190
-- `angleDifference()` — src/lib/pond.ts L93
-- `clamp()` — src/lib/pond.ts L31
-- `createKoi()` — src/lib/pond.ts L40
-- `disturbPond()` — src/lib/pond.ts L98
-- `smoothstep()` — src/lib/pond.ts L35
-- `stepPond()` — src/lib/pond.ts L111
-
-### 2: monitor.tsx
+### 1: monitor.tsx
 
 8 nodes · edge density 0.25
 
@@ -94,7 +81,7 @@ Generated: 2026-09-20T19:35:45.469988+00:00
 - `.render()` — src/components/monitor/monitor.tsx L44
 - `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
-### 3: doom-runtime.ts / doom-preparation.ts
+### 2: doom-runtime.ts / doom-preparation.ts
 
 8 nodes · edge density 0.25
 
@@ -107,12 +94,26 @@ Generated: 2026-09-20T19:35:45.469988+00:00
 - `loadEmulator()` — src/components/television/doom-runtime.ts L19
 - `startDoom()` — src/components/television/doom-runtime.ts L219
 
+### 3: pond.ts
+
+8 nodes · edge density 0.50
+
+- `pond.ts` — src/lib/pond.ts L1
+- `advancePond()` — src/lib/pond.ts L190
+- `angleDifference()` — src/lib/pond.ts L93
+- `clamp()` — src/lib/pond.ts L31
+- `createKoi()` — src/lib/pond.ts L40
+- `disturbPond()` — src/lib/pond.ts L98
+- `smoothstep()` — src/lib/pond.ts L35
+- `stepPond()` — src/lib/pond.ts L111
+
 ### 4: koi-model.ts
 
-6 nodes · edge density 0.53
+7 nodes · edge density 0.43
 
 - `koi-model.ts` — src/components/pond/koi-model.ts L1
 - `createKoiModel()` — src/components/pond/koi-model.ts L167
+- `crossSection()` — src/components/pond/koi-model.ts L144
 - `fanGeometry()` — src/components/pond/koi-model.ts L154
 - `makeCoat()` — src/components/pond/koi-model.ts L47
 - `seeded()` — src/components/pond/koi-model.ts L19
@@ -248,19 +249,25 @@ Generated: 2026-09-20T19:35:45.469988+00:00
 
 - `prepare-tv-assets.mjs` — scripts/prepare-tv-assets.mjs L1
 
-### 23: portfolio-content.tsx
+### 23: icon.tsx
+
+1 nodes · edge density 0.00
+
+- `icon.tsx` — src/app/icon.tsx L1
+
+### 24: portfolio-content.tsx
 
 1 nodes · edge density 0.00
 
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
 
-### 24: game-controls.test.ts
+### 25: game-controls.test.ts
 
 1 nodes · edge density 0.00
 
 - `game-controls.test.ts` — tests/game-controls.test.ts L1
 
-### 25: pond.test.ts
+### 26: pond.test.ts
 
 1 nodes · edge density 0.00
 
