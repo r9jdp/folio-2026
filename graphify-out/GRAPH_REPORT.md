@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T19:26:30.249169+00:00
+Generated: 2026-09-20T19:35:45.469988+00:00
 
-- 89 nodes · 94 directed edges · 25 communities
-- 27 current code files; repository-relative source paths with SHA-256 fingerprints
+- 91 nodes · 95 directed edges · 26 communities
+- 28 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 88, INFERRED: 6
+- Edge confidence: EXTRACTED: 89, INFERRED: 6
 
 ## Source navigation
 
@@ -31,6 +31,7 @@ Generated: 2026-09-20T19:26:30.249169+00:00
 - [src/components/pond/pond-bed.ts](../src/components/pond/pond-bed.ts): 2 nodes
 - [src/components/pond/pond-renderer.ts](../src/components/pond/pond-renderer.ts): 2 nodes
 - [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 1 nodes
+- [src/components/portrait-name.tsx](../src/components/portrait-name.tsx): 2 nodes
 - [src/components/side-navigation.tsx](../src/components/side-navigation.tsx): 2 nodes
 - [src/components/television/doom-runtime.ts](../src/components/television/doom-runtime.ts): 4 nodes
 - [src/components/television/television-scene.ts](../src/components/television/television-scene.ts): 2 nodes
@@ -195,64 +196,71 @@ Generated: 2026-09-20T19:26:30.249169+00:00
 - `koi-pond.tsx` — src/components/pond/koi-pond.tsx L1
 - `KoiPond()` — src/components/pond/koi-pond.tsx L9
 
-### 15: side-navigation.tsx
+### 15: portrait-name.tsx
+
+2 nodes · edge density 1.00
+
+- `portrait-name.tsx` — src/components/portrait-name.tsx L1
+- `PortraitName()` — src/components/portrait-name.tsx L10
+
+### 16: side-navigation.tsx
 
 2 nodes · edge density 1.00
 
 - `side-navigation.tsx` — src/components/side-navigation.tsx L1
 - `SideNavigation()` — src/components/side-navigation.tsx L14
 
-### 16: television-scene.ts
+### 17: television-scene.ts
 
 2 nodes · edge density 1.00
 
 - `television-scene.ts` — src/components/television/television-scene.ts L1
 - `createTVScene()` — src/components/television/television-scene.ts L13
 
-### 17: doom-preparation.test.ts
+### 18: doom-preparation.test.ts
 
 2 nodes · edge density 1.00
 
 - `doom-preparation.test.ts` — tests/doom-preparation.test.ts L1
 - `deferred()` — tests/doom-preparation.test.ts L21
 
-### 18: eslint.config.mjs
+### 19: eslint.config.mjs
 
 1 nodes · edge density 0.00
 
 - `eslint.config.mjs` — eslint.config.mjs L1
 
-### 19: next.config.ts
+### 20: next.config.ts
 
 1 nodes · edge density 0.00
 
 - `next.config.ts` — next.config.ts L1
 
-### 20: prepare-doom-assets.mjs
+### 21: prepare-doom-assets.mjs
 
 1 nodes · edge density 0.00
 
 - `prepare-doom-assets.mjs` — scripts/prepare-doom-assets.mjs L1
 
-### 21: prepare-tv-assets.mjs
+### 22: prepare-tv-assets.mjs
 
 1 nodes · edge density 0.00
 
 - `prepare-tv-assets.mjs` — scripts/prepare-tv-assets.mjs L1
 
-### 22: portfolio-content.tsx
+### 23: portfolio-content.tsx
 
 1 nodes · edge density 0.00
 
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
 
-### 23: game-controls.test.ts
+### 24: game-controls.test.ts
 
 1 nodes · edge density 0.00
 
 - `game-controls.test.ts` — tests/game-controls.test.ts L1
 
-### 24: pond.test.ts
+### 25: pond.test.ts
 
 1 nodes · edge density 0.00
 

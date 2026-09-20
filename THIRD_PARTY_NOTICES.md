@@ -2,6 +2,8 @@
 
 ## Fonts and software
 
+Public Sans and Caveat are served locally through `@fontsource-variable/public-sans` and `@fontsource-variable/caveat`, under the SIL Open Font License. Their license texts are included in those installed packages.
+
 DM Sans is distributed through `@fontsource-variable/dm-sans` under the SIL Open Font License. Its licence is included in the installed package. Software dependencies, including Next.js, React, Three.js, React Three Fiber, Drei and Lucide, retain their respective licences and notices. The package lockfile records the installed versions.
 
 ## Television preview
@@ -35,3 +37,7 @@ The new portfolio does not bundle the earlier Porsche model, driving scenery or 
 ## Résumé
 
 The résumé served at `/resume.pdf` was supplied by Rajdeep Pandey. Its professional and biographical statements are provided by the portfolio owner.
+
+## Intro portrait interaction
+
+The dotted name underline, small framed portrait reveal, full-page backdrop blur, and Public Sans / Caveat typography are recreated from the visible interaction on [Shawn's portfolio](https://www.shwn.design/). The implementation is original project code; Shawn's portrait and source files are not included. `public/images/rajdeep-portrait.jpeg` was supplied by Rajdeep; it is used unchanged, with CSS controlling the square preview framing. His own biography and claims are retained.

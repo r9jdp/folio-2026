@@ -1,4 +1,6 @@
 @import '@fontsource-variable/dm-sans';
+@import '@fontsource-variable/public-sans';
+@import '@fontsource-variable/caveat';
 
 :root {
   color-scheme: light;
@@ -96,9 +98,27 @@ h1 {
   margin: 0 0 13px;
   letter-spacing: 0.05px;
 }
+.intro h1 {
+  font-family: 'Public Sans Variable', Arial, sans-serif;
+}
 .intro-copy {
-  color: #64695f;
+  max-width: 490px;
+  color: #707070;
   margin-top: 23px;
+  font:
+    500 15px/1.65 'Public Sans Variable',
+    Arial,
+    sans-serif;
+}
+.intro-copy strong {
+  color: #000;
+  font-weight: 600;
+}
+.intro-copy .intro-handwritten {
+  color: #242424;
+  font:
+    700 22px/1 'Caveat Variable',
+    cursive;
 }
 .intro-copy p + p {
   margin-top: 15px;

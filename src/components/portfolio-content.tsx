@@ -1,3 +1,5 @@
+import PortraitName from './portrait-name';
+
 type Product = {
   name: string;
   category?: string;
@@ -80,11 +82,15 @@ export default function PortfolioContent() {
     <main id="main-content" className="portfolio-content">
       <section id="about" className="intro" aria-labelledby="intro-heading">
         <p className="intro-kicker">Software engineer &amp; founder · Mumbai</p>
-        <h1 id="intro-heading">Rajdeep</h1>
+        <h1 id="intro-heading">
+          <PortraitName />
+        </h1>
         <div className="intro-copy">
           <p>
-            6x Hackathon Winner · Founder of multiple products · Shipped 2 products for DCB Bank
-            with ~$1M/quarter in estimated savings
+            <strong>6x Hackathon Winner</strong> ·{' '}
+            <span className="intro-handwritten">Founder</span> of <strong>multiple products</strong>{' '}
+            · Shipped <strong>2 products</strong> for <strong>DCB Bank</strong> with{' '}
+            <strong className="intro-handwritten">~$1M/quarter</strong> in estimated savings
           </p>
         </div>
         <nav className="inline-links" aria-label="Find me online">
