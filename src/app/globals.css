@@ -80,6 +80,7 @@ canvas:focus-visible {
 h1,
 h2,
 h3,
+h4,
 p {
   margin: 0;
 }
@@ -144,6 +145,29 @@ h1 {
 .experience-entry {
   margin: 0;
 }
+.venture-list {
+  display: grid;
+  gap: 36px;
+}
+.venture-entry + .venture-entry {
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+.venture-products {
+  margin-top: 25px;
+  border-left: 1px solid var(--line);
+  padding-left: 20px;
+}
+.products-label {
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+.venture-category {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 3px;
+}
 .entry-heading {
   display: flex;
   flex-wrap: wrap;
@@ -152,10 +176,15 @@ h1 {
   gap: 5px 16px;
 }
 .entry-heading h3,
+.entry-heading h4,
 h3.entry-heading {
   font-size: 15px;
   font-weight: 500;
   letter-spacing: -0.2px;
+}
+.venture-heading h3 {
+  font-size: 19px;
+  letter-spacing: -0.4px;
 }
 .entry-heading a {
   text-decoration: none;

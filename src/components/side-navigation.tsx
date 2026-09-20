@@ -5,7 +5,7 @@ import styles from './side-navigation.module.css';
 
 const sections = [
   { id: 'home', label: 'home' },
-  { id: 'work', label: 'work' },
+  { id: 'work', label: 'ventures' },
   { id: 'experience', label: 'experience' },
   { id: 'achievements', label: 'milestones' },
   { id: 'contact', label: 'contact' },
@@ -94,9 +94,6 @@ export default function SideNavigation() {
           rel="noreferrer"
         >
           github
-        </a>
-        <a href="/resume.pdf" target="_blank" rel="noreferrer">
-          résumé
         </a>
       </nav>
     </aside>

@@ -1,7 +1,7 @@
 'use client';
 
 import KoiPond from '@/components/pond/koi-pond';
-import { Folder, FileText, ArrowUpRight } from 'lucide-react';
+import { Folder, ArrowUpRight } from 'lucide-react';
 import styles from './monitor.module.css';
 
 export function MonitorDesktop({ paused }: { paused: boolean }) {
@@ -17,10 +17,6 @@ export function MonitorDesktop({ paused }: { paused: boolean }) {
         <a href="#work">
           <Folder size={27} strokeWidth={1.3} fill="#ece3bb" />
           <span>My work</span>
-        </a>
-        <a href="/resume.pdf" target="_blank" rel="noreferrer">
-          <FileText size={27} strokeWidth={1.3} fill="#f4f2e7" />
-          <span>Resume</span>
         </a>
       </nav>
       <a className={styles.screenNote} href="#about">

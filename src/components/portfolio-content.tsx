@@ -1,4 +1,12 @@
-const selectedWork = [
+type Product = {
+  name: string;
+  category?: string;
+  href?: string;
+  description?: string;
+  note?: string;
+};
+
+const milnrProducts: Product[] = [
   {
     name: 'Fermeon',
     category: 'AI memory',
@@ -8,12 +16,12 @@ const selectedWork = [
     note: '250 active users · 12th of 467 launches on Product Hunt.',
   },
   {
-    name: 'TryDonna',
-    category: 'Agent-to-agent hiring',
-    href: 'https://www.trydonna.net/',
+    name: 'Meetly',
+    category: 'Event networking',
+    href: 'https://mymeetly.xyz',
     description:
-      'I founded TryDonna, an agentic hiring platform where candidates and recruiters each have their own AI agent with all required context, automating the hiring process through direct agent-to-agent interaction rather than manual human shortlisting.',
-    note: '8th of 250+ launches on Product Hunt’s YC collaboration day.',
+      'I built an AI-powered event networking platform that matches attendees in real time and uses Wi-Fi fingerprinting and directional navigation to help them find each other inside a venue. First deployed at Draper Startup House.',
+    note: 'Built in 3 days · 800+ users in 2 weeks · Sold to a startup house.',
   },
   {
     name: 'ClawIN',
@@ -23,7 +31,7 @@ const selectedWork = [
       'I built a social network for OpenClaw agents. People create LinkedIn-style profiles for their own agents, which can then connect with agents owned by other people.',
     note: 'More than 250 users on its first day.',
   },
-] as const;
+];
 
 const experience = [
   {
@@ -32,13 +40,6 @@ const experience = [
     period: 'Jun–Aug 2026',
     description:
       'I migrated deployment pipelines from TeamCity to GitLab CI, aligned configurations with engineering standards, and brought the migrated services into production.',
-  },
-  {
-    company: 'Milnr AI Labs',
-    role: 'Founder',
-    period: '2025–Apr 2026',
-    description:
-      'I built AI products around persistent memory, multi-agent orchestration, and developer tools, including Fermeon.',
   },
   {
     company: 'DCB Bank',
@@ -97,32 +98,67 @@ export default function PortfolioContent() {
           >
             LinkedIn
           </a>
-          <a href="/resume.pdf" target="_blank" rel="noreferrer">
-            Resume
-          </a>
           <a href="mailto:rajdeepvp273@gmail.com">Email</a>
         </nav>
       </section>
 
       <section id="work" className="text-section" aria-labelledby="work-heading">
         <h2 id="work-heading" className="section-heading">
-          Selected work
+          Founder’s journey
         </h2>
-        <div className="project-list">
-          {selectedWork.map((project) => (
-            <article className="project-entry" key={project.name}>
-              <div className="entry-heading">
-                <h3>
-                  <a href={project.href} target="_blank" rel="noreferrer">
-                    {project.name} <span aria-hidden="true">↗</span>
-                  </a>
-                </h3>
-                <p className="entry-meta">{project.category}</p>
+        <div className="venture-list">
+          <article className="venture-entry" aria-labelledby="milnr-heading">
+            <div className="entry-heading venture-heading">
+              <h3 id="milnr-heading">Milnr AI Lab</h3>
+              <p className="entry-meta">Founder · 2025–Apr 2026</p>
+            </div>
+            <p className="entry-copy">
+              I founded Milnr AI Lab, where we created multiple AI products, including Fermeon,
+              Meetly, and ClawIN.
+            </p>
+            <div className="venture-products" role="group" aria-label="Products from Milnr AI Lab">
+              <p className="products-label">Products we built</p>
+              <div className="project-list">
+                {milnrProducts.map((project) => (
+                  <article className="project-entry" key={project.name}>
+                    <div className="entry-heading">
+                      <h4>
+                        {project.href ? (
+                          <a href={project.href} target="_blank" rel="noreferrer">
+                            {project.name} <span aria-hidden="true">↗</span>
+                          </a>
+                        ) : (
+                          project.name
+                        )}
+                      </h4>
+                      {project.category && <p className="entry-meta">{project.category}</p>}
+                    </div>
+                    {project.description && <p className="entry-copy">{project.description}</p>}
+                    {project.note && <p className="entry-meta">{project.note}</p>}
+                  </article>
+                ))}
               </div>
-              <p className="entry-copy">{project.description}</p>
-              <p className="entry-meta">{project.note}</p>
-            </article>
-          ))}
+            </div>
+          </article>
+          <article className="venture-entry" aria-labelledby="trydonna-heading">
+            <div className="entry-heading venture-heading">
+              <h3 id="trydonna-heading">
+                <a href="https://www.trydonna.net/" target="_blank" rel="noreferrer">
+                  TryDonna <span aria-hidden="true">↗</span>
+                </a>
+              </h3>
+              <p className="entry-meta">Founder · Mar–Apr 2026</p>
+            </div>
+            <p className="venture-category">Agent-to-agent hiring</p>
+            <p className="entry-copy">
+              I founded TryDonna, an agentic hiring platform where candidates and recruiters each
+              have their own AI agent with all required context, automating the hiring process
+              through direct agent-to-agent interaction rather than manual human shortlisting.
+            </p>
+            <p className="entry-meta">
+              8th of 250+ launches on Product Hunt’s YC collaboration day.
+            </p>
+          </article>
         </div>
       </section>
 
