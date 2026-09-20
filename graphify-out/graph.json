@@ -3,11 +3,11 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-20T14:55:03.105278+00:00",
+    "generated_at": "2026-09-20T16:12:35.629687+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
-      "0": "pond.ts / koi-model.ts",
-      "1": "monitor.tsx",
+      "0": "monitor.tsx",
+      "1": "pond.ts",
       "2": "koi-model.ts",
       "3": "refresh-code-graph.py",
       "4": "pond-bed.ts / pond-renderer.ts",
@@ -19,9 +19,11 @@
       "10": "monitor-desktop.tsx",
       "11": "koi-pond.tsx",
       "12": "portfolio-content.tsx",
-      "13": "eslint.config.mjs",
-      "14": "next.config.ts",
-      "15": "pond.test.ts"
+      "13": "television.tsx",
+      "14": "eslint.config.mjs",
+      "15": "next.config.ts",
+      "16": "prepare-tv-assets.mjs",
+      "17": "pond.test.ts"
     },
     "source_files": [
       {
@@ -31,6 +33,10 @@
       {
         "path": "next.config.ts",
         "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
+      },
+      {
+        "path": "scripts/prepare-tv-assets.mjs",
+        "sha256": "732162b8deccc65052892838f346c196cbc18e60f5da84777ce1bde10dbab5b6"
       },
       {
         "path": "scripts/refresh-code-graph.py",
@@ -50,7 +56,7 @@
       },
       {
         "path": "src/app/page.tsx",
-        "sha256": "a5490e9891f799f72b2e52fe9e3ccff18a7d8221ab27f4a2a701f9559258235f"
+        "sha256": "665089558c3660d44a21e431fd57551089541660db0bc088b317ca4af8c90cdb"
       },
       {
         "path": "src/components/monitor/monitor-desktop.tsx",
@@ -85,6 +91,10 @@
         "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
       },
       {
+        "path": "src/components/television/television.tsx",
+        "sha256": "fcacf37634b1ecc257d347b658f995ffc016ba5e8f0a87f13e2f3e937ae66cf5"
+      },
+      {
         "path": "src/lib/pond.ts",
         "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
       },
@@ -109,7 +119,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 13,
+      "community": 14,
       "id": "c_users_rajdeep_desktop_folio_2026_eslint_config_mjs",
       "norm_label": "eslint.config.mjs"
     },
@@ -120,9 +130,20 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 14,
+      "community": 15,
       "id": "c_users_rajdeep_desktop_folio_2026_next_config_ts",
       "norm_label": "next.config.ts"
+    },
+    {
+      "label": "prepare-tv-assets.mjs",
+      "file_type": "code",
+      "source_file": "scripts/prepare-tv-assets.mjs",
+      "source_location": "L1",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 16,
+      "id": "c_users_rajdeep_desktop_folio_2026_scripts_prepare_tv_assets_mjs",
+      "norm_label": "prepare-tv-assets.mjs"
     },
     {
       "label": "refresh-code-graph.py",
@@ -329,7 +350,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_tsx",
       "norm_label": "monitor.tsx"
     },
@@ -340,7 +361,7 @@
       "source_location": "L10",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_subscribetomotion",
       "norm_label": "subscribetomotion()"
     },
@@ -351,7 +372,7 @@
       "source_location": "L15",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_readmotion",
       "norm_label": "readmotion()"
     },
@@ -362,7 +383,7 @@
       "source_location": "L19",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_flatmonitor",
       "norm_label": "flatmonitor()"
     },
@@ -373,7 +394,7 @@
       "source_location": "L33",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_sceneboundary",
       "norm_label": "sceneboundary"
     },
@@ -384,7 +405,7 @@
       "source_location": "L38",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_sceneboundary_getderivedstatefromerror",
       "norm_label": ".getderivedstatefromerror()"
     },
@@ -395,7 +416,7 @@
       "source_location": "L41",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_sceneboundary_componentdidcatch",
       "norm_label": ".componentdidcatch()"
     },
@@ -406,7 +427,7 @@
       "source_location": "L44",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 0,
       "id": "monitor_sceneboundary_render",
       "norm_label": ".render()"
     },
@@ -461,7 +482,7 @@
       "source_location": "L144",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 2,
       "id": "koi_model_crosssection",
       "norm_label": "crosssection()"
     },
@@ -576,13 +597,35 @@
       "norm_label": "portfoliocontent()"
     },
     {
+      "label": "television.tsx",
+      "file_type": "code",
+      "source_file": "src/components/television/television.tsx",
+      "source_location": "L1",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 13,
+      "id": "c_users_rajdeep_desktop_folio_2026_src_components_television_television_tsx",
+      "norm_label": "television.tsx"
+    },
+    {
+      "label": "Television()",
+      "file_type": "code",
+      "source_file": "src/components/television/television.tsx",
+      "source_location": "L11",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 13,
+      "id": "television_television",
+      "norm_label": "television()"
+    },
+    {
       "label": "pond.ts",
       "file_type": "code",
       "source_file": "src/lib/pond.ts",
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "c_users_rajdeep_desktop_folio_2026_src_lib_pond_ts",
       "norm_label": "pond.ts"
     },
@@ -593,7 +636,7 @@
       "source_location": "L31",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_clamp",
       "norm_label": "clamp()"
     },
@@ -604,7 +647,7 @@
       "source_location": "L35",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_smoothstep",
       "norm_label": "smoothstep()"
     },
@@ -615,7 +658,7 @@
       "source_location": "L40",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_createkoi",
       "norm_label": "createkoi()"
     },
@@ -626,7 +669,7 @@
       "source_location": "L93",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_angledifference",
       "norm_label": "angledifference()"
     },
@@ -637,7 +680,7 @@
       "source_location": "L98",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_disturbpond",
       "norm_label": "disturbpond()"
     },
@@ -648,7 +691,7 @@
       "source_location": "L111",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_steppond",
       "norm_label": "steppond()"
     },
@@ -659,7 +702,7 @@
       "source_location": "L190",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 0,
+      "community": 1,
       "id": "pond_advancepond",
       "norm_label": "advancepond()"
     },
@@ -670,7 +713,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 15,
+      "community": 17,
       "id": "c_users_rajdeep_desktop_folio_2026_tests_pond_test_ts",
       "norm_label": "pond.test.ts"
     }
@@ -1130,6 +1173,18 @@
       "_tgt": "portfolio_content_portfoliocontent",
       "source": "c_users_rajdeep_desktop_folio_2026_src_components_portfolio_content_tsx",
       "target": "portfolio_content_portfoliocontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/television/television.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_television_television_tsx",
+      "_tgt": "television_television",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_television_television_tsx",
+      "target": "television_television",
       "confidence_score": 1.0
     },
     {

@@ -1,0 +1,44 @@
+.hero {
+  position: relative;
+  width: min(960px, 100%);
+  height: 550px;
+  margin: 16px auto 0;
+  background: #fff;
+}
+
+.television {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden;
+  isolation: isolate;
+  touch-action: pan-y;
+}
+
+/* The upstream component darkens its backdrop, even when given white. */
+.television :global(crazygl-stage) {
+  background: #fff !important;
+}
+
+.television :global(crazygl-content) {
+  display: none;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  color: #73776e;
+  font-size: 12px;
+}
+
+@media (max-width: 640px) {
+  .hero {
+    height: 360px;
+    margin-top: 24px;
+  }
+}

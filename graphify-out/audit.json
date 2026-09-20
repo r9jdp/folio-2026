@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-20T14:55:03.105278+00:00",
+  "generated_at": "2026-09-20T16:12:35.629687+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 52,
-  "edges": 52,
-  "communities": 16,
-  "code_files": 17,
+  "nodes": 55,
+  "edges": 53,
+  "communities": 18,
+  "code_files": 19,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 48,
+    "EXTRACTED": 49,
     "INFERRED": 4
   },
   "source_files": [
@@ -20,6 +20,10 @@
     {
       "path": "next.config.ts",
       "sha256": "b325f6a07fde26605ef6aca1e29d8b0f0fc5ad77e50ea0605fad13a642566a9a"
+    },
+    {
+      "path": "scripts/prepare-tv-assets.mjs",
+      "sha256": "732162b8deccc65052892838f346c196cbc18e60f5da84777ce1bde10dbab5b6"
     },
     {
       "path": "scripts/refresh-code-graph.py",
@@ -39,7 +43,7 @@
     },
     {
       "path": "src/app/page.tsx",
-      "sha256": "a5490e9891f799f72b2e52fe9e3ccff18a7d8221ab27f4a2a701f9559258235f"
+      "sha256": "665089558c3660d44a21e431fd57551089541660db0bc088b317ca4af8c90cdb"
     },
     {
       "path": "src/components/monitor/monitor-desktop.tsx",
@@ -72,6 +76,10 @@
     {
       "path": "src/components/portfolio-content.tsx",
       "sha256": "2703c99e3951d48c200da581eb47c953aa12668df22fa800be65cf6f8f24bae1"
+    },
+    {
+      "path": "src/components/television/television.tsx",
+      "sha256": "fcacf37634b1ecc257d347b658f995ffc016ba5e8f0a87f13e2f3e937ae66cf5"
     },
     {
       "path": "src/lib/pond.ts",

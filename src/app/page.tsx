@@ -1,4 +1,4 @@
-import Monitor from '@/components/monitor/monitor';
+import Television from '@/components/television/television';
 import PortfolioContent from '@/components/portfolio-content';
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
           </a>
         </nav>
       </header>
-      <Monitor />
+      <Television />
       <PortfolioContent />
     </>
   );

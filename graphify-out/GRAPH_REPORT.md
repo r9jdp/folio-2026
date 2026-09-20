@@ -4,18 +4,19 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T14:55:03.105278+00:00
+Generated: 2026-09-20T16:12:35.629687+00:00
 
-- 52 nodes · 52 directed edges · 16 communities
-- 17 current code files; repository-relative source paths with SHA-256 fingerprints
+- 55 nodes · 53 directed edges · 18 communities
+- 19 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 48, INFERRED: 4
+- Edge confidence: EXTRACTED: 49, INFERRED: 4
 
 ## Source navigation
 
 - [eslint.config.mjs](../eslint.config.mjs): 1 nodes
 - [next.config.ts](../next.config.ts): 1 nodes
+- [scripts/prepare-tv-assets.mjs](../scripts/prepare-tv-assets.mjs): 1 nodes
 - [scripts/refresh-code-graph.py](../scripts/refresh-code-graph.py): 5 nodes
 - [src/app/error.tsx](../src/app/error.tsx): 2 nodes
 - [src/app/layout.tsx](../src/app/layout.tsx): 2 nodes
@@ -29,26 +30,13 @@ Generated: 2026-09-20T14:55:03.105278+00:00
 - [src/components/pond/pond-bed.ts](../src/components/pond/pond-bed.ts): 2 nodes
 - [src/components/pond/pond-renderer.ts](../src/components/pond/pond-renderer.ts): 2 nodes
 - [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 2 nodes
+- [src/components/television/television.tsx](../src/components/television/television.tsx): 2 nodes
 - [src/lib/pond.ts](../src/lib/pond.ts): 8 nodes
 - [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
 
 ## Communities
 
-### 0: pond.ts / koi-model.ts
-
-9 nodes · edge density 0.42
-
-- `pond.ts` — src/lib/pond.ts L1
-- `crossSection()` — src/components/pond/koi-model.ts L144
-- `advancePond()` — src/lib/pond.ts L190
-- `angleDifference()` — src/lib/pond.ts L93
-- `clamp()` — src/lib/pond.ts L31
-- `createKoi()` — src/lib/pond.ts L40
-- `disturbPond()` — src/lib/pond.ts L98
-- `smoothstep()` — src/lib/pond.ts L35
-- `stepPond()` — src/lib/pond.ts L111
-
-### 1: monitor.tsx
+### 0: monitor.tsx
 
 8 nodes · edge density 0.25
 
@@ -61,12 +49,26 @@ Generated: 2026-09-20T14:55:03.105278+00:00
 - `.render()` — src/components/monitor/monitor.tsx L44
 - `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
+### 1: pond.ts
+
+8 nodes · edge density 0.50
+
+- `pond.ts` — src/lib/pond.ts L1
+- `advancePond()` — src/lib/pond.ts L190
+- `angleDifference()` — src/lib/pond.ts L93
+- `clamp()` — src/lib/pond.ts L31
+- `createKoi()` — src/lib/pond.ts L40
+- `disturbPond()` — src/lib/pond.ts L98
+- `smoothstep()` — src/lib/pond.ts L35
+- `stepPond()` — src/lib/pond.ts L111
+
 ### 2: koi-model.ts
 
-6 nodes · edge density 0.53
+7 nodes · edge density 0.43
 
 - `koi-model.ts` — src/components/pond/koi-model.ts L1
 - `createKoiModel()` — src/components/pond/koi-model.ts L167
+- `crossSection()` — src/components/pond/koi-model.ts L144
 - `fanGeometry()` — src/components/pond/koi-model.ts L154
 - `makeCoat()` — src/components/pond/koi-model.ts L47
 - `seeded()` — src/components/pond/koi-model.ts L19
@@ -148,19 +150,32 @@ Generated: 2026-09-20T14:55:03.105278+00:00
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
 - `PortfolioContent()` — src/components/portfolio-content.tsx L84
 
-### 13: eslint.config.mjs
+### 13: television.tsx
+
+2 nodes · edge density 1.00
+
+- `television.tsx` — src/components/television/television.tsx L1
+- `Television()` — src/components/television/television.tsx L11
+
+### 14: eslint.config.mjs
 
 1 nodes · edge density 0.00
 
 - `eslint.config.mjs` — eslint.config.mjs L1
 
-### 14: next.config.ts
+### 15: next.config.ts
 
 1 nodes · edge density 0.00
 
 - `next.config.ts` — next.config.ts L1
 
-### 15: pond.test.ts
+### 16: prepare-tv-assets.mjs
+
+1 nodes · edge density 0.00
+
+- `prepare-tv-assets.mjs` — scripts/prepare-tv-assets.mjs L1
+
+### 17: pond.test.ts
 
 1 nodes · edge density 0.00
 
