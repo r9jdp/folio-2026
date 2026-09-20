@@ -1,15 +1,16 @@
 {
-  "generated_at": "2026-09-20T14:47:46.228907+00:00",
+  "generated_at": "2026-09-20T14:55:03.105278+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 49,
-  "edges": 54,
-  "communities": 14,
-  "code_files": 14,
+  "nodes": 52,
+  "edges": 52,
+  "communities": 16,
+  "code_files": 17,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 54
+    "EXTRACTED": 48,
+    "INFERRED": 4
   },
   "source_files": [
     {
@@ -53,8 +54,20 @@
       "sha256": "3c8882005b2646f760b70c7b510e45af32f6ec75b8014469ea2e4c6b074e2251"
     },
     {
+      "path": "src/components/pond/koi-model.ts",
+      "sha256": "e641dadf3a8161d22ebdae9a37e8b3ad4ba8655d1e9d608c77860f32970dd3eb"
+    },
+    {
       "path": "src/components/pond/koi-pond.tsx",
-      "sha256": "65dd65537bdc76da5b113db8f95ba5415b56cc7f2fcd49c6c4bc8d151c1eb9da"
+      "sha256": "e57ed69a1e733a966803b2985256c62fba554529173dd00e47af36629a428208"
+    },
+    {
+      "path": "src/components/pond/pond-bed.ts",
+      "sha256": "987141fe5578b412e1baca035e06004e70ecf1f2c4fca2c79be78135e5fc8a5d"
+    },
+    {
+      "path": "src/components/pond/pond-renderer.ts",
+      "sha256": "79cb3585790bf00189866453077c2e6a7526cfcc101025116d8a6b48c6412cd3"
     },
     {
       "path": "src/components/portfolio-content.tsx",
@@ -62,7 +75,7 @@
     },
     {
       "path": "src/lib/pond.ts",
-      "sha256": "2fd4ff3baa979eb5f3976aca2ee11123db3689cfb87905fadd4ef49b2aa8c217"
+      "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
     },
     {
       "path": "tests/pond.test.ts",

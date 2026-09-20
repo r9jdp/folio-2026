@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-20T14:47:46.228907+00:00
+Generated: 2026-09-20T14:55:03.105278+00:00
 
-- 49 nodes · 54 directed edges · 14 communities
-- 14 current code files; repository-relative source paths with SHA-256 fingerprints
+- 52 nodes · 52 directed edges · 16 communities
+- 17 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 54
+- Edge confidence: EXTRACTED: 48, INFERRED: 4
 
 ## Source navigation
 
@@ -24,27 +24,29 @@ Generated: 2026-09-20T14:47:46.228907+00:00
 - [src/components/monitor/monitor-desktop.tsx](../src/components/monitor/monitor-desktop.tsx): 2 nodes
 - [src/components/monitor/monitor-scene.tsx](../src/components/monitor/monitor-scene.tsx): 3 nodes
 - [src/components/monitor/monitor.tsx](../src/components/monitor/monitor.tsx): 8 nodes
-- [src/components/pond/koi-pond.tsx](../src/components/pond/koi-pond.tsx): 10 nodes
+- [src/components/pond/koi-model.ts](../src/components/pond/koi-model.ts): 7 nodes
+- [src/components/pond/koi-pond.tsx](../src/components/pond/koi-pond.tsx): 2 nodes
+- [src/components/pond/pond-bed.ts](../src/components/pond/pond-bed.ts): 2 nodes
+- [src/components/pond/pond-renderer.ts](../src/components/pond/pond-renderer.ts): 2 nodes
 - [src/components/portfolio-content.tsx](../src/components/portfolio-content.tsx): 2 nodes
 - [src/lib/pond.ts](../src/lib/pond.ts): 8 nodes
 - [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
 
 ## Communities
 
-### 0: koi-pond.tsx
+### 0: pond.ts / koi-model.ts
 
-10 nodes · edge density 0.40
+9 nodes · edge density 0.42
 
-- `koi-pond.tsx` — src/components/pond/koi-pond.tsx L1
-- `bodyPath()` — src/components/pond/koi-pond.tsx L219
-- `createBed()` — src/components/pond/koi-pond.tsx L109
-- `drawKoi()` — src/components/pond/koi-pond.tsx L230
-- `drawSurface()` — src/components/pond/koi-pond.tsx L374
-- `ellipse()` — src/components/pond/koi-pond.tsx L27
-- `KoiPond()` — src/components/pond/koi-pond.tsx L430
-- `leaf()` — src/components/pond/koi-pond.tsx L86
-- `randomGenerator()` — src/components/pond/koi-pond.tsx L17
-- `rock()` — src/components/pond/koi-pond.tsx L42
+- `pond.ts` — src/lib/pond.ts L1
+- `crossSection()` — src/components/pond/koi-model.ts L144
+- `advancePond()` — src/lib/pond.ts L190
+- `angleDifference()` — src/lib/pond.ts L93
+- `clamp()` — src/lib/pond.ts L31
+- `createKoi()` — src/lib/pond.ts L40
+- `disturbPond()` — src/lib/pond.ts L98
+- `smoothstep()` — src/lib/pond.ts L35
+- `stepPond()` — src/lib/pond.ts L111
 
 ### 1: monitor.tsx
 
@@ -59,18 +61,16 @@ Generated: 2026-09-20T14:47:46.228907+00:00
 - `.render()` — src/components/monitor/monitor.tsx L44
 - `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
-### 2: pond.ts
+### 2: koi-model.ts
 
-8 nodes · edge density 0.50
+6 nodes · edge density 0.53
 
-- `pond.ts` — src/lib/pond.ts L1
-- `advancePond()` — src/lib/pond.ts L190
-- `angleDifference()` — src/lib/pond.ts L93
-- `clamp()` — src/lib/pond.ts L31
-- `createKoi()` — src/lib/pond.ts L40
-- `disturbPond()` — src/lib/pond.ts L98
-- `smoothstep()` — src/lib/pond.ts L35
-- `stepPond()` — src/lib/pond.ts L111
+- `koi-model.ts` — src/components/pond/koi-model.ts L1
+- `createKoiModel()` — src/components/pond/koi-model.ts L167
+- `fanGeometry()` — src/components/pond/koi-model.ts L154
+- `makeCoat()` — src/components/pond/koi-model.ts L47
+- `seeded()` — src/components/pond/koi-model.ts L19
+- `softNoise()` — src/components/pond/koi-model.ts L27
 
 ### 3: refresh-code-graph.py
 
@@ -82,7 +82,16 @@ Generated: 2026-09-20T14:47:46.228907+00:00
 - `relative_source()` — scripts/refresh-code-graph.py L48
 - `source_paths()` — scripts/refresh-code-graph.py L26
 
-### 4: monitor-scene.tsx
+### 4: pond-bed.ts / pond-renderer.ts
+
+4 nodes · edge density 0.50
+
+- `pond-bed.ts` — src/components/pond/pond-bed.ts L1
+- `pond-renderer.ts` — src/components/pond/pond-renderer.ts L1
+- `createPondBed()` — src/components/pond/pond-bed.ts L2
+- `createPondRenderer()` — src/components/pond/pond-renderer.ts L95
+
+### 5: monitor-scene.tsx
 
 3 nodes · edge density 0.67
 
@@ -90,61 +99,68 @@ Generated: 2026-09-20T14:47:46.228907+00:00
 - `creationFailed()` — src/components/monitor/monitor-scene.tsx L217
 - `lost()` — src/components/monitor/monitor-scene.tsx L175
 
-### 5: error.tsx
+### 6: error.tsx
 
 2 nodes · edge density 1.00
 
 - `error.tsx` — src/app/error.tsx L1
 - `ErrorPage()` — src/app/error.tsx L3
 
-### 6: layout.tsx
+### 7: layout.tsx
 
 2 nodes · edge density 1.00
 
 - `layout.tsx` — src/app/layout.tsx L1
 - `RootLayout()` — src/app/layout.tsx L13
 
-### 7: not-found.tsx
+### 8: not-found.tsx
 
 2 nodes · edge density 1.00
 
 - `not-found.tsx` — src/app/not-found.tsx L1
 - `NotFound()` — src/app/not-found.tsx L2
 
-### 8: page.tsx
+### 9: page.tsx
 
 2 nodes · edge density 1.00
 
 - `page.tsx` — src/app/page.tsx L1
 - `Home()` — src/app/page.tsx L4
 
-### 9: monitor-desktop.tsx
+### 10: monitor-desktop.tsx
 
 2 nodes · edge density 1.00
 
 - `monitor-desktop.tsx` — src/components/monitor/monitor-desktop.tsx L1
 - `MonitorDesktop()` — src/components/monitor/monitor-desktop.tsx L7
 
-### 10: portfolio-content.tsx
+### 11: koi-pond.tsx
+
+2 nodes · edge density 1.00
+
+- `koi-pond.tsx` — src/components/pond/koi-pond.tsx L1
+- `KoiPond()` — src/components/pond/koi-pond.tsx L9
+
+### 12: portfolio-content.tsx
 
 2 nodes · edge density 1.00
 
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
 - `PortfolioContent()` — src/components/portfolio-content.tsx L84
 
-### 11: eslint.config.mjs
+### 13: eslint.config.mjs
 
 1 nodes · edge density 0.00
 
 - `eslint.config.mjs` — eslint.config.mjs L1
 
-### 12: next.config.ts
+### 14: next.config.ts
 
 1 nodes · edge density 0.00
 
 - `next.config.ts` — next.config.ts L1
 
-### 13: pond.test.ts
+### 15: pond.test.ts
 
 1 nodes · edge density 0.00
 

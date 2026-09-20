@@ -26,7 +26,8 @@ npm run build
 
 - **Next.js, React and TypeScript:** readable portfolio content rendered by the server, with client components for the interactive scene.
 - **Three.js, React Three Fiber and Drei:** original procedural monitor, keyboard and mouse geometry. An HTML screen places the pond inside the monitor.
-- **Canvas 2D:** original koi, swimming motion, pond details and pointer-driven ripples. The pond needs no downloaded fish model or video.
+- **Three.js pond:** four volumetric koi with deforming bodies and fins, original Canvas-generated coat and pond-bed textures, lighting and shadows. An offscreen scene feeds a water shader that adds moving caustics, refraction and expanding disturbance waves.
+- **Swimming:** a fixed-step simulation smooths steering, acceleration and body bend. Continuous stroke phase keeps the tails moving naturally as fish accelerate, turn and return to a glide.
 - **Content:** project descriptions and experience drawn from Rajdeep's supplied résumé and project information. These are self-reported facts, not independently verified claims.
 
 See [development notes](docs/development.md), [asset provenance](docs/assets.md) and [third-party notices](THIRD_PARTY_NOTICES.md).
@@ -41,10 +42,12 @@ This direction is developed on `feat/minimal-monitor-pond`. The earlier Porsche 
 
 ## Interaction
 
-Click or tap the water for a ripple; nearby koi turn away and settle back into swimming. The focused pond also responds to Enter or Space. The control below the monitor pauses or resumes it. Reduced-motion preferences start the pond still, with an explicit option to play.
+Click or tap the water for a ripple, drag to create a trail of disturbances, or tap near a koi for a stronger reaction. Fish turn and accelerate smoothly before settling back into swimming. The focused pond also responds to Enter or Space. The control below the monitor pauses or resumes it. Reduced-motion preferences start the pond still, with an explicit option to play.
 
-Desktop shortcuts jump to selected work and open the supplied résumé. All portfolio content is also available as ordinary HTML below the scene. Fish animation suspends offscreen and in hidden tabs; the 3D monitor renders on demand. If WebGL is unavailable, a flat monitor preserves the pond and the rest of the page.
+Desktop shortcuts jump to selected work and open the supplied résumé. All portfolio content is also available as ordinary HTML below the scene. Fish animation suspends offscreen and in hidden tabs; the outer 3D monitor renders on demand. If the pond cannot initialize WebGL or loses its context, it switches to a still Canvas 2D illustration with visible ripple feedback. An outer monitor WebGL failure uses a flat monitor frame. Written content and navigation remain available in either case.
 
 ## Validation
 
-Lint, TypeScript, two simulation tests and the production build pass. Browser checks covered desktop and a 390px mobile viewport, screen alignment, navigation, pointer ripples and pause/resume. Reduced-motion and WebGL fallback paths are implemented; device-specific performance and forced context-loss testing are not represented as completed browser checks.
+Lint, TypeScript, formatting, five simulation regression tests and the production build pass. The revised pond has been checked in the browser at desktop and 390px mobile sizes, including pointer interaction, keyboard ripples and pause/resume, with no observed browser errors. Follow the [manual verification workflow](docs/development.md#validation) when changing the renderer.
+
+The procedural artwork and bounded rendering resolution do not imply a frame-rate guarantee. Measure performance on target devices and verify reduced-motion, unavailable-WebGL and context-loss paths explicitly.
