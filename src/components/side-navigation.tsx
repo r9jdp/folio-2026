@@ -95,6 +95,9 @@ export default function SideNavigation() {
         >
           github
         </a>
+        <a href="https://x.com/r9jdp" target="_blank" rel="noreferrer">
+          X
+        </a>
       </nav>
     </aside>
   );

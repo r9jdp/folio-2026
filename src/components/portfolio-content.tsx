@@ -97,6 +97,9 @@ export default function PortfolioContent() {
           <a href="https://github.com/r9jdp" target="_blank" rel="noreferrer">
             GitHub
           </a>
+          <a href="https://x.com/r9jdp" target="_blank" rel="noreferrer">
+            X
+          </a>
           <a
             href="https://www.linkedin.com/in/rajdeep-pandey-bb8a682ab/"
             target="_blank"
@@ -116,7 +119,7 @@ export default function PortfolioContent() {
           <article className="venture-entry" aria-labelledby="milnr-heading">
             <div className="entry-heading venture-heading">
               <h3 id="milnr-heading">Milnr AI Lab</h3>
-              <p className="entry-meta">Founder · 2025–Apr 2026</p>
+              <p className="entry-meta">Founder</p>
             </div>
             <p className="entry-copy">
               I founded Milnr AI Lab, where we created multiple AI products, including Fermeon,
@@ -153,7 +156,7 @@ export default function PortfolioContent() {
                   TryDonna <span aria-hidden="true">↗</span>
                 </a>
               </h3>
-              <p className="entry-meta">Founder · Mar–Apr 2026</p>
+              <p className="entry-meta">Founder</p>
             </div>
             <p className="venture-category">Agent-to-agent hiring</p>
             <p className="entry-copy">
