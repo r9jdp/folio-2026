@@ -2,7 +2,7 @@
 
 ## Page structure
 
-Keep the page on a white background with a restrained type scale, generous spacing and normal document scrolling. A compact header links to the written sections. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
+Keep the page on a white background with a restrained type scale, generous spacing and normal document scrolling. A sticky left column of text links leads to the written sections, with the current section shown in darker bold text. On narrow screens, a small menu button opens the same vertical links. There is no monogram or horizontal header. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
 
 Portfolio content belongs in the server-rendered page or a shared content module. Rendering and pointer interaction belong in isolated client components. The scene must not become the only route to a project, résumé or contact link.
 

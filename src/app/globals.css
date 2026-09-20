@@ -53,38 +53,22 @@ canvas:focus-visible {
   background: #e0ead9;
   color: #263426;
 }
-.site-header {
-  max-width: 940px;
-  padding: 29px 24px 0;
+.portfolio-shell {
+  display: grid;
+  grid-template-columns: 132px minmax(0, 1fr);
+  gap: 44px;
+  width: min(1200px, 100%);
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  padding: 72px 24px 0;
 }
-.wordmark {
-  font:
-    bold 27px/1 Georgia,
-    serif;
-  text-decoration: none;
-  letter-spacing: -1.6px;
+.portfolio-body {
+  min-width: 0;
 }
-.wordmark span {
-  color: #71866a;
-}
-.site-header nav {
-  display: flex;
-  gap: 27px;
-  font-size: 12px;
-  color: #666d62;
-}
-.site-header nav a {
-  text-decoration: none;
-}
-.site-header nav a:hover {
-  color: #252d22;
-}
-.site-header nav span {
-  margin-left: 4px;
+@media (max-width: 760px) {
+  .portfolio-shell {
+    display: block;
+    padding: 48px 0 0;
+  }
 }
 .portfolio-content {
   width: min(612px, calc(100% - 48px));
@@ -277,13 +261,6 @@ h3.entry-heading {
   margin-right: 20px;
 }
 @media (max-width: 640px) {
-  .site-header {
-    padding: 26px 24px 0;
-  }
-  .site-header nav {
-    gap: 17px;
-    font-size: 11px;
-  }
   .portfolio-content {
     margin-top: 62px;
   }
