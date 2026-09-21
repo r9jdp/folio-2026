@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-21T16:13:59.030192+00:00",
+  "generated_at": "2026-09-21T16:17:29.588741+00:00",
   "scope": "Current source code only; AST extraction",
   "nodes": 92,
   "edges": 95,
@@ -95,7 +95,7 @@
     },
     {
       "path": "src/components/television/doom-runtime.ts",
-      "sha256": "ee21cc48b36cb0c2fe341746ab8b9c413fa349b4edf59be0320f98f8677d5480"
+      "sha256": "706d53c990b04d878e16c3ce5f91cbe4e869467f8353d5745305a5e7b12e3bb3"
     },
     {
       "path": "src/components/television/television-scene.ts",
@@ -103,7 +103,7 @@
     },
     {
       "path": "src/components/television/television.tsx",
-      "sha256": "7f33c6b637cc5ef1ebd723ab7769d44037263541b11af32a579dccd0068b2dfd"
+      "sha256": "bb2568bc5686f21cfbc88b1c4eade2450c2c077f30b6b668c2550be910593baf"
     },
     {
       "path": "src/lib/doom-preparation.ts",

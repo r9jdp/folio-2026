@@ -127,7 +127,7 @@ export default function Television() {
         if (attempt.signal.aborted || disposed) return;
         scene.setFrame(game.canvas);
         scene.setMode('game');
-        transition('ready', 'Doom is ready. Click the screen to play.');
+        transition('ready', 'Nuclear Plant · Enemies nearby. Click the screen to play.');
       } catch (error) {
         if (attempt.signal.aborted || disposed) return;
         runtime?.dispose();
@@ -376,7 +376,7 @@ export default function Television() {
             <kbd>Esc</kbd> Pause / release
           </span>
           <p>
-            DOOM · Shareware episode · Keyboard and mouse required.{' '}
+            DOOM · Nuclear Plant · Normal difficulty · Keyboard and mouse required.{' '}
             <a href="/games/credits.txt" target="_blank" rel="noreferrer">
               Credits
             </a>

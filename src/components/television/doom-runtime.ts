@@ -172,7 +172,7 @@ hdma=5
 @echo off
 mount c .
 c:
-doom.exe -config PORTFO.CFG -warp 1 1 -skill 2
+doom.exe -config PORTFO.CFG -warp 1 2 -skill 3
 exit
 `;
 
@@ -265,7 +265,7 @@ export async function startDoom(
     canvas.width = width;
     canvas.height = height;
     pixels = context.createImageData(width, height);
-    if (width === 320 && height === 200 && !readyDone) report('Opening the first level…');
+    if (width === 320 && height === 200 && !readyDone) report('Opening Nuclear Plant…');
   });
   ci.events().onFrame((rgb, rgba) => {
     if (disposed) return;
