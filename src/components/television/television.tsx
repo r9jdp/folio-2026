@@ -1,52 +1,40 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { Power, Volume2, VolumeX, Maximize2, Pause, Play } from 'lucide-react';
+import { Power, Volume2, VolumeX, Maximize2 } from 'lucide-react';
 import type { TVScene } from './television-scene';
 import type { DoomRuntime } from './doom-runtime';
 import { createGameInput, createMouseLook } from '@/lib/game-controls';
 import styles from './television.module.css';
 
-type Status = 'video' | 'booting' | 'ready' | 'playing' | 'error';
-type Actions = {
-  power: () => void;
-  play: () => void;
-  mute: () => void;
-  toggleVideo: () => void;
-  fullscreen: () => void;
-};
-const videoNotice = 'A little dog TV. Turn the left knob to play Doom.';
+type Status = 'off' | 'booting' | 'ready' | 'playing' | 'error';
+type Actions = { power: () => void; play: () => void; mute: () => void; fullscreen: () => void };
 
 export default function Television() {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const powerRef = useRef<HTMLButtonElement>(null);
   const soundRef = useRef<HTMLButtonElement>(null);
   const screenRef = useRef<HTMLButtonElement>(null);
   const actions = useRef<Actions | null>(null);
-  const [status, setStatus] = useState<Status>('video');
+  const [status, setStatus] = useState<Status>('off');
   const [loaded, setLoaded] = useState(false);
-  const [muted, setMuted] = useState(true);
-  const [videoPaused, setVideoPaused] = useState(false);
-  const [notice, setNotice] = useState(videoNotice);
+  const [muted, setMuted] = useState(false);
+  const [notice, setNotice] = useState('Turn the left knob. There’s a game in here.');
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
-    const video = videoRef.current;
     const power = powerRef.current;
     const sound = soundRef.current;
     const screen = screenRef.current;
-    if (!host || !canvas || !video || !power || !sound || !screen) return;
+    if (!host || !canvas || !power || !sound || !screen) return;
     let scene: TVScene | null = null;
     let runtime: DoomRuntime | null = null;
     let controller: AbortController | null = null;
     let audio: AudioContext | null = null;
-    let state: Status = 'video';
-    // Autoplay starts silently; Doom keeps its audible default until the user chooses mute.
-    let mutePreference: boolean | null = null;
-    let isVideoPaused = false;
+    let state: Status = 'off';
+    let isMuted = false;
     let disposed = false;
     let preloadIdle: number | undefined;
     let preloadTimer: number | undefined;
@@ -95,19 +83,12 @@ export default function Television() {
         void audio.close().catch(() => {});
         audio = null;
       }
-      if (!disposed) {
-        isVideoPaused = false;
-        setVideoPaused(false);
-        setMuted(mutePreference ?? true);
-        scene?.setVideoMuted(mutePreference ?? true);
-        scene?.setVideoPaused(false);
-        scene?.setMode('video');
-        transition('video', videoNotice);
-      }
+      scene?.setMode('off');
+      transition('off', 'Turn the left knob. There’s a game in here.');
     };
     const boot = async () => {
       if (!scene) return;
-      if (state !== 'video' && state !== 'error') {
+      if (state !== 'off' && state !== 'error') {
         shutDown();
         return;
       }
@@ -115,7 +96,6 @@ export default function Television() {
       controller = attempt;
       transition('booting', 'Tuning in… loading Doom.');
       scene.setMode('static');
-      setMuted(mutePreference ?? false);
       const started = performance.now();
       const watchdog = window.setTimeout(() => {
         if (controller !== attempt || disposed) return;
@@ -140,7 +120,7 @@ export default function Television() {
           return;
         }
         runtime = game;
-        game.setMuted(mutePreference ?? false);
+        game.setMuted(isMuted);
         await game.ready;
         const remaining = Math.max(0, 1500 - (performance.now() - started));
         if (remaining) await new Promise((resolve) => window.setTimeout(resolve, remaining));
@@ -156,9 +136,7 @@ export default function Television() {
           void audio.close().catch(() => {});
           audio = null;
         }
-        scene?.setVideoMuted(mutePreference ?? true);
-        scene?.setMode('video');
-        setMuted(mutePreference ?? true);
+        scene?.setMode('off');
         transition(
           'error',
           error instanceof Error
@@ -246,17 +224,9 @@ export default function Television() {
       },
       play,
       mute: () => {
-        const showingVideo = state === 'video' || state === 'error';
-        mutePreference = !(mutePreference ?? showingVideo);
-        setMuted(mutePreference);
-        scene?.setVideoMuted(mutePreference);
-        runtime?.setMuted(mutePreference);
-      },
-      toggleVideo: () => {
-        isVideoPaused = !isVideoPaused;
-        setVideoPaused(isVideoPaused);
-        scene?.setVideoPaused(isVideoPaused);
-        if (state === 'video') setNotice(videoNotice);
+        isMuted = !isMuted;
+        setMuted(isMuted);
+        runtime?.setMuted(isMuted);
       },
       fullscreen: () => {
         pause();
@@ -292,16 +262,6 @@ export default function Television() {
               }
             },
             fail,
-            {
-              video,
-              onBlocked: () => {
-                if (disposed) return;
-                isVideoPaused = true;
-                setVideoPaused(true);
-                if (state === 'video')
-                  setNotice('Press Play video, or turn the left knob to play Doom.');
-              },
-            },
           );
         } catch {
           fail();
@@ -322,7 +282,6 @@ export default function Television() {
       if (preloadIdle !== undefined) window.cancelIdleCallback(preloadIdle);
       if (preloadTimer !== undefined) window.clearTimeout(preloadTimer);
       shutDown();
-      video.pause();
       actions.current = null;
       scene?.dispose();
       document.removeEventListener('pointerlockchange', locked);
@@ -341,26 +300,10 @@ export default function Television() {
   return (
     <section
       className={styles.hero}
-      aria-label="Watch my dog or play Doom on a vintage television"
+      aria-label="Play Doom on a vintage television"
       data-state={status}
     >
       <div className={styles.stage} ref={hostRef} tabIndex={-1} aria-label="Doom game controls">
-        <video
-          ref={videoRef}
-          className={styles.videoSource}
-          src="/videos/doggy.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
-          tabIndex={-1}
-          onError={() => {
-            if (status === 'video')
-              setNotice('The video couldn’t load. Turn the left knob to play Doom.');
-          }}
-        />
         <canvas className={styles.canvas} ref={canvasRef} aria-hidden="true" />
         {!loaded && status !== 'error' && <p className={styles.loading}>Loading TV…</p>}
         <button
@@ -368,9 +311,9 @@ export default function Television() {
           className={styles.knob}
           disabled={!loaded}
           onClick={() => actions.current?.power()}
-          aria-label={powered ? 'Return to dog video' : 'Start Doom'}
+          aria-label={powered ? 'Turn TV off' : 'Turn TV on'}
           aria-pressed={powered}
-          title={powered ? 'Return to dog video' : 'Start Doom'}
+          title={powered ? 'Power off' : 'Power on'}
         >
           <span className={styles.knobHint}>
             <Power size={12} /> Power
@@ -403,12 +346,6 @@ export default function Television() {
         <p role="status" aria-live="polite">
           {notice}
         </p>
-        {loaded && !powered && (
-          <button onClick={() => actions.current?.toggleVideo()} className={styles.expand}>
-            {videoPaused ? <Play size={13} /> : <Pause size={13} />}
-            {videoPaused ? 'Play video' : 'Pause video'}
-          </button>
-        )}
         {powered && (
           <button onClick={() => actions.current?.fullscreen()} className={styles.expand}>
             <Maximize2 size={13} /> Fullscreen

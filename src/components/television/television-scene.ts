@@ -1,13 +1,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-export type ScreenMode = 'video' | 'static' | 'game';
+export type ScreenMode = 'off' | 'static' | 'game';
 export type TVScene = {
   setMode: (mode: ScreenMode) => void;
   setFrame: (frame: HTMLCanvasElement) => void;
   setPlaying: (playing: boolean) => void;
-  setVideoPaused: (paused: boolean) => void;
-  setVideoMuted: (muted: boolean) => void;
   dispose: () => void;
 };
 
@@ -18,7 +16,6 @@ export function createTVScene(
   controls: { power: HTMLButtonElement; sound: HTMLButtonElement; screen: HTMLButtonElement },
   onReady: () => void,
   onFailure: () => void,
-  media: { video: HTMLVideoElement; onBlocked: () => void },
 ): TVScene {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
@@ -53,10 +50,7 @@ export function createTVScene(
   noiseCanvas.height = 180;
   const noiseContext = noiseCanvas.getContext('2d')!;
   const noise = noiseContext.createImageData(240, 180);
-  let mode: ScreenMode = 'video';
-  let videoPaused = false;
-  let videoPlayPending = false;
-  let lastVideoTime = -1;
+  let mode: ScreenMode = 'off';
   let gameFrame: HTMLCanvasElement | null = null;
   let model: THREE.Group | null = null;
   let screen: THREE.Mesh | null = null;
@@ -73,29 +67,6 @@ export function createTVScene(
   const textures = new Set<THREE.Texture>();
   const materials = new Set<THREE.Material>();
   const geometries = new Set<THREE.BufferGeometry>();
-  const video = media.video;
-  const shouldPlayVideo = () =>
-    !destroyed && mode === 'video' && !videoPaused && inView && !document.hidden;
-  function syncVideo() {
-    if (!shouldPlayVideo()) {
-      video.pause();
-      return;
-    }
-    if (!video.paused || videoPlayPending) return;
-    videoPlayPending = true;
-    void video
-      .play()
-      .catch((error: unknown) => {
-        if (!shouldPlayVideo() || (error instanceof DOMException && error.name === 'AbortError'))
-          return;
-        videoPaused = true;
-        media.onBlocked();
-      })
-      .finally(() => {
-        videoPlayPending = false;
-        if (shouldPlayVideo() && video.paused) syncVideo();
-      });
-  }
   function disposeModel(object: THREE.Object3D) {
     object.traverse((node) => {
       if (!(node instanceof THREE.Mesh)) return;
@@ -117,19 +88,7 @@ export function createTVScene(
     button.style.top = `${(-point.y * 0.5 + 0.5) * host.clientHeight}px`;
   }
   function paint(time: number) {
-    if (mode === 'video' && video.readyState >= 2) {
-      if (video.currentTime === lastVideoTime) return;
-      lastVideoTime = video.currentTime;
-      const scale = Math.min(640 / video.videoWidth, 480 / video.videoHeight);
-      const width = video.videoWidth * scale;
-      const height = video.videoHeight * scale;
-      context.imageSmoothingEnabled = true;
-      context.fillStyle = '#0b0b0b';
-      context.fillRect(0, 0, 640, 480);
-      context.drawImage(video, (640 - width) / 2, (480 - height) / 2, width, height);
-      context.fillStyle = 'rgba(0,0,0,.05)';
-      for (let y = 0; y < 480; y += 3) context.fillRect(0, y, 640, 1);
-    } else if (mode === 'game' && gameFrame) {
+    if (mode === 'game' && gameFrame) {
       context.imageSmoothingEnabled = false;
       context.drawImage(gameFrame, 0, 0, 640, 480);
       context.fillStyle = 'rgba(0,0,0,.07)';
@@ -171,11 +130,7 @@ export function createTVScene(
     placeControl(controls.sound, new THREE.Vector3(232, 14, 85));
     placeControl(controls.screen, new THREE.Vector3(5, 31, 302));
     renderer.render(scene, camera);
-    if (
-      mode !== 'video' ||
-      (!video.paused && !video.ended) ||
-      Math.abs(yaw - targetX) + Math.abs(pitch - targetY) > 0.00001
-    ) {
+    if (mode !== 'off' || Math.abs(yaw - targetX) + Math.abs(pitch - targetY) > 0.00001) {
       animation = requestAnimationFrame(draw);
     }
   }
@@ -204,20 +159,12 @@ export function createTVScene(
   observer.observe(host);
   const intersection = new IntersectionObserver(([entry]) => {
     inView = entry.isIntersecting;
-    syncVideo();
     invalidate();
   });
   intersection.observe(host);
   host.addEventListener('pointermove', move);
   host.addEventListener('pointerleave', leave);
-  const visibility = () => {
-    syncVideo();
-    invalidate();
-  };
-  document.addEventListener('visibilitychange', visibility);
-  video.addEventListener('loadeddata', invalidate);
-  video.addEventListener('playing', invalidate);
-  video.addEventListener('seeked', invalidate);
+  document.addEventListener('visibilitychange', invalidate);
   preference.addEventListener('change', invalidate);
   const lost = (event: Event) => {
     event.preventDefault();
@@ -274,8 +221,6 @@ export function createTVScene(
   return {
     setMode(value) {
       mode = value;
-      lastVideoTime = -1;
-      syncVideo();
       invalidate();
     },
     setFrame(value) {
@@ -286,27 +231,14 @@ export function createTVScene(
       playing = value;
       invalidate();
     },
-    setVideoPaused(value) {
-      videoPaused = value;
-      syncVideo();
-      invalidate();
-    },
-    setVideoMuted(value) {
-      video.muted = value;
-      syncVideo();
-    },
     dispose() {
       destroyed = true;
-      video.pause();
       cancelAnimationFrame(animation);
       observer.disconnect();
       intersection.disconnect();
       host.removeEventListener('pointermove', move);
       host.removeEventListener('pointerleave', leave);
-      document.removeEventListener('visibilitychange', visibility);
-      video.removeEventListener('loadeddata', invalidate);
-      video.removeEventListener('playing', invalidate);
-      video.removeEventListener('seeked', invalidate);
+      document.removeEventListener('visibilitychange', invalidate);
       preference.removeEventListener('change', invalidate);
       canvas.removeEventListener('webglcontextlost', lost);
       if (model) disposeModel(model);
