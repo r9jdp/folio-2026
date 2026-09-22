@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-22T18:50:46.806508+00:00",
+  "generated_at": "2026-09-22T19:40:50.593939+00:00",
   "scope": "Current source code only; AST extraction",
   "nodes": 92,
   "edges": 96,
@@ -43,7 +43,7 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "sha256": "0fb6646bcbe577132af59cddda00e8c7b8007dfab26f244a40a259601e9a80ec"
+      "sha256": "dc1b55f9987e3dcc5764ae248cf9107b4d0ac8b9cb45f76be71a096f663a40a5"
     },
     {
       "path": "src/app/not-found.tsx",
