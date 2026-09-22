@@ -20,7 +20,7 @@ const milnrProducts: Product[] = [
   {
     name: 'Meetly',
     category: 'Event networking',
-    href: 'https://mymeetly.xyz',
+    href: 'https://meetly-woad-two.vercel.app/',
     description:
       'I built an AI-powered event networking platform that matches attendees in real time and uses Wi-Fi fingerprinting and directional navigation to help them find each other inside a venue. First deployed at Draper Startup House.',
     note: 'Built in 3 days · 800+ users in 2 weeks · Sold to a startup house.',
