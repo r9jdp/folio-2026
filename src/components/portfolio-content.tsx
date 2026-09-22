@@ -54,25 +54,35 @@ const experience = [
 
 const achievements = [
   {
-    title: 'Top 6 · OpenAI Codex Hackathon',
+    recognition: 'Top 6',
+    name: 'OpenAI',
+    suffix: ' Codex Hackathon',
+    href: 'https://openai.com/',
     description:
       'Built a multi-agent system in VS Code with parallel Codex execution and isolated Git worktrees, in under six hours.',
   },
   {
-    title: 'Winner · Paytm AI Hackathon',
+    recognition: 'Winner',
+    name: 'Paytm',
+    suffix: ' AI Hackathon',
+    href: 'https://paytm.com/',
     description: 'Hosted in Mumbai with Sarvam AI, Logitech, and HackCulture.',
   },
   {
-    title: 'Silver · Unstoppable Hackathon',
+    recognition: 'Honorable Mention',
+    name: 'Unstoppable Hackathon',
+    href: 'https://hackathon.stability.nexus/',
     description:
       'Shipped fixes in live blockchain repositories during the 33-hour open-source track.',
   },
   {
-    title: 'First runner-up · Fynd Hacktimus',
+    recognition: 'First runner-up',
+    name: 'Fynd Hacktimus',
     description: 'Built an AI pricing system using XGBoost and automated strategy generation.',
   },
   {
-    title: 'Top 100 · ZS Campus Beats',
+    recognition: 'Top 100',
+    name: 'ZS Campus Beats',
     description: 'Selected among the top 100 teams nationwide.',
   },
 ] as const;
@@ -206,8 +216,18 @@ export default function PortfolioContent() {
         </h2>
         <ul className="achievement-list">
           {achievements.map((achievement) => (
-            <li key={achievement.title}>
-              <h3>{achievement.title}</h3>
+            <li key={achievement.name}>
+              <h3>
+                {achievement.recognition} ·{' '}
+                {'href' in achievement ? (
+                  <a href={achievement.href} target="_blank" rel="noreferrer">
+                    {achievement.name}
+                  </a>
+                ) : (
+                  achievement.name
+                )}
+                {'suffix' in achievement && achievement.suffix}
+              </h3>
               <p className="entry-copy">{achievement.description}</p>
             </li>
           ))}

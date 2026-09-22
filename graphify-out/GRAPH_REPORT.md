@@ -4,7 +4,7 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-21T16:17:29.588741+00:00
+Generated: 2026-09-21T18:41:14.636234+00:00
 
 - 92 nodes · 95 directed edges · 27 communities
 - 29 current code files; repository-relative source paths with SHA-256 fingerprints
