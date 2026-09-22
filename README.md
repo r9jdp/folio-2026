@@ -1,4 +1,4 @@
-# Rajdeep Pandey — portfolio
+# Rajdeep Pandey portfolio
 
 A quiet, white portfolio with a playable vintage television above straightforward writing about Rajdeep's work. A supplied pixel-art landscape loops on its curved glass. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode.
 
