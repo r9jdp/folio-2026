@@ -1,6 +1,6 @@
 # Rajdeep Pandey — portfolio
 
-A quiet, white portfolio with a playable vintage television above straightforward writing about Rajdeep's work. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode on its curved glass.
+A quiet, white portfolio with a playable vintage television above straightforward writing about Rajdeep's work. A supplied pixel-art landscape loops on its curved glass. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode.
 
 ## Development
 
@@ -17,7 +17,7 @@ Open [127.0.0.1:3013](http://127.0.0.1:3013). Installation copies the selected C
 
 ## Playing the TV
 
-The left knob powers on/off; the right knob toggles sound. After a short static sequence, click the screen to start. The game stays paused until that click. Power-off discards the current session; this version does not save progress.
+The TV starts with a silent, looping landscape video. The left knob switches into Doom and back to the video; the right knob toggles Doom sound. After a short static sequence, click the screen to start. The game stays paused until that click. Returning to the video discards the current game session; this version does not save progress. A small control below the TV pauses or resumes the video. Reduced-motion visitors start with a still frame and can choose to play it.
 
 | Input | Action |
 | --- | --- |
@@ -34,7 +34,7 @@ Desktop browsers use pointer lock. If an embedded browser refuses capture, the g
 
 ## TV implementation
 
-`television-scene.ts` loads the same CC0 Belweder OT-1782 cabinet from [CrazyGL](https://crazygl.com/hero/vhs-product-screen), retaining the approved framing. A canvas texture maps static and the live 320×200 Doom framebuffer onto the curved screen at a 4:3 display aspect. Accessible HTML buttons track the two physical knobs. Parallax freezes during play and respects reduced motion; offscreen rendering sleeps.
+`television-scene.ts` loads the same CC0 Belweder OT-1782 cabinet from [CrazyGL](https://crazygl.com/hero/vhs-product-screen), retaining the approved framing. A canvas texture maps ambient video, static and the live 320×200 Doom framebuffer onto the curved screen at a 4:3 display aspect. The 205 KB MP4 is served locally, cover-cropped without stretching, with a matching WebP poster and subtle scanlines. Accessible HTML buttons track the two physical knobs. Parallax freezes during play and respects reduced motion. Video playback and rendering pause offscreen and in hidden tabs; a manual video pause survives channel changes.
 
 `doom-runtime.ts` starts the pinned `emulators@8.4.2` DOSBox worker only after power-on. It verifies the original shareware archive's SHA-256, unpacks the complete distribution into browser memory and boots E1M2 (Nuclear Plant) on normal difficulty with a WASD configuration. This provides 41 enemies, including guards near the starting area, instead of the previous E1M1 easy start with only four enemies. This is the original single-player campaign against AI enemies; it does not connect to multiplayer opponents. Web Audio starts from the user's interaction; mute, pause and shutdown stop queued audio. Power-off cancels startup and disposes the game worker. Slow or failed startup offers a retry.
 

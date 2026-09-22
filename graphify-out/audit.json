@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-21T18:41:14.636234+00:00",
+  "generated_at": "2026-09-22T18:50:46.806508+00:00",
   "scope": "Current source code only; AST extraction",
   "nodes": 92,
-  "edges": 95,
+  "edges": 96,
   "communities": 27,
   "code_files": 29,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 89,
+    "EXTRACTED": 90,
     "INFERRED": 6
   },
   "source_files": [
@@ -83,7 +83,7 @@
     },
     {
       "path": "src/components/portfolio-content.tsx",
-      "sha256": "ebf1ceed134d7a54a603ef081bf58f702d7c42216a20615393151dbad41783d9"
+      "sha256": "7fc99c3b52c04bfcacdb2f27e4070a92afa3a16872b42d11afb5283583b885b1"
     },
     {
       "path": "src/components/portrait-name.tsx",
@@ -99,11 +99,11 @@
     },
     {
       "path": "src/components/television/television-scene.ts",
-      "sha256": "e41809c4f863680b3dab08832505a33cc3034870edc7d09654c8efa96100219a"
+      "sha256": "a40d3d956dd04026f6c9f1f34036d3fd3d3a7957f9710864f738baf0cacc44e0"
     },
     {
       "path": "src/components/television/television.tsx",
-      "sha256": "bb2568bc5686f21cfbc88b1c4eade2450c2c077f30b6b668c2550be910593baf"
+      "sha256": "9c920c5ee095837275d1f424f048dbfa04087020c5187aab88868b0d484b662f"
     },
     {
       "path": "src/lib/doom-preparation.ts",

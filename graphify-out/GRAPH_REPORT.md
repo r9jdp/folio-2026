@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-21T18:41:14.636234+00:00
+Generated: 2026-09-22T18:50:46.806508+00:00
 
-- 92 nodes · 95 directed edges · 27 communities
+- 92 nodes · 96 directed edges · 27 communities
 - 29 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 89, INFERRED: 6
+- Edge confidence: EXTRACTED: 90, INFERRED: 6
 
 ## Source navigation
 
@@ -48,25 +48,25 @@ Generated: 2026-09-21T18:41:14.636234+00:00
 
 ### 0: television.tsx
 
-17 nodes · edge density 0.21
+17 nodes · edge density 0.22
 
 - `television.tsx` — src/components/television/television.tsx L1
-- `boot()` — src/components/television/television.tsx L89
-- `fail()` — src/components/television/television.tsx L241
-- `keyDown()` — src/components/television/television.tsx L179
-- `keyUp()` — src/components/television/television.tsx L187
-- `locked()` — src/components/television/television.tsx L171
-- `mouseDown()` — src/components/television/television.tsx L202
-- `mouseLeave()` — src/components/television/television.tsx L199
-- `mouseMove()` — src/components/television/television.tsx L190
-- `mouseUp()` — src/components/television/television.tsx L217
-- `pause()` — src/components/television/television.tsx L66
-- `play()` — src/components/television/television.tsx L150
-- `preload()` — src/components/television/television.tsx L41
-- `releaseKeys()` — src/components/television/television.tsx L63
-- `shutDown()` — src/components/television/television.tsx L76
-- `transition()` — src/components/television/television.tsx L56
-- `visibility()` — src/components/television/television.tsx L218
+- `boot()` — src/components/television/television.tsx L93
+- `fail()` — src/components/television/television.tsx L245
+- `keyDown()` — src/components/television/television.tsx L183
+- `keyUp()` — src/components/television/television.tsx L191
+- `locked()` — src/components/television/television.tsx L175
+- `mouseDown()` — src/components/television/television.tsx L206
+- `mouseLeave()` — src/components/television/television.tsx L203
+- `mouseMove()` — src/components/television/television.tsx L194
+- `mouseUp()` — src/components/television/television.tsx L221
+- `pause()` — src/components/television/television.tsx L70
+- `play()` — src/components/television/television.tsx L154
+- `preload()` — src/components/television/television.tsx L45
+- `releaseKeys()` — src/components/television/television.tsx L67
+- `shutDown()` — src/components/television/television.tsx L80
+- `transition()` — src/components/television/television.tsx L60
+- `visibility()` — src/components/television/television.tsx L222
 
 ### 1: monitor.tsx
 
@@ -216,7 +216,7 @@ Generated: 2026-09-21T18:41:14.636234+00:00
 2 nodes · edge density 1.00
 
 - `television-scene.ts` — src/components/television/television-scene.ts L1
-- `createTVScene()` — src/components/television/television-scene.ts L13
+- `createTVScene()` — src/components/television/television-scene.ts L14
 
 ### 18: doom-preparation.test.ts
 

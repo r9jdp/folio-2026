@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
-export type ScreenMode = 'off' | 'static' | 'game';
+export type ScreenMode = 'ambient' | 'static' | 'game';
 export type TVScene = {
   setMode: (mode: ScreenMode) => void;
   setFrame: (frame: HTMLCanvasElement) => void;
   setPlaying: (playing: boolean) => void;
+  setVideoPaused: (paused: boolean) => void;
   dispose: () => void;
 };
 
@@ -14,6 +15,7 @@ export function createTVScene(
   host: HTMLElement,
   canvas: HTMLCanvasElement,
   controls: { power: HTMLButtonElement; sound: HTMLButtonElement; screen: HTMLButtonElement },
+  media: { video: HTMLVideoElement; onPaused: (paused: boolean) => void },
   onReady: () => void,
   onFailure: () => void,
 ): TVScene {
@@ -50,7 +52,7 @@ export function createTVScene(
   noiseCanvas.height = 180;
   const noiseContext = noiseCanvas.getContext('2d')!;
   const noise = noiseContext.createImageData(240, 180);
-  let mode: ScreenMode = 'off';
+  let mode: ScreenMode = 'ambient';
   let gameFrame: HTMLCanvasElement | null = null;
   let model: THREE.Group | null = null;
   let screen: THREE.Mesh | null = null;
@@ -64,6 +66,68 @@ export function createTVScene(
   let yaw = 0;
   let pitch = 0;
   const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const { video } = media;
+  const poster = new Image();
+  let videoPaused = preference.matches;
+  let playPending = false;
+  let videoFailed = false;
+  video.muted = true;
+  media.onPaused(videoPaused);
+  const wantsVideo = () =>
+    !destroyed && mode === 'ambient' && !videoPaused && inView && !document.hidden;
+  function syncVideo() {
+    if (!wantsVideo()) {
+      video.pause();
+      return;
+    }
+    if (playPending || !video.paused || videoFailed) return;
+    playPending = true;
+    void video
+      .play()
+      .then(() => {
+        // A knob click or unmount can overtake a pending autoplay request.
+        if (!wantsVideo()) video.pause();
+        invalidate();
+      })
+      .catch((error: unknown) => {
+        if (!wantsVideo() || (error instanceof DOMException && error.name === 'AbortError')) return;
+        videoPaused = true;
+        media.onPaused(true);
+        invalidate();
+      })
+      .finally(() => {
+        playPending = false;
+        // Retry an interrupted play only when playback is still wanted.
+        if (wantsVideo() && video.paused && !videoFailed) syncVideo();
+      });
+  }
+  const mediaReady = () => {
+    syncVideo();
+    invalidate();
+  };
+  const mediaFailed = () => {
+    videoFailed = true;
+    videoPaused = true;
+    video.pause();
+    if (!destroyed) media.onPaused(true);
+    invalidate();
+  };
+  const visibilityChanged = () => {
+    syncVideo();
+    invalidate();
+  };
+  const motionChanged = () => {
+    if (preference.matches) {
+      videoPaused = true;
+      media.onPaused(true);
+    }
+    visibilityChanged();
+  };
+  poster.onload = invalidate;
+  poster.src = video.poster;
+  video.addEventListener('loadeddata', mediaReady);
+  video.addEventListener('seeked', mediaReady);
+  video.addEventListener('error', mediaFailed);
   const textures = new Set<THREE.Texture>();
   const materials = new Set<THREE.Material>();
   const geometries = new Set<THREE.BufferGeometry>();
@@ -88,7 +152,29 @@ export function createTVScene(
     button.style.top = `${(-point.y * 0.5 + 0.5) * host.clientHeight}px`;
   }
   function paint(time: number) {
-    if (mode === 'game' && gameFrame) {
+    if (mode === 'ambient') {
+      const source = video.readyState >= 2 ? video : poster;
+      const width = source === video ? video.videoWidth : poster.naturalWidth;
+      const height = source === video ? video.videoHeight : poster.naturalHeight;
+      if (!width || !height) return;
+      // Fill the curved 4:3 glass; favor the laptop and tree in this wide clip.
+      const cropWidth = Math.min(width, height * (4 / 3));
+      const cropHeight = Math.min(height, width * (3 / 4));
+      context.imageSmoothingEnabled = false;
+      context.drawImage(
+        source,
+        (width - cropWidth) * 0.65,
+        (height - cropHeight) * 0.5,
+        cropWidth,
+        cropHeight,
+        0,
+        0,
+        640,
+        480,
+      );
+      context.fillStyle = 'rgba(0,0,0,.045)';
+      for (let y = 0; y < 480; y += 3) context.fillRect(0, y, 640, 1);
+    } else if (mode === 'game' && gameFrame) {
       context.imageSmoothingEnabled = false;
       context.drawImage(gameFrame, 0, 0, 640, 480);
       context.fillStyle = 'rgba(0,0,0,.07)';
@@ -130,7 +216,12 @@ export function createTVScene(
     placeControl(controls.sound, new THREE.Vector3(232, 14, 85));
     placeControl(controls.screen, new THREE.Vector3(5, 31, 302));
     renderer.render(scene, camera);
-    if (mode !== 'off' || Math.abs(yaw - targetX) + Math.abs(pitch - targetY) > 0.00001) {
+    if (
+      mode === 'static' ||
+      mode === 'game' ||
+      (wantsVideo() && !video.paused) ||
+      Math.abs(yaw - targetX) + Math.abs(pitch - targetY) > 0.00001
+    ) {
       animation = requestAnimationFrame(draw);
     }
   }
@@ -159,13 +250,13 @@ export function createTVScene(
   observer.observe(host);
   const intersection = new IntersectionObserver(([entry]) => {
     inView = entry.isIntersecting;
-    invalidate();
+    visibilityChanged();
   });
   intersection.observe(host);
   host.addEventListener('pointermove', move);
   host.addEventListener('pointerleave', leave);
-  document.addEventListener('visibilitychange', invalidate);
-  preference.addEventListener('change', invalidate);
+  document.addEventListener('visibilitychange', visibilityChanged);
+  preference.addEventListener('change', motionChanged);
   const lost = (event: Event) => {
     event.preventDefault();
     onFailure();
@@ -212,6 +303,7 @@ export function createTVScene(
       glass.material = screenMaterial;
       cabinet.add(model);
       resize();
+      syncVideo();
       onReady();
     },
     undefined,
@@ -221,6 +313,7 @@ export function createTVScene(
   return {
     setMode(value) {
       mode = value;
+      syncVideo();
       invalidate();
     },
     setFrame(value) {
@@ -231,15 +324,30 @@ export function createTVScene(
       playing = value;
       invalidate();
     },
+    setVideoPaused(value) {
+      videoPaused = value;
+      media.onPaused(value);
+      if (!value && videoFailed) {
+        videoFailed = false;
+        video.load();
+      }
+      syncVideo();
+      invalidate();
+    },
     dispose() {
       destroyed = true;
+      video.pause();
+      poster.onload = null;
+      video.removeEventListener('loadeddata', mediaReady);
+      video.removeEventListener('seeked', mediaReady);
+      video.removeEventListener('error', mediaFailed);
       cancelAnimationFrame(animation);
       observer.disconnect();
       intersection.disconnect();
       host.removeEventListener('pointermove', move);
       host.removeEventListener('pointerleave', leave);
-      document.removeEventListener('visibilitychange', invalidate);
-      preference.removeEventListener('change', invalidate);
+      document.removeEventListener('visibilitychange', visibilityChanged);
+      preference.removeEventListener('change', motionChanged);
       canvas.removeEventListener('webglcontextlost', lost);
       if (model) disposeModel(model);
       texture.dispose();

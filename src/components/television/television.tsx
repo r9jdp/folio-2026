@@ -7,33 +7,37 @@ import type { DoomRuntime } from './doom-runtime';
 import { createGameInput, createMouseLook } from '@/lib/game-controls';
 import styles from './television.module.css';
 
-type Status = 'off' | 'booting' | 'ready' | 'playing' | 'error';
+type Status = 'ambient' | 'booting' | 'ready' | 'playing' | 'error';
 type Actions = { power: () => void; play: () => void; mute: () => void; fullscreen: () => void };
 
 export default function Television() {
   const hostRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sceneRef = useRef<TVScene | null>(null);
   const powerRef = useRef<HTMLButtonElement>(null);
   const soundRef = useRef<HTMLButtonElement>(null);
   const screenRef = useRef<HTMLButtonElement>(null);
   const actions = useRef<Actions | null>(null);
-  const [status, setStatus] = useState<Status>('off');
+  const [status, setStatus] = useState<Status>('ambient');
+  const [videoPaused, setVideoPaused] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [muted, setMuted] = useState(false);
-  const [notice, setNotice] = useState('Turn the left knob. There’s a game in here.');
+  const [notice, setNotice] = useState('Turn the left knob.');
 
   useEffect(() => {
     const host = hostRef.current;
     const canvas = canvasRef.current;
+    const video = videoRef.current;
     const power = powerRef.current;
     const sound = soundRef.current;
     const screen = screenRef.current;
-    if (!host || !canvas || !power || !sound || !screen) return;
+    if (!host || !canvas || !video || !power || !sound || !screen) return;
     let scene: TVScene | null = null;
     let runtime: DoomRuntime | null = null;
     let controller: AbortController | null = null;
     let audio: AudioContext | null = null;
-    let state: Status = 'off';
+    let state: Status = 'ambient';
     let isMuted = false;
     let disposed = false;
     let preloadIdle: number | undefined;
@@ -83,12 +87,12 @@ export default function Television() {
         void audio.close().catch(() => {});
         audio = null;
       }
-      scene?.setMode('off');
-      transition('off', 'Turn the left knob. There’s a game in here.');
+      if (!disposed) scene?.setMode('ambient');
+      transition('ambient', 'Turn the left knob.');
     };
     const boot = async () => {
       if (!scene) return;
-      if (state !== 'off' && state !== 'error') {
+      if (state !== 'ambient' && state !== 'error') {
         shutDown();
         return;
       }
@@ -136,7 +140,7 @@ export default function Television() {
           void audio.close().catch(() => {});
           audio = null;
         }
-        scene?.setMode('off');
+        scene?.setMode('ambient');
         transition(
           'error',
           error instanceof Error
@@ -239,11 +243,14 @@ export default function Television() {
       },
     };
     const fail = () => {
+      if (disposed) return;
+      scene?.dispose();
+      scene = null;
+      sceneRef.current = null;
+      video.pause();
       shutDown();
-      if (!disposed) {
-        setLoaded(false);
-        transition('error', 'The 3D TV could not load. Your portfolio is available below.');
-      }
+      setLoaded(false);
+      transition('error', 'The 3D TV could not load. Your portfolio is available below.');
     };
     void import('./television-scene')
       .then(({ createTVScene }) => {
@@ -253,6 +260,12 @@ export default function Television() {
             host,
             canvas,
             { power, sound, screen },
+            {
+              video,
+              onPaused: (value) => {
+                if (!disposed) setVideoPaused(value);
+              },
+            },
             () => {
               if (!disposed) {
                 setLoaded(true);
@@ -263,6 +276,7 @@ export default function Television() {
             },
             fail,
           );
+          sceneRef.current = scene;
         } catch {
           fail();
         }
@@ -284,6 +298,7 @@ export default function Television() {
       shutDown();
       actions.current = null;
       scene?.dispose();
+      sceneRef.current = null;
       document.removeEventListener('pointerlockchange', locked);
       document.removeEventListener('keydown', keyDown);
       document.removeEventListener('keyup', keyUp);
@@ -300,10 +315,22 @@ export default function Television() {
   return (
     <section
       className={styles.hero}
-      aria-label="Play Doom on a vintage television"
+      aria-label="Ambient video and Doom on a vintage television"
       data-state={status}
     >
       <div className={styles.stage} ref={hostRef} tabIndex={-1} aria-label="Doom game controls">
+        <video
+          ref={videoRef}
+          className={styles.videoSource}
+          src="/videos/cofounder-2-hero.mp4"
+          poster="/videos/cofounder-2-hero.webp"
+          preload="auto"
+          loop
+          muted
+          playsInline
+          aria-hidden="true"
+          tabIndex={-1}
+        />
         <canvas className={styles.canvas} ref={canvasRef} aria-hidden="true" />
         {!loaded && status !== 'error' && <p className={styles.loading}>Loading TV…</p>}
         <button
@@ -311,12 +338,12 @@ export default function Television() {
           className={styles.knob}
           disabled={!loaded}
           onClick={() => actions.current?.power()}
-          aria-label={powered ? 'Turn TV off' : 'Turn TV on'}
+          aria-label={powered ? 'Return to video' : 'Start Doom'}
           aria-pressed={powered}
-          title={powered ? 'Power off' : 'Power on'}
+          title={powered ? 'Return to video' : 'Start Doom'}
         >
           <span className={styles.knobHint}>
-            <Power size={12} /> Power
+            <Power size={12} /> {powered ? 'Video' : 'Doom'}
           </span>
         </button>
         <button
@@ -324,9 +351,9 @@ export default function Television() {
           className={styles.knob}
           disabled={!loaded}
           onClick={() => actions.current?.mute()}
-          aria-label={muted ? 'Unmute TV' : 'Mute TV'}
+          aria-label={muted ? 'Unmute Doom' : 'Mute Doom'}
           aria-pressed={muted}
-          title={muted ? 'Unmute' : 'Mute'}
+          title={muted ? 'Unmute Doom' : 'Mute Doom'}
         >
           <span className={styles.knobHint}>
             {muted ? <VolumeX size={12} /> : <Volume2 size={12} />} Sound
@@ -346,6 +373,14 @@ export default function Television() {
         <p role="status" aria-live="polite">
           {notice}
         </p>
+        {!powered && loaded && (
+          <button
+            onClick={() => sceneRef.current?.setVideoPaused(!videoPaused)}
+            className={styles.expand}
+          >
+            {videoPaused ? 'Play video' : 'Pause video'}
+          </button>
+        )}
         {powered && (
           <button onClick={() => actions.current?.fullscreen()} className={styles.expand}>
             <Maximize2 size={13} /> Fullscreen
@@ -375,12 +410,6 @@ export default function Television() {
           <span>
             <kbd>Esc</kbd> Pause / release
           </span>
-          <p>
-            DOOM · Nuclear Plant · Normal difficulty · Keyboard and mouse required.{' '}
-            <a href="/games/credits.txt" target="_blank" rel="noreferrer">
-              Credits
-            </a>
-          </p>
         </div>
       )}
     </section>
