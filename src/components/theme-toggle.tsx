@@ -7,13 +7,13 @@ import styles from './theme-toggle.module.css';
 
 const themeEvent = 'folio-theme-change';
 const readTheme = (): Theme =>
-  document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light';
-const serverTheme = (): Theme => 'light';
+  document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+const serverTheme = (): Theme => 'dark';
 
 function subscribeTheme(onChange: () => void) {
   const storageChanged = (event: StorageEvent) => {
     if (event.key !== THEME_STORAGE_KEY && event.key !== null) return;
-    document.documentElement.dataset.theme = event.newValue === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = event.newValue === 'light' ? 'light' : 'dark';
     onChange();
   };
   window.addEventListener(themeEvent, onChange);

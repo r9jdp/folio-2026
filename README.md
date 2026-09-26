@@ -1,8 +1,8 @@
 # Rajdeep Pandey portfolio
 
-A quiet, white portfolio with a playable vintage television above straightforward writing about Rajdeep's work. A supplied pixel-art landscape loops on its curved glass. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode.
+A quiet portfolio with dark and light themes and a playable vintage television above straightforward writing about Rajdeep's work. A supplied pixel-art landscape loops on its curved glass. Turn the Belweder TV's left knob to see analog snow, then play the original Doom shareware episode.
 
-The navigation includes a dark mode toggle inspired by [Vatsal's portfolio](https://www.bevatsal.me/). The new theme expands from the button in a circular reveal, matching its 700 ms timing and easing. Light remains the first-visit default; the chosen theme persists across reloads. Reduced-motion visitors and keyboard activation switch immediately.
+The navigation includes a dark mode toggle inspired by [Vatsal's portfolio](https://www.bevatsal.me/). The new theme expands from the button in a circular reveal, matching its 700 ms timing and easing. Dark is the first-visit default; an explicitly chosen light theme persists across reloads. Reduced-motion visitors and keyboard activation switch immediately.
 
 ## Development
 

@@ -2,7 +2,7 @@
 
 ## Page structure
 
-Keep the page white by default, with an optional dark palette, a restrained type scale, generous spacing and normal document scrolling. A sticky left column of text links leads to the written sections, with the current section emphasized in bold text. On narrow screens, a small menu button opens the same vertical links. There is no monogram or horizontal header. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
+Keep the page dark by default, with an optional light palette, a restrained type scale, generous spacing and normal document scrolling. A sticky left column of text links leads to the written sections, with the current section emphasized in bold text. On narrow screens, a small menu button opens the same vertical links. There is no monogram or horizontal header. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
 
 Portfolio content belongs in the server-rendered page or a shared content module. Rendering and pointer interaction belong in isolated client components. The scene must not become the only route to a project, résumé or contact link.
 
@@ -12,7 +12,7 @@ Portfolio content belongs in the server-rendered page or a shared content module
 
 The button sits below desktop navigation and stays at the top right on mobile. Its accessible label describes the destination theme. Keyboard activation, reduced motion and browsers without `startViewTransition` change the palette immediately. Repeated clicks during a reveal are ignored until its completion; cleanup removes transient styles even if the browser skips the animation.
 
-`src/lib/theme.ts` defines the `folio-theme` storage key and a small inline head script that restores the saved choice before first paint. Only `dark` is accepted as an override; missing, invalid or unavailable storage falls back to light. `useSyncExternalStore` keeps button text synchronized after hydration and across tabs. The root hydration warning suppression is scoped to the theme attribute, which deliberately differs from the server's light default. If adding a restrictive CSP, authorize this static initialization script with a hash or nonce.
+`src/lib/theme.ts` defines the `folio-theme` storage key and a small inline head script that restores the saved choice before first paint. Only `light` is accepted as an override; missing, invalid or unavailable storage falls back to dark. `useSyncExternalStore` keeps button text synchronized after hydration and across tabs. The root hydration warning suppression is scoped to the theme attribute, which deliberately differs from the server's dark default. If adding a restrictive CSP, authorize this static initialization script with a hash or nonce.
 
 Verify light → dark → light on desktop and mobile, theme persistence after reload, keyboard focus, readable text and controls, and TV video/Doom playback across a switch. Check that the mobile menu remains usable and there is no horizontal overflow.
 
