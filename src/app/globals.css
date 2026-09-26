@@ -4,10 +4,67 @@
 
 :root {
   color-scheme: light;
+  --page: #fff;
   --ink: #2b302b;
   --muted: #73776e;
   --line: #e8eae5;
   --green: #435b42;
+  --underline: #b9c0b4;
+  --focus: #627e57;
+  --selection: #e0ead9;
+  --selection-ink: #263426;
+  --intro-copy: #707070;
+  --emphasis: #000;
+  --handwritten: #242424;
+  --link-border: #d6dad2;
+  --secondary: #697162;
+  --arrow: #838b7d;
+  --copy: #626b5c;
+  --achievement-copy: #697064;
+  --bullet: #899b80;
+  --achievement-title: #424b3e;
+  --contact-copy: #747c6c;
+  --footer: #9b9f96;
+  --nav-muted: #777b73;
+  --nav-active: #272d26;
+  --control-ink: #535c4e;
+  --control-border: #d5d7ce;
+  --control-surface: #f3f4ef;
+  --key-ink: #343e31;
+  --key-border: #e6e8e0;
+  --portrait-underline: #70707059;
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #080808;
+  --ink: #e7e7e4;
+  --muted: #a0a398;
+  --line: #2a2d28;
+  --green: #b6cfa8;
+  --underline: #67715f;
+  --focus: #b6cfa8;
+  --selection: #34412d;
+  --selection-ink: #f0f5ea;
+  --intro-copy: #b4b4b0;
+  --emphasis: #f5f5f2;
+  --handwritten: #e7e7e4;
+  --link-border: #48503f;
+  --secondary: #b0b7a8;
+  --arrow: #aeb6a6;
+  --copy: #b7bfb0;
+  --achievement-copy: #b0b7a8;
+  --bullet: #9bac90;
+  --achievement-title: #d5dece;
+  --contact-copy: #b0b7a8;
+  --footer: #969d8e;
+  --nav-muted: #a3a79d;
+  --nav-active: #f0f1ed;
+  --control-ink: #c5cebc;
+  --control-border: #454c3e;
+  --control-surface: #1b2017;
+  --key-ink: #dbe5d2;
+  --key-border: #39422f;
+  --portrait-underline: #b4b4b080;
 }
 * {
   box-sizing: border-box;
@@ -18,7 +75,7 @@ html {
 }
 body {
   margin: 0;
-  background: #fff;
+  background: var(--page);
   color: var(--ink);
   font:
     15px/1.75 'DM Sans Variable',
@@ -29,7 +86,7 @@ body {
 a {
   color: inherit;
   text-underline-offset: 4px;
-  text-decoration-color: #b9c0b4;
+  text-decoration-color: var(--underline);
   transition:
     color 160ms ease,
     text-decoration-color 160ms ease;
@@ -48,12 +105,12 @@ button {
 button:focus-visible,
 a:focus-visible,
 canvas:focus-visible {
-  outline: 2px solid #627e57;
+  outline: 2px solid var(--focus);
   outline-offset: 5px;
 }
 ::selection {
-  background: #e0ead9;
-  color: #263426;
+  background: var(--selection);
+  color: var(--selection-ink);
 }
 .portfolio-shell {
   display: grid;
@@ -103,7 +160,7 @@ h1 {
 }
 .intro-copy {
   max-width: 490px;
-  color: #707070;
+  color: var(--intro-copy);
   margin-top: 23px;
   font:
     500 15px/1.65 'Public Sans Variable',
@@ -111,11 +168,11 @@ h1 {
     sans-serif;
 }
 .intro-copy strong {
-  color: #000;
+  color: var(--emphasis);
   font-weight: 600;
 }
 .intro-copy .intro-handwritten {
-  color: #242424;
+  color: var(--handwritten);
   font:
     700 22px/1 'Caveat Variable',
     cursive;
@@ -135,7 +192,7 @@ h1 {
 }
 .inline-links a {
   text-decoration: none;
-  border-bottom: 1px solid #d6dad2;
+  border-bottom: 1px solid var(--link-border);
 }
 .text-section {
   border-top: 1px solid var(--line);
@@ -154,7 +211,7 @@ h1 {
   font-size: 10px;
   font-weight: 400;
   font-variant-numeric: tabular-nums;
-  color: #697162;
+  color: var(--secondary);
 }
 .project-list,
 .experience-list {
@@ -212,14 +269,14 @@ h3.entry-heading {
 .entry-heading a span {
   font-size: 12px;
   margin-left: 2px;
-  color: #838b7d;
+  color: var(--arrow);
 }
 .entry-meta {
-  color: #697162;
+  color: var(--secondary);
   font-size: 12px;
 }
 .entry-copy {
-  color: #626b5c;
+  color: var(--copy);
   font-size: 14px;
   line-height: 1.85;
   margin-top: 7px;
@@ -236,7 +293,7 @@ h3.entry-heading {
   margin: 0;
   display: grid;
   gap: 17px;
-  color: #697064;
+  color: var(--achievement-copy);
   font-size: 13px;
 }
 .achievement-list li {
@@ -247,14 +304,14 @@ h3.entry-heading {
   content: '·';
   position: absolute;
   left: 0;
-  color: #899b80;
+  color: var(--bullet);
 }
 .achievement-list strong {
-  color: #424b3e;
+  color: var(--achievement-title);
   font-weight: 500;
 }
 .achievement-list h3 {
-  color: #424b3e;
+  color: var(--achievement-title);
   font-size: 14px;
   font-weight: 500;
 }
@@ -270,11 +327,11 @@ h3.entry-heading {
 }
 .contact-section p {
   font-size: 13px;
-  color: #747c6c;
+  color: var(--contact-copy);
 }
 .site-footer {
   padding: 33px 0 32px;
-  color: #9b9f96;
+  color: var(--footer);
   font-size: 10px;
   display: flex;
   justify-content: space-between;
@@ -288,8 +345,8 @@ h3.entry-heading {
   top: 10px;
   left: 12px;
   padding: 9px 14px;
-  background: #fff;
-  border: 1px solid #b6c2af;
+  background: var(--page);
+  border: 1px solid var(--focus);
   border-radius: 4px;
   z-index: 100;
   transform: translateY(-160%);
@@ -304,7 +361,7 @@ h3.entry-heading {
 }
 .message-page p {
   margin: 20px 0;
-  color: #73776e;
+  color: var(--muted);
 }
 .message-page button {
   margin-right: 20px;

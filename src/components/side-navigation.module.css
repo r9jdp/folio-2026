@@ -16,16 +16,16 @@
 .links a {
   display: block;
   padding: 8px 0;
-  color: #777b73;
+  color: var(--nav-muted);
   text-decoration: none;
   transition: none;
 }
 .links a[aria-current] {
-  color: #272d26;
+  color: var(--nav-active);
   font-weight: 700;
 }
 .links a:hover {
-  color: #272d26;
+  color: var(--nav-active);
 }
 .links .external {
   margin-top: 18px;
@@ -40,7 +40,7 @@
     left: 16px;
     z-index: 30;
     padding: 0;
-    background: #fff;
+    background: var(--page);
     border-radius: 4px;
     font-size: 16px;
   }
@@ -50,7 +50,7 @@
     min-height: 44px;
     padding: 8px 12px;
     border: 0;
-    color: #525a4e;
+    color: var(--control-ink);
     background: transparent;
     text-align: left;
     cursor: pointer;
@@ -73,7 +73,7 @@
   .sidebar[data-open='true'] {
     box-shadow:
       0 8px 32px #25321f14,
-      0 0 0 1px #e8eae5;
+      0 0 0 1px var(--line);
   }
   .sidebar[data-open='true'] .links {
     display: flex;

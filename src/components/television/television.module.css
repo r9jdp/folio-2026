@@ -1,7 +1,7 @@
 .hero {
   width: min(960px, 100%);
   margin: 16px auto 0;
-  background: #fff;
+  background: var(--page);
 }
 .stage {
   position: relative;
@@ -29,7 +29,7 @@
   display: grid;
   place-items: center;
   margin: 0;
-  color: #73776e;
+  color: var(--muted);
   font-size: 12px;
 }
 .knob {
@@ -60,12 +60,12 @@
   left: 50%;
   top: 100%;
   transform: translateX(-50%);
-  background: #fff;
-  border: 1px solid #e7e5dc;
+  background: var(--page);
+  border: 1px solid var(--line);
   border-radius: 5px;
   padding: 4px 8px;
   font-size: 10px;
-  color: #464639;
+  color: var(--ink);
   opacity: 0;
   pointer-events: none;
   transition: opacity 140ms ease;
@@ -105,7 +105,7 @@
   gap: 12px;
   min-height: 42px;
   padding: 0 24px;
-  color: #73776e;
+  color: var(--muted);
   font-size: 12px;
   text-align: center;
 }
@@ -117,10 +117,10 @@
   align-items: center;
   gap: 5px;
   border: 0;
-  border-bottom: 1px solid #d5d7ce;
+  border-bottom: 1px solid var(--control-border);
   padding: 5px 0;
   background: none;
-  color: #535c4e;
+  color: var(--control-ink);
   font-size: 11px;
   cursor: pointer;
   min-height: 36px;
@@ -133,7 +133,7 @@
   max-width: 640px;
   margin: 9px auto 0;
   padding: 0 24px;
-  color: #697162;
+  color: var(--secondary);
   font-size: 10px;
 }
 .controls span {
@@ -141,9 +141,9 @@
 }
 .controls kbd {
   font: inherit;
-  color: #343e31;
-  background: #f3f4ef;
-  border: 1px solid #e6e8e0;
+  color: var(--key-ink);
+  background: var(--control-surface);
+  border: 1px solid var(--key-border);
   border-radius: 3px;
   padding: 2px 4px;
   margin-right: 3px;
@@ -152,7 +152,7 @@
   flex-basis: 100%;
   text-align: center;
   font-size: 9px;
-  color: #858a80;
+  color: var(--muted);
   margin-top: 3px;
 }
 .hero:fullscreen {

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { themeBootstrap } from '@/lib/theme';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light" suppressHydrationWarning>
+      <head>
+        <script id="portfolio-theme" dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+      </head>
       <body>
         <a className="skip-content" href="#main-content">
           Skip to portfolio
