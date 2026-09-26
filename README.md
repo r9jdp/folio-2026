@@ -4,6 +4,8 @@ A quiet portfolio with dark and light themes and a playable vintage television a
 
 The navigation includes a dark mode toggle inspired by [Vatsal's portfolio](https://www.bevatsal.me/). The new theme expands from the button in a circular reveal, matching its 700 ms timing and easing. Dark is the first-visit default; an explicitly chosen light theme persists across reloads. Reduced-motion visitors and keyboard activation switch immediately.
 
+A small pixel cat follows the desktop cursor, inspired by [ramx.in](https://ramx.in/). It uses the classic Oneko sprite and walking, waking, scratching and sleeping animations. It never captures clicks and hides during Doom gameplay, on mobile and when reduced motion is enabled.
+
 ## Development
 
 Use Node.js 22.18 or later and the committed npm lockfile.

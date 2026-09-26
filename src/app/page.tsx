@@ -1,6 +1,7 @@
 import Television from '@/components/television/television';
 import PortfolioContent from '@/components/portfolio-content';
 import SideNavigation from '@/components/side-navigation';
+import CursorCat from '@/components/cursor-cat';
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
         <Television />
         <PortfolioContent />
       </div>
+      <CursorCat />
     </div>
   );
 }

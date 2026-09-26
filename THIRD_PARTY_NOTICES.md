@@ -6,6 +6,10 @@ Public Sans and Caveat are served locally through `@fontsource-variable/public-s
 
 DM Sans is distributed through `@fontsource-variable/dm-sans` under the SIL Open Font License. Its licence is included in the installed package. Software dependencies, including Next.js, React, Three.js, React Three Fiber, Drei and Lucide, retain their respective licences and notices. The package lockfile records the installed versions.
 
+## Oneko cursor cat
+
+The cursor cat's sprite sheet and adapted movement/idle logic come from [adryd325/oneko.js](https://github.com/adryd325/oneko.js), copyright © 2022 adryd, distributed under the MIT license. The complete upstream [license](public/oneko/LICENSE.txt) and [asset provenance](public/oneko/README.md) are included. The classic artwork traces back to the Neko/Oneko cursor pets. The 32×32 frames are displayed from the unmodified sprite sheet; all assets are served locally.
+
 ## Television preview
 
 The active hero's TV model and camera/placement calibration come from [`@crazygl/hero-vhs-product-screen@0.1.1`](https://github.com/CrazyGL-com/hero-vhs-product-screen) by ybouane, licensed Apache-2.0. The project-owned renderer adapts that calibration to support live Doom and clickable cabinet controls. The original package license is retained under `public/vendor/doom/CrazyGL-Apache-2.0.txt` by the installation script. Model geometry/textures are unmodified; screen UVs and material are replaced at runtime.

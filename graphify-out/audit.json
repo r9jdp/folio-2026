@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-26T13:35:45.338924+00:00",
+  "generated_at": "2026-09-26T13:56:38.046160+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 99,
-  "edges": 101,
-  "communities": 29,
-  "code_files": 31,
+  "nodes": 101,
+  "edges": 102,
+  "communities": 30,
+  "code_files": 32,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 95,
+    "EXTRACTED": 96,
     "INFERRED": 6
   },
   "source_files": [
@@ -43,7 +43,7 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "sha256": "1e5916d42fa0c90f65b4ae448b615ae49a48d4661c046c2ea8782729bcdedd56"
+      "sha256": "6584c6e9a2d534103e0abe90dbd9c046f13743fb4ddc60ab5ec2a634ce46603c"
     },
     {
       "path": "src/app/not-found.tsx",
@@ -51,7 +51,11 @@
     },
     {
       "path": "src/app/page.tsx",
-      "sha256": "0df69f4797a7c370bc61b85422f968aa193d306c41322566abc69ce211d45aa4"
+      "sha256": "18570295af3152975566dd441bf8e67abd3dc138f02b5bcc0372fb984b677a05"
+    },
+    {
+      "path": "src/components/cursor-cat.tsx",
+      "sha256": "fbb577445def9d9d327fd5c40aa1523561b4eb0cd44f8ac3a93c44836184543c"
     },
     {
       "path": "src/components/monitor/monitor-desktop.tsx",
@@ -107,7 +111,7 @@
     },
     {
       "path": "src/components/theme-toggle.tsx",
-      "sha256": "ee9e0ced123b2436f782b006b7cd6d642c867d6096cd3ad627a0079c16975e8e"
+      "sha256": "a36c229911554d1b01b3ebf4ca04464c7c35e3d0d2b49f1da46c61c9a25a4639"
     },
     {
       "path": "src/lib/doom-preparation.ts",
@@ -123,7 +127,7 @@
     },
     {
       "path": "src/lib/theme.ts",
-      "sha256": "b2003af0e203cbda24b60ed369a9341bfd2c24b172d83dd83f0c5c8cead7be4c"
+      "sha256": "bfd54626a7f5969fee0e2b1c626ccc5d3ce1207573b21379f9de425297fcb03c"
     },
     {
       "path": "tests/doom-preparation.test.ts",

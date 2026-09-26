@@ -1,0 +1,22 @@
+.cat {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 32px;
+  height: 32px;
+  background-image: url('/oneko/oneko.gif');
+  background-repeat: no-repeat;
+  image-rendering: pixelated;
+  pointer-events: none;
+  user-select: none;
+  contain: layout style paint;
+}
+.cat[hidden] {
+  display: none;
+}
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse), (max-width: 760px) {
+  .cat {
+    display: none;
+  }
+}

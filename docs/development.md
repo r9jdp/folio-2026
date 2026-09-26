@@ -16,6 +16,14 @@ The button sits below desktop navigation and stays at the top right on mobile. I
 
 Verify light → dark → light on desktop and mobile, theme persistence after reload, keyboard focus, readable text and controls, and TV video/Doom playback across a switch. Check that the mobile menu remains usable and there is no horizontal overflow.
 
+## Cursor cat
+
+`cursor-cat.tsx` adapts [adryd's Oneko](https://github.com/adryd325/oneko.js), using the unchanged local sprite sheet in `public/oneko/`. The 32×32 pixel cat moves in eight directions at the original 10 pixels per 100 ms tick, stops within 48 pixels of the pointer, briefly perks up when disturbed and occasionally scratches or sleeps while idle. The cat is decorative and cannot intercept clicks or keyboard focus.
+
+The component owns a single animation loop and cleans up every observer and listener on unmount. Hidden tabs, reduced motion, coarse pointers, narrow viewports, pointer lock, fullscreen and active Doom gameplay hide the sprite and suspend its loop. A mutation observer watches the TV's `data-state`, so this also works when Doom runs without pointer capture. Positions are clamped on resize; scrolling does not change the viewport-relative pursuit. Theme changes preserve the cat instance.
+
+Check chasing in several directions, settling near a still pointer, light/dark visibility, normal link clicks, mobile suppression, and hiding/resuming when entering/leaving Doom. Keep the upstream [license and asset provenance](../public/oneko/README.md) with distributions.
+
 ## Current playable television
 
 `television.tsx` owns the ambient → booting → ready → playing state machine, keyboard focus, pointer lock, fallback mouse input, sound, fullscreen and cleanup. Esc, blur and hidden tabs pause only active gameplay; booting must keep advancing. Returning to the video aborts the current startup waiter and resets the session. A 60-second watchdog makes a stalled launch retryable. Game input is isolated in `src/lib/game-controls.ts`; all held keys and pending fire releases are cleared on pause, shutdown and unmount. js-dos relative mouse input expects pixel deltas, not normalized coordinates. Without pointer lock, derive those deltas from `clientX` and reset the baseline on pause, mouse leave and mode changes.
