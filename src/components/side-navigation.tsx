@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import ThemeToggle from './theme-toggle';
 import styles from './side-navigation.module.css';
 
 const sections = [
@@ -99,6 +100,7 @@ export default function SideNavigation() {
           X
         </a>
       </nav>
+      <ThemeToggle />
     </aside>
   );
 }

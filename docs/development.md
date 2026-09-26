@@ -2,9 +2,19 @@
 
 ## Page structure
 
-Keep the page on a white background with a restrained type scale, generous spacing and normal document scrolling. A sticky left column of text links leads to the written sections, with the current section shown in darker bold text. On narrow screens, a small menu button opens the same vertical links. There is no monogram or horizontal header. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
+Keep the page white by default, with an optional dark palette, a restrained type scale, generous spacing and normal document scrolling. A sticky left column of text links leads to the written sections, with the current section emphasized in bold text. On narrow screens, a small menu button opens the same vertical links. There is no monogram or horizontal header. The current hero contains a vintage television with opt-in Doom; work, experience and personal details remain readable below it.
 
 Portfolio content belongs in the server-rendered page or a shared content module. Rendering and pointer interaction belong in isolated client components. The scene must not become the only route to a project, résumé or contact link.
+
+## Animated theme toggle
+
+`theme-toggle.tsx` matches the circular theme reveal observed on [bevatsal.me](https://www.bevatsal.me/): the new palette expands from the button center over 700 ms with `cubic-bezier(0.76, 0, 0.24, 1)`, in either direction. The radius covers the farthest viewport corner. Native View Transitions capture the current page so the reveal includes text, navigation and the TV stage without duplicating the DOM or restarting the game. CSS variables in `globals.css` style both palettes; media and portrait colors are never inverted.
+
+The button sits below desktop navigation and stays at the top right on mobile. Its accessible label describes the destination theme. Keyboard activation, reduced motion and browsers without `startViewTransition` change the palette immediately. Repeated clicks during a reveal are ignored until its completion; cleanup removes transient styles even if the browser skips the animation.
+
+`src/lib/theme.ts` defines the `folio-theme` storage key and a small inline head script that restores the saved choice before first paint. Only `dark` is accepted as an override; missing, invalid or unavailable storage falls back to light. `useSyncExternalStore` keeps button text synchronized after hydration and across tabs. The root hydration warning suppression is scoped to the theme attribute, which deliberately differs from the server's light default. If adding a restrictive CSP, authorize this static initialization script with a hash or nonce.
+
+Verify light → dark → light on desktop and mobile, theme persistence after reload, keyboard focus, readable text and controls, and TV video/Doom playback across a switch. Check that the mobile menu remains usable and there is no horizontal overflow.
 
 ## Current playable television
 

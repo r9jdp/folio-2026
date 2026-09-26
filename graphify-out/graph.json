@@ -3,36 +3,38 @@
   "multigraph": false,
   "graph": {
     "scope": "Current source code only; AST extraction",
-    "generated_at": "2026-09-22T19:40:50.593939+00:00",
+    "generated_at": "2026-09-26T13:35:45.338924+00:00",
     "algorithm": "NetworkX Louvain, seed 42, undirected projection",
     "community_labels": {
       "0": "television.tsx",
-      "1": "monitor.tsx",
-      "2": "doom-runtime.ts / doom-preparation.ts",
-      "3": "pond.ts",
+      "1": "pond.ts / koi-model.ts",
+      "2": "monitor.tsx",
+      "3": "doom-runtime.ts / doom-preparation.ts",
       "4": "koi-model.ts",
-      "5": "refresh-code-graph.py",
-      "6": "pond-bed.ts / pond-renderer.ts",
-      "7": "game-controls.ts",
-      "8": "monitor-scene.tsx",
-      "9": "error.tsx",
-      "10": "layout.tsx",
-      "11": "not-found.tsx",
-      "12": "page.tsx",
-      "13": "monitor-desktop.tsx",
-      "14": "koi-pond.tsx",
-      "15": "portrait-name.tsx",
-      "16": "side-navigation.tsx",
-      "17": "television-scene.ts",
-      "18": "doom-preparation.test.ts",
-      "19": "eslint.config.mjs",
-      "20": "next.config.ts",
-      "21": "prepare-doom-assets.mjs",
-      "22": "prepare-tv-assets.mjs",
-      "23": "icon.tsx",
-      "24": "portfolio-content.tsx",
-      "25": "game-controls.test.ts",
-      "26": "pond.test.ts"
+      "5": "theme-toggle.tsx",
+      "6": "refresh-code-graph.py",
+      "7": "pond-bed.ts / pond-renderer.ts",
+      "8": "game-controls.ts",
+      "9": "monitor-scene.tsx",
+      "10": "error.tsx",
+      "11": "layout.tsx",
+      "12": "not-found.tsx",
+      "13": "page.tsx",
+      "14": "monitor-desktop.tsx",
+      "15": "koi-pond.tsx",
+      "16": "portrait-name.tsx",
+      "17": "side-navigation.tsx",
+      "18": "television-scene.ts",
+      "19": "doom-preparation.test.ts",
+      "20": "eslint.config.mjs",
+      "21": "next.config.ts",
+      "22": "prepare-doom-assets.mjs",
+      "23": "prepare-tv-assets.mjs",
+      "24": "icon.tsx",
+      "25": "portfolio-content.tsx",
+      "26": "theme.ts",
+      "27": "game-controls.test.ts",
+      "28": "pond.test.ts"
     },
     "source_files": [
       {
@@ -65,7 +67,7 @@
       },
       {
         "path": "src/app/layout.tsx",
-        "sha256": "dc1b55f9987e3dcc5764ae248cf9107b4d0ac8b9cb45f76be71a096f663a40a5"
+        "sha256": "1e5916d42fa0c90f65b4ae448b615ae49a48d4661c046c2ea8782729bcdedd56"
       },
       {
         "path": "src/app/not-found.tsx",
@@ -113,7 +115,7 @@
       },
       {
         "path": "src/components/side-navigation.tsx",
-        "sha256": "69b57d2f1dd95e7aa9529c3aeb0f42732c32b21a6f325330d0165ddd6d448904"
+        "sha256": "e67b4d0fc032a6b7be5b15ea25bd7bc72fae575e0b3db6ac0f08308af5134685"
       },
       {
         "path": "src/components/television/doom-runtime.ts",
@@ -128,6 +130,10 @@
         "sha256": "9c920c5ee095837275d1f424f048dbfa04087020c5187aab88868b0d484b662f"
       },
       {
+        "path": "src/components/theme-toggle.tsx",
+        "sha256": "ee9e0ced123b2436f782b006b7cd6d642c867d6096cd3ad627a0079c16975e8e"
+      },
+      {
         "path": "src/lib/doom-preparation.ts",
         "sha256": "4c301c9c5332468f0946d4d81b5ab9154c8e6a0427e40fd92541a082664870ba"
       },
@@ -138,6 +144,10 @@
       {
         "path": "src/lib/pond.ts",
         "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
+      },
+      {
+        "path": "src/lib/theme.ts",
+        "sha256": "b2003af0e203cbda24b60ed369a9341bfd2c24b172d83dd83f0c5c8cead7be4c"
       },
       {
         "path": "tests/doom-preparation.test.ts",
@@ -168,7 +178,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 19,
+      "community": 20,
       "id": "c_users_rajdeep_desktop_folio_2026_eslint_config_mjs",
       "norm_label": "eslint.config.mjs"
     },
@@ -179,7 +189,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 20,
+      "community": 21,
       "id": "c_users_rajdeep_desktop_folio_2026_next_config_ts",
       "norm_label": "next.config.ts"
     },
@@ -190,7 +200,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 21,
+      "community": 22,
       "id": "c_users_rajdeep_desktop_folio_2026_scripts_prepare_doom_assets_mjs",
       "norm_label": "prepare-doom-assets.mjs"
     },
@@ -201,7 +211,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 22,
+      "community": 23,
       "id": "c_users_rajdeep_desktop_folio_2026_scripts_prepare_tv_assets_mjs",
       "norm_label": "prepare-tv-assets.mjs"
     },
@@ -212,7 +222,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "c_users_rajdeep_desktop_folio_2026_scripts_refresh_code_graph_py",
       "norm_label": "refresh-code-graph.py"
     },
@@ -223,7 +233,7 @@
       "source_location": "L26",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "refresh_code_graph_source_paths",
       "norm_label": "source_paths()"
     },
@@ -234,7 +244,7 @@
       "source_location": "L48",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "refresh_code_graph_relative_source",
       "norm_label": "relative_source()"
     },
@@ -245,7 +255,7 @@
       "source_location": "L60",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "refresh_code_graph_communities_for",
       "norm_label": "communities_for()"
     },
@@ -256,7 +266,7 @@
       "source_location": "L70",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 5,
+      "community": 6,
       "id": "refresh_code_graph_main",
       "norm_label": "main()"
     },
@@ -267,7 +277,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 9,
+      "community": 10,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_error_tsx",
       "norm_label": "error.tsx"
     },
@@ -278,7 +288,7 @@
       "source_location": "L3",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 9,
+      "community": 10,
       "id": "error_errorpage",
       "norm_label": "errorpage()"
     },
@@ -289,7 +299,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 23,
+      "community": 24,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_icon_tsx",
       "norm_label": "icon.tsx"
     },
@@ -300,7 +310,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 10,
+      "community": 11,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_layout_tsx",
       "norm_label": "layout.tsx"
     },
@@ -308,10 +318,10 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 10,
+      "community": 11,
       "id": "layout_rootlayout",
       "norm_label": "rootlayout()"
     },
@@ -322,7 +332,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 11,
+      "community": 12,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_not_found_tsx",
       "norm_label": "not-found.tsx"
     },
@@ -333,7 +343,7 @@
       "source_location": "L2",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 11,
+      "community": 12,
       "id": "not_found_notfound",
       "norm_label": "notfound()"
     },
@@ -344,7 +354,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 12,
+      "community": 13,
       "id": "c_users_rajdeep_desktop_folio_2026_src_app_page_tsx",
       "norm_label": "page.tsx"
     },
@@ -355,7 +365,7 @@
       "source_location": "L5",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 12,
+      "community": 13,
       "id": "page_home",
       "norm_label": "home()"
     },
@@ -366,7 +376,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 13,
+      "community": 14,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_desktop_tsx",
       "norm_label": "monitor-desktop.tsx"
     },
@@ -377,7 +387,7 @@
       "source_location": "L7",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 13,
+      "community": 14,
       "id": "monitor_desktop_monitordesktop",
       "norm_label": "monitordesktop()"
     },
@@ -388,7 +398,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 8,
+      "community": 9,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_scene_tsx",
       "norm_label": "monitor-scene.tsx"
     },
@@ -399,7 +409,7 @@
       "source_location": "L175",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 8,
+      "community": 9,
       "id": "monitor_scene_lost",
       "norm_label": "lost()"
     },
@@ -410,7 +420,7 @@
       "source_location": "L217",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 8,
+      "community": 9,
       "id": "monitor_scene_creationfailed",
       "norm_label": "creationfailed()"
     },
@@ -421,7 +431,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_monitor_monitor_tsx",
       "norm_label": "monitor.tsx"
     },
@@ -432,7 +442,7 @@
       "source_location": "L10",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_subscribetomotion",
       "norm_label": "subscribetomotion()"
     },
@@ -443,7 +453,7 @@
       "source_location": "L15",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_readmotion",
       "norm_label": "readmotion()"
     },
@@ -454,7 +464,7 @@
       "source_location": "L19",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_flatmonitor",
       "norm_label": "flatmonitor()"
     },
@@ -465,7 +475,7 @@
       "source_location": "L33",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_sceneboundary",
       "norm_label": "sceneboundary"
     },
@@ -476,7 +486,7 @@
       "source_location": "L38",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_sceneboundary_getderivedstatefromerror",
       "norm_label": ".getderivedstatefromerror()"
     },
@@ -487,7 +497,7 @@
       "source_location": "L41",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_sceneboundary_componentdidcatch",
       "norm_label": ".componentdidcatch()"
     },
@@ -498,7 +508,7 @@
       "source_location": "L44",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 1,
+      "community": 2,
       "id": "monitor_sceneboundary_render",
       "norm_label": ".render()"
     },
@@ -553,7 +563,7 @@
       "source_location": "L144",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 4,
+      "community": 1,
       "id": "koi_model_crosssection",
       "norm_label": "crosssection()"
     },
@@ -586,7 +596,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 14,
+      "community": 15,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_pond_koi_pond_tsx",
       "norm_label": "koi-pond.tsx"
     },
@@ -597,7 +607,7 @@
       "source_location": "L9",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 14,
+      "community": 15,
       "id": "koi_pond_koipond",
       "norm_label": "koipond()"
     },
@@ -608,7 +618,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_pond_pond_bed_ts",
       "norm_label": "pond-bed.ts"
     },
@@ -619,7 +629,7 @@
       "source_location": "L2",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "pond_bed_createpondbed",
       "norm_label": "createpondbed()"
     },
@@ -630,7 +640,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_pond_pond_renderer_ts",
       "norm_label": "pond-renderer.ts"
     },
@@ -641,7 +651,7 @@
       "source_location": "L95",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 6,
+      "community": 7,
       "id": "pond_renderer_createpondrenderer",
       "norm_label": "createpondrenderer()"
     },
@@ -652,7 +662,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 24,
+      "community": 25,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_portfolio_content_tsx",
       "norm_label": "portfolio-content.tsx"
     },
@@ -663,7 +673,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 15,
+      "community": 16,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_portrait_name_tsx",
       "norm_label": "portrait-name.tsx"
     },
@@ -674,7 +684,7 @@
       "source_location": "L10",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 15,
+      "community": 16,
       "id": "portrait_name_portraitname",
       "norm_label": "portraitname()"
     },
@@ -685,7 +695,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 16,
+      "community": 17,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_side_navigation_tsx",
       "norm_label": "side-navigation.tsx"
     },
@@ -693,10 +703,10 @@
       "label": "SideNavigation()",
       "file_type": "code",
       "source_file": "src/components/side-navigation.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 16,
+      "community": 17,
       "id": "side_navigation_sidenavigation",
       "norm_label": "sidenavigation()"
     },
@@ -707,7 +717,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_television_doom_runtime_ts",
       "norm_label": "doom-runtime.ts"
     },
@@ -718,7 +728,7 @@
       "source_location": "L19",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_runtime_loademulator",
       "norm_label": "loademulator()"
     },
@@ -729,7 +739,7 @@
       "source_location": "L45",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_runtime_installshareware",
       "norm_label": "installshareware()"
     },
@@ -740,7 +750,7 @@
       "source_location": "L219",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_runtime_startdoom",
       "norm_label": "startdoom()"
     },
@@ -751,7 +761,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 17,
+      "community": 18,
       "id": "c_users_rajdeep_desktop_folio_2026_src_components_television_television_scene_ts",
       "norm_label": "television-scene.ts"
     },
@@ -762,7 +772,7 @@
       "source_location": "L14",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 17,
+      "community": 18,
       "id": "television_scene_createtvscene",
       "norm_label": "createtvscene()"
     },
@@ -954,13 +964,79 @@
       "norm_label": "fail()"
     },
     {
+      "label": "theme-toggle.tsx",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L1",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "norm_label": "theme-toggle.tsx"
+    },
+    {
+      "label": "readTheme()",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L9",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "theme_toggle_readtheme",
+      "norm_label": "readtheme()"
+    },
+    {
+      "label": "serverTheme()",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L11",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "theme_toggle_servertheme",
+      "norm_label": "servertheme()"
+    },
+    {
+      "label": "subscribeTheme()",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L13",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "theme_toggle_subscribetheme",
+      "norm_label": "subscribetheme()"
+    },
+    {
+      "label": "clearReveal()",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L27",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "theme_toggle_clearreveal",
+      "norm_label": "clearreveal()"
+    },
+    {
+      "label": "ThemeToggle()",
+      "file_type": "code",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L34",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 5,
+      "id": "theme_toggle_themetoggle",
+      "norm_label": "themetoggle()"
+    },
+    {
       "label": "doom-preparation.ts",
       "file_type": "code",
       "source_file": "src/lib/doom-preparation.ts",
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "c_users_rajdeep_desktop_folio_2026_src_lib_doom_preparation_ts",
       "norm_label": "doom-preparation.ts"
     },
@@ -971,7 +1047,7 @@
       "source_location": "L4",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_preparation_islevelframeready",
       "norm_label": "islevelframeready()"
     },
@@ -982,7 +1058,7 @@
       "source_location": "L26",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_preparation_withabort",
       "norm_label": "withabort()"
     },
@@ -993,7 +1069,7 @@
       "source_location": "L49",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 2,
+      "community": 3,
       "id": "doom_preparation_createdoompreparation",
       "norm_label": "createdoompreparation()"
     },
@@ -1004,7 +1080,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "c_users_rajdeep_desktop_folio_2026_src_lib_game_controls_ts",
       "norm_label": "game-controls.ts"
     },
@@ -1015,7 +1091,7 @@
       "source_location": "L28",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "game_controls_mouseturn",
       "norm_label": "mouseturn()"
     },
@@ -1026,7 +1102,7 @@
       "source_location": "L34",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "game_controls_createmouselook",
       "norm_label": "createmouselook()"
     },
@@ -1037,7 +1113,7 @@
       "source_location": "L61",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 7,
+      "community": 8,
       "id": "game_controls_creategameinput",
       "norm_label": "creategameinput()"
     },
@@ -1048,7 +1124,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "c_users_rajdeep_desktop_folio_2026_src_lib_pond_ts",
       "norm_label": "pond.ts"
     },
@@ -1059,7 +1135,7 @@
       "source_location": "L31",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_clamp",
       "norm_label": "clamp()"
     },
@@ -1070,7 +1146,7 @@
       "source_location": "L35",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_smoothstep",
       "norm_label": "smoothstep()"
     },
@@ -1081,7 +1157,7 @@
       "source_location": "L40",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_createkoi",
       "norm_label": "createkoi()"
     },
@@ -1092,7 +1168,7 @@
       "source_location": "L93",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_angledifference",
       "norm_label": "angledifference()"
     },
@@ -1103,7 +1179,7 @@
       "source_location": "L98",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_disturbpond",
       "norm_label": "disturbpond()"
     },
@@ -1114,7 +1190,7 @@
       "source_location": "L111",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_steppond",
       "norm_label": "steppond()"
     },
@@ -1125,9 +1201,20 @@
       "source_location": "L190",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 3,
+      "community": 1,
       "id": "pond_advancepond",
       "norm_label": "advancepond()"
+    },
+    {
+      "label": "theme.ts",
+      "file_type": "code",
+      "source_file": "src/lib/theme.ts",
+      "source_location": "L1",
+      "status": "Current source code; AST extraction only",
+      "source_scope": "Current minimal monitor-and-pond portfolio source",
+      "community": 26,
+      "id": "c_users_rajdeep_desktop_folio_2026_src_lib_theme_ts",
+      "norm_label": "theme.ts"
     },
     {
       "label": "doom-preparation.test.ts",
@@ -1136,7 +1223,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 18,
+      "community": 19,
       "id": "c_users_rajdeep_desktop_folio_2026_tests_doom_preparation_test_ts",
       "norm_label": "doom-preparation.test.ts"
     },
@@ -1147,7 +1234,7 @@
       "source_location": "L21",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 18,
+      "community": 19,
       "id": "doom_preparation_test_deferred",
       "norm_label": "deferred()"
     },
@@ -1158,7 +1245,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 25,
+      "community": 27,
       "id": "c_users_rajdeep_desktop_folio_2026_tests_game_controls_test_ts",
       "norm_label": "game-controls.test.ts"
     },
@@ -1169,7 +1256,7 @@
       "source_location": "L1",
       "status": "Current source code; AST extraction only",
       "source_scope": "Current minimal monitor-and-pond portfolio source",
-      "community": 26,
+      "community": 28,
       "id": "c_users_rajdeep_desktop_folio_2026_tests_pond_test_ts",
       "norm_label": "pond.test.ts"
     }
@@ -1275,7 +1362,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/app/layout.tsx",
-      "source_location": "L13",
+      "source_location": "L14",
       "weight": 1.0,
       "_src": "c_users_rajdeep_desktop_folio_2026_src_app_layout_tsx",
       "_tgt": "layout_rootlayout",
@@ -1635,7 +1722,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/components/side-navigation.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "weight": 1.0,
       "_src": "c_users_rajdeep_desktop_folio_2026_src_components_side_navigation_tsx",
       "_tgt": "side_navigation_sidenavigation",
@@ -2073,6 +2160,66 @@
       "_tgt": "television_transition",
       "source": "television_fail",
       "target": "television_transition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "_tgt": "theme_toggle_readtheme",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "target": "theme_toggle_readtheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "_tgt": "theme_toggle_servertheme",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "target": "theme_toggle_servertheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "_tgt": "theme_toggle_subscribetheme",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "target": "theme_toggle_subscribetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "_tgt": "theme_toggle_clearreveal",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "target": "theme_toggle_clearreveal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/theme-toggle.tsx",
+      "source_location": "L34",
+      "weight": 1.0,
+      "_src": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "_tgt": "theme_toggle_themetoggle",
+      "source": "c_users_rajdeep_desktop_folio_2026_src_components_theme_toggle_tsx",
+      "target": "theme_toggle_themetoggle",
       "confidence_score": 1.0
     },
     {

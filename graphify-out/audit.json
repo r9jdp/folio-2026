@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-09-22T19:40:50.593939+00:00",
+  "generated_at": "2026-09-26T13:35:45.338924+00:00",
   "scope": "Current source code only; AST extraction",
-  "nodes": 92,
-  "edges": 96,
-  "communities": 27,
-  "code_files": 29,
+  "nodes": 99,
+  "edges": 101,
+  "communities": 29,
+  "code_files": 31,
   "planning_nodes": 0,
   "hyperedges": 0,
   "structurally_valid": true,
   "edge_confidence": {
-    "EXTRACTED": 90,
+    "EXTRACTED": 95,
     "INFERRED": 6
   },
   "source_files": [
@@ -43,7 +43,7 @@
     },
     {
       "path": "src/app/layout.tsx",
-      "sha256": "dc1b55f9987e3dcc5764ae248cf9107b4d0ac8b9cb45f76be71a096f663a40a5"
+      "sha256": "1e5916d42fa0c90f65b4ae448b615ae49a48d4661c046c2ea8782729bcdedd56"
     },
     {
       "path": "src/app/not-found.tsx",
@@ -91,7 +91,7 @@
     },
     {
       "path": "src/components/side-navigation.tsx",
-      "sha256": "69b57d2f1dd95e7aa9529c3aeb0f42732c32b21a6f325330d0165ddd6d448904"
+      "sha256": "e67b4d0fc032a6b7be5b15ea25bd7bc72fae575e0b3db6ac0f08308af5134685"
     },
     {
       "path": "src/components/television/doom-runtime.ts",
@@ -106,6 +106,10 @@
       "sha256": "9c920c5ee095837275d1f424f048dbfa04087020c5187aab88868b0d484b662f"
     },
     {
+      "path": "src/components/theme-toggle.tsx",
+      "sha256": "ee9e0ced123b2436f782b006b7cd6d642c867d6096cd3ad627a0079c16975e8e"
+    },
+    {
       "path": "src/lib/doom-preparation.ts",
       "sha256": "4c301c9c5332468f0946d4d81b5ab9154c8e6a0427e40fd92541a082664870ba"
     },
@@ -116,6 +120,10 @@
     {
       "path": "src/lib/pond.ts",
       "sha256": "08c88ea3770efcb9a5b316c7883f8ad046acaeafea0d0e25f0a028b1747c392d"
+    },
+    {
+      "path": "src/lib/theme.ts",
+      "sha256": "b2003af0e203cbda24b60ed369a9341bfd2c24b172d83dd83f0c5c8cead7be4c"
     },
     {
       "path": "tests/doom-preparation.test.ts",

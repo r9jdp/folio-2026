@@ -4,13 +4,13 @@
 
 [Interactive graph](graph.html) · [Graph JSON](graph.json) · [Current README](../README.md)
 
-Generated: 2026-09-22T19:40:50.593939+00:00
+Generated: 2026-09-26T13:35:45.338924+00:00
 
-- 92 nodes · 96 directed edges · 27 communities
-- 29 current code files; repository-relative source paths with SHA-256 fingerprints
+- 99 nodes · 101 directed edges · 29 communities
+- 31 current code files; repository-relative source paths with SHA-256 fingerprints
 - AST extraction only: no LLM calls or API cost
 - Clustering: NetworkX Louvain, seed 42, on the undirected projection
-- Edge confidence: EXTRACTED: 90, INFERRED: 6
+- Edge confidence: EXTRACTED: 95, INFERRED: 6
 
 ## Source navigation
 
@@ -37,9 +37,11 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - [src/components/television/doom-runtime.ts](../src/components/television/doom-runtime.ts): 4 nodes
 - [src/components/television/television-scene.ts](../src/components/television/television-scene.ts): 2 nodes
 - [src/components/television/television.tsx](../src/components/television/television.tsx): 17 nodes
+- [src/components/theme-toggle.tsx](../src/components/theme-toggle.tsx): 6 nodes
 - [src/lib/doom-preparation.ts](../src/lib/doom-preparation.ts): 4 nodes
 - [src/lib/game-controls.ts](../src/lib/game-controls.ts): 4 nodes
 - [src/lib/pond.ts](../src/lib/pond.ts): 8 nodes
+- [src/lib/theme.ts](../src/lib/theme.ts): 1 nodes
 - [tests/doom-preparation.test.ts](../tests/doom-preparation.test.ts): 2 nodes
 - [tests/game-controls.test.ts](../tests/game-controls.test.ts): 1 nodes
 - [tests/pond.test.ts](../tests/pond.test.ts): 1 nodes
@@ -68,7 +70,21 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `transition()` — src/components/television/television.tsx L60
 - `visibility()` — src/components/television/television.tsx L222
 
-### 1: monitor.tsx
+### 1: pond.ts / koi-model.ts
+
+9 nodes · edge density 0.42
+
+- `pond.ts` — src/lib/pond.ts L1
+- `crossSection()` — src/components/pond/koi-model.ts L144
+- `advancePond()` — src/lib/pond.ts L190
+- `angleDifference()` — src/lib/pond.ts L93
+- `clamp()` — src/lib/pond.ts L31
+- `createKoi()` — src/lib/pond.ts L40
+- `disturbPond()` — src/lib/pond.ts L98
+- `smoothstep()` — src/lib/pond.ts L35
+- `stepPond()` — src/lib/pond.ts L111
+
+### 2: monitor.tsx
 
 8 nodes · edge density 0.25
 
@@ -81,7 +97,7 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `.render()` — src/components/monitor/monitor.tsx L44
 - `subscribeToMotion()` — src/components/monitor/monitor.tsx L10
 
-### 2: doom-runtime.ts / doom-preparation.ts
+### 3: doom-runtime.ts / doom-preparation.ts
 
 8 nodes · edge density 0.25
 
@@ -94,32 +110,29 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `loadEmulator()` — src/components/television/doom-runtime.ts L19
 - `startDoom()` — src/components/television/doom-runtime.ts L219
 
-### 3: pond.ts
-
-8 nodes · edge density 0.50
-
-- `pond.ts` — src/lib/pond.ts L1
-- `advancePond()` — src/lib/pond.ts L190
-- `angleDifference()` — src/lib/pond.ts L93
-- `clamp()` — src/lib/pond.ts L31
-- `createKoi()` — src/lib/pond.ts L40
-- `disturbPond()` — src/lib/pond.ts L98
-- `smoothstep()` — src/lib/pond.ts L35
-- `stepPond()` — src/lib/pond.ts L111
-
 ### 4: koi-model.ts
 
-7 nodes · edge density 0.43
+6 nodes · edge density 0.53
 
 - `koi-model.ts` — src/components/pond/koi-model.ts L1
 - `createKoiModel()` — src/components/pond/koi-model.ts L167
-- `crossSection()` — src/components/pond/koi-model.ts L144
 - `fanGeometry()` — src/components/pond/koi-model.ts L154
 - `makeCoat()` — src/components/pond/koi-model.ts L47
 - `seeded()` — src/components/pond/koi-model.ts L19
 - `softNoise()` — src/components/pond/koi-model.ts L27
 
-### 5: refresh-code-graph.py
+### 5: theme-toggle.tsx
+
+6 nodes · edge density 0.33
+
+- `theme-toggle.tsx` — src/components/theme-toggle.tsx L1
+- `clearReveal()` — src/components/theme-toggle.tsx L27
+- `readTheme()` — src/components/theme-toggle.tsx L9
+- `serverTheme()` — src/components/theme-toggle.tsx L11
+- `subscribeTheme()` — src/components/theme-toggle.tsx L13
+- `ThemeToggle()` — src/components/theme-toggle.tsx L34
+
+### 6: refresh-code-graph.py
 
 5 nodes · edge density 0.70
 
@@ -129,7 +142,7 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `relative_source()` — scripts/refresh-code-graph.py L48
 - `source_paths()` — scripts/refresh-code-graph.py L26
 
-### 6: pond-bed.ts / pond-renderer.ts
+### 7: pond-bed.ts / pond-renderer.ts
 
 4 nodes · edge density 0.50
 
@@ -138,7 +151,7 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `createPondBed()` — src/components/pond/pond-bed.ts L2
 - `createPondRenderer()` — src/components/pond/pond-renderer.ts L95
 
-### 7: game-controls.ts
+### 8: game-controls.ts
 
 4 nodes · edge density 0.50
 
@@ -147,7 +160,7 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `createMouseLook()` — src/lib/game-controls.ts L34
 - `mouseTurn()` — src/lib/game-controls.ts L28
 
-### 8: monitor-scene.tsx
+### 9: monitor-scene.tsx
 
 3 nodes · edge density 0.67
 
@@ -155,119 +168,125 @@ Generated: 2026-09-22T19:40:50.593939+00:00
 - `creationFailed()` — src/components/monitor/monitor-scene.tsx L217
 - `lost()` — src/components/monitor/monitor-scene.tsx L175
 
-### 9: error.tsx
+### 10: error.tsx
 
 2 nodes · edge density 1.00
 
 - `error.tsx` — src/app/error.tsx L1
 - `ErrorPage()` — src/app/error.tsx L3
 
-### 10: layout.tsx
+### 11: layout.tsx
 
 2 nodes · edge density 1.00
 
 - `layout.tsx` — src/app/layout.tsx L1
-- `RootLayout()` — src/app/layout.tsx L13
+- `RootLayout()` — src/app/layout.tsx L14
 
-### 11: not-found.tsx
+### 12: not-found.tsx
 
 2 nodes · edge density 1.00
 
 - `not-found.tsx` — src/app/not-found.tsx L1
 - `NotFound()` — src/app/not-found.tsx L2
 
-### 12: page.tsx
+### 13: page.tsx
 
 2 nodes · edge density 1.00
 
 - `page.tsx` — src/app/page.tsx L1
 - `Home()` — src/app/page.tsx L5
 
-### 13: monitor-desktop.tsx
+### 14: monitor-desktop.tsx
 
 2 nodes · edge density 1.00
 
 - `monitor-desktop.tsx` — src/components/monitor/monitor-desktop.tsx L1
 - `MonitorDesktop()` — src/components/monitor/monitor-desktop.tsx L7
 
-### 14: koi-pond.tsx
+### 15: koi-pond.tsx
 
 2 nodes · edge density 1.00
 
 - `koi-pond.tsx` — src/components/pond/koi-pond.tsx L1
 - `KoiPond()` — src/components/pond/koi-pond.tsx L9
 
-### 15: portrait-name.tsx
+### 16: portrait-name.tsx
 
 2 nodes · edge density 1.00
 
 - `portrait-name.tsx` — src/components/portrait-name.tsx L1
 - `PortraitName()` — src/components/portrait-name.tsx L10
 
-### 16: side-navigation.tsx
+### 17: side-navigation.tsx
 
 2 nodes · edge density 1.00
 
 - `side-navigation.tsx` — src/components/side-navigation.tsx L1
-- `SideNavigation()` — src/components/side-navigation.tsx L14
+- `SideNavigation()` — src/components/side-navigation.tsx L15
 
-### 17: television-scene.ts
+### 18: television-scene.ts
 
 2 nodes · edge density 1.00
 
 - `television-scene.ts` — src/components/television/television-scene.ts L1
 - `createTVScene()` — src/components/television/television-scene.ts L14
 
-### 18: doom-preparation.test.ts
+### 19: doom-preparation.test.ts
 
 2 nodes · edge density 1.00
 
 - `doom-preparation.test.ts` — tests/doom-preparation.test.ts L1
 - `deferred()` — tests/doom-preparation.test.ts L21
 
-### 19: eslint.config.mjs
+### 20: eslint.config.mjs
 
 1 nodes · edge density 0.00
 
 - `eslint.config.mjs` — eslint.config.mjs L1
 
-### 20: next.config.ts
+### 21: next.config.ts
 
 1 nodes · edge density 0.00
 
 - `next.config.ts` — next.config.ts L1
 
-### 21: prepare-doom-assets.mjs
+### 22: prepare-doom-assets.mjs
 
 1 nodes · edge density 0.00
 
 - `prepare-doom-assets.mjs` — scripts/prepare-doom-assets.mjs L1
 
-### 22: prepare-tv-assets.mjs
+### 23: prepare-tv-assets.mjs
 
 1 nodes · edge density 0.00
 
 - `prepare-tv-assets.mjs` — scripts/prepare-tv-assets.mjs L1
 
-### 23: icon.tsx
+### 24: icon.tsx
 
 1 nodes · edge density 0.00
 
 - `icon.tsx` — src/app/icon.tsx L1
 
-### 24: portfolio-content.tsx
+### 25: portfolio-content.tsx
 
 1 nodes · edge density 0.00
 
 - `portfolio-content.tsx` — src/components/portfolio-content.tsx L1
 
-### 25: game-controls.test.ts
+### 26: theme.ts
+
+1 nodes · edge density 0.00
+
+- `theme.ts` — src/lib/theme.ts L1
+
+### 27: game-controls.test.ts
 
 1 nodes · edge density 0.00
 
 - `game-controls.test.ts` — tests/game-controls.test.ts L1
 
-### 26: pond.test.ts
+### 28: pond.test.ts
 
 1 nodes · edge density 0.00
 
