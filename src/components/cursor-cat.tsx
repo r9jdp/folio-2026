@@ -93,6 +93,7 @@ export default function CursorCat() {
     let animation = 0;
     let lastTick = 0;
     let pointerInside = true;
+    let needsRestSpot = false;
     let disposed = false;
 
     const setSprite = (pose: Pose, frame = 0) => {
@@ -109,6 +110,54 @@ export default function CursorCat() {
     const resetIdle = () => {
       idlePose = null;
       idleFrame = 0;
+    };
+    const findRestSpot = () => {
+      // Measure only when the pointer leaves or the page moves, never each frame.
+      const obstacles = Array.from(
+        document.querySelectorAll(
+          'h1, h2, h3, h4, h5, h6, p, a, button, li, img, video, canvas, iframe, input, textarea, [role="img"]',
+        ),
+      )
+        .filter((node) => getComputedStyle(node).visibility !== 'hidden')
+        .flatMap((node) => Array.from(node.getClientRects()))
+        .filter(
+          (rect) => rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.top < innerHeight,
+        );
+      let best = { x, y };
+      let bestScore = Infinity;
+      let mostClearance = -1;
+      let fallback = best;
+      for (let cy = 32; cy <= innerHeight - 32; cy += 48) {
+        for (let cx = 32; cx <= innerWidth - 32; cx += 48) {
+          const clearance = obstacles.reduce(
+            (closest, rect) =>
+              Math.min(
+                closest,
+                Math.hypot(
+                  Math.max(rect.left - cx, 0, cx - rect.right),
+                  Math.max(rect.top - cy, 0, cy - rect.bottom),
+                ),
+              ),
+            Infinity,
+          );
+          if (clearance > mostClearance) {
+            mostClearance = clearance;
+            fallback = { x: cx, y: cy };
+          }
+          // Allow space for the whole sprite plus breathing room around content.
+          const travel = Math.hypot(cx - x, cy - y);
+          if (clearance < 40 || travel < 80) continue;
+          const score = travel - Math.min(clearance, 96);
+          if (score < bestScore) {
+            bestScore = score;
+            best = { x: cx, y: cy };
+          }
+        }
+      }
+      const destination = bestScore < Infinity ? best : fallback;
+      targetX = destination.x;
+      targetY = destination.y;
+      needsRestSpot = false;
     };
     const idle = () => {
       idleTicks += 1;
@@ -133,11 +182,16 @@ export default function CursorCat() {
     };
     const tick = () => {
       frameCount += 1;
+      if (!pointerInside && needsRestSpot) findRestSpot();
       const dx = targetX - x;
       const dy = targetY - y;
       const distance = Math.hypot(dx, dy);
-      if (distance < 48) {
-        idle();
+      if (distance < (pointerInside ? 48 : 1)) {
+        if (pointerInside) idle();
+        else {
+          idleTicks += 1;
+          setSprite('idle');
+        }
         return;
       }
       resetIdle();
@@ -151,8 +205,9 @@ export default function CursorCat() {
       direction += dx / distance < -0.5 ? 'W' : '';
       direction += dx / distance > 0.5 ? 'E' : '';
       setSprite(direction as Pose, frameCount);
-      x += (dx / distance) * 10;
-      y += (dy / distance) * 10;
+      const step = Math.min(10, distance);
+      x += (dx / distance) * step;
+      y += (dy / distance) * step;
       position();
     };
     const animate = (time: number) => {
@@ -171,7 +226,6 @@ export default function CursorCat() {
         !disposed &&
         pointer.matches &&
         !reducedMotion.matches &&
-        pointerInside &&
         !document.hidden &&
         !document.pointerLockElement &&
         !document.fullscreenElement &&
@@ -191,11 +245,18 @@ export default function CursorCat() {
       targetX = event.clientX;
       targetY = event.clientY;
       pointerInside = true;
+      needsRestSpot = false;
       refresh();
     };
     const leave = (event: PointerEvent) => {
-      if (event.relatedTarget !== null) return;
+      if (event.pointerType !== 'mouse' || event.relatedTarget !== null || !pointerInside) return;
       pointerInside = false;
+      needsRestSpot = true;
+      resetIdle();
+      refresh();
+    };
+    const layoutChanged = () => {
+      if (!pointerInside) needsRestSpot = true;
       refresh();
     };
     const gameObserver = new MutationObserver(refresh);
@@ -207,7 +268,8 @@ export default function CursorCat() {
     document.addEventListener('visibilitychange', refresh);
     document.addEventListener('pointerlockchange', refresh);
     document.addEventListener('fullscreenchange', refresh);
-    window.addEventListener('resize', refresh);
+    window.addEventListener('resize', layoutChanged);
+    window.addEventListener('scroll', layoutChanged, { passive: true });
     setSprite('idle');
     refresh();
 
@@ -223,7 +285,8 @@ export default function CursorCat() {
       document.removeEventListener('visibilitychange', refresh);
       document.removeEventListener('pointerlockchange', refresh);
       document.removeEventListener('fullscreenchange', refresh);
-      window.removeEventListener('resize', refresh);
+      window.removeEventListener('resize', layoutChanged);
+      window.removeEventListener('scroll', layoutChanged);
     };
   }, []);
 

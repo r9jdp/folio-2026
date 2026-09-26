@@ -22,7 +22,9 @@ Verify light → dark → light on desktop and mobile, theme persistence after r
 
 The component owns a single animation loop and cleans up every observer and listener on unmount. Hidden tabs, reduced motion, coarse pointers, narrow viewports, pointer lock, fullscreen and active Doom gameplay hide the sprite and suspend its loop. A mutation observer watches the TV's `data-state`, so this also works when Doom runs without pointer capture. Positions are clamped on resize; scrolling does not change the viewport-relative pursuit. Theme changes preserve the cat instance.
 
-Check chasing in several directions, settling near a still pointer, light/dark visibility, normal link clicks, mobile suppression, and hiding/resuming when entering/leaving Doom. Keep the upstream [license and asset provenance](../public/oneko/README.md) with distributions.
+When the mouse leaves the page, the cat stays visible and walks to a quiet spot before sitting. It samples visible empty space with clearance from text, links, controls and media, favoring nearby spots. Scrolling or resizing while the pointer is away recalculates that destination. Returning the pointer interrupts the walk and resumes following immediately.
+
+Check chasing in several directions, settling near a still pointer, walking to empty space on pointer exit, resuming on return, light/dark visibility, normal link clicks, mobile suppression, and hiding/resuming when entering/leaving Doom. Keep the upstream [license and asset provenance](../public/oneko/README.md) with distributions.
 
 ## Current playable television
 
